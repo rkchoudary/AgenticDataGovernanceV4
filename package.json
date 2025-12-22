@@ -1,5 +1,5 @@
 {
-  "name": "agentic-data-governance",
+  "name": "AgenticDataGovernance",
   "version": "1.0.0",
   "description": "Agentic AI Data Governance Operating Model for financial institutions",
   "main": "dist/index.js",
