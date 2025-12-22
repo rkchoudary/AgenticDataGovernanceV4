@@ -1,0 +1,697 @@
+# Implementation Plan: AgentCore Python Refactor
+
+- [x] 1. Set up Python project structure
+  - [x] 1.1 Initialize Python project with pyproject.toml
+    - Create pyproject.toml with dependencies: bedrock-agentcore[strands-agents], strands-agents, strands-agents-tools, hypothesis, pytest, pydantic
+    - Create requirements.txt for AgentCore deployment
+    - Configure pytest and hypothesis settings
+    - _Requirements: 1.1, 1.2_
+  - [x] 1.2 Create project directory structure
+    - Create directories: agents/, models/, repository/, services/, tools/, tests/
+    - Create __init__.py files for all packages
+    - Create .env.example with required environment variables
+    - _Requirements: 1.3_
+  - [x] 1.3 Create .bedrock_agentcore.yaml configuration
+    - Configure all 8 agents with entrypoints, runtime, memory settings
+    - Set PYTHON_3_12 runtime for all agents
+    - Configure memory mode as STM_AND_LTM
+    - _Requirements: 14.1, 14.2, 14.3, 14.4_
+
+- [x] 2. Implement Pydantic data models
+  - [x] 2.1 Create regulatory models
+    - Implement: DueDateRule, RegulatoryReport, ReportCatalog, RegulatoryChange, ScanResult, CatalogUpdate
+    - Use Literal types for enums (Jurisdiction, ArtifactStatus)
+    - Add Field defaults with uuid4 for IDs
+    - _Requirements: 2.1_
+  - [x] 2.2 Create data element and CDE models
+    - Implement: DataElement, DataMapping, DataGap, CDE, CDEScore, CDEInventory, OwnerSuggestion
+    - Include all scoring factors in CDEScore
+    - _Requirements: 2.2_
+  - [x] 2.3 Create data quality models
+    - Implement: DQDimension, RuleLogic, Threshold, DQRule, RuleExecutionResult
+    - Define DQDimension as Literal with all 7 dimensions
+    - _Requirements: 2.3_
+  - [x] 2.4 Create lineage models
+    - Implement: LineageNode, LineageEdge, LineageGraph, ImpactAnalysis
+    - Include node types: source_table, transformation, staging_table, report_field
+    - _Requirements: 2.4_
+  - [x] 2.5 Create issue models
+    - Implement: Issue, Resolution, RootCauseSuggestion, IssueMetrics
+    - Include severity and status enums
+    - _Requirements: 2.5_
+  - [x] 2.6 Create control models
+    - Implement: Control, ControlEvidence, ControlMatrix
+    - Include control types and categories
+    - _Requirements: 2.6_
+  - [x] 2.7 Create workflow and audit models
+    - Implement: CycleInstance, HumanTask, AuditEntry, Checkpoint, Decision
+    - Include CycleStatus and Phase enums
+    - _Requirements: 2.7, 2.8_
+
+- [x] 3. Implement repository layer
+  - [x] 3.1 Create abstract GovernanceRepository base class
+    - Define abstract methods for all entity types
+    - Include audit entry creation method
+    - _Requirements: 3.1_
+  - [x] 3.2 Implement InMemoryGovernanceRepository
+    - Implement all CRUD operations with in-memory storage
+    - Support filtering for queries
+    - _Requirements: 3.2_
+  - [x] 3.3 Implement AgentCoreMemoryRepository
+    - Integrate with AgentCore Memory client
+    - Persist audit entries to memory
+    - Support session and actor ID tracking
+    - _Requirements: 3.3, 3.4_
+
+- [x] 4. Checkpoint - Verify models and repository
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 5. Implement Regulatory Intelligence Agent
+  - [x] 5.1 Create regulatory tools
+    - Implement: scan_regulatory_sources, detect_changes, update_report_catalog, get_report_catalog, approve_catalog, submit_for_review, modify_catalog
+    - Use @tool decorator from strands
+    - Inject repository for data access
+    - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 4.6_
+  - [x] 5.2 Create RegulatoryIntelligenceAgent with BedrockAgentCoreApp
+    - Implement @app.entrypoint handler
+    - Configure AgentCore Memory session manager
+    - Create Strands Agent with tools and system prompt
+    - _Requirements: 4.1, 4.2_
+  - [x] 5.3 Write property test for artifact review state invariant
+    - **Property 1: Artifact Review State Invariant**
+    - **Validates: Requirements 1.3, 3.5, 4.4, 10.3**
+  - [x] 5.4 Write property test for audit trail completeness
+    - **Property 2: Audit Trail Completeness**
+    - **Validates: Requirements 1.4, 2.4, 6.2, 11.6, 12.3**
+  - [x] 5.5 Write unit tests for Regulatory Intelligence Agent
+    - Test scanning, change detection, catalog updates
+    - _Requirements: 4.1, 4.2, 4.3_
+
+- [x] 6. Implement Data Requirements Agent
+  - [x] 6.1 Create data requirements tools
+    - Implement: parse_regulatory_template, map_to_internal_sources, identify_data_gaps, generate_requirements_document, ingest_existing_document
+    - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5_
+  - [x] 6.2 Create DataRequirementsAgent with BedrockAgentCoreApp
+    - Implement @app.entrypoint handler
+    - Configure memory and create agent
+    - _Requirements: 5.1, 5.2_
+  - [x] 6.3 Write property test for data element extraction completeness
+    - **Property 5: Data Element Extraction Completeness**
+    - **Validates: Requirements 3.1**
+  - [x] 6.4 Write property test for data gap detection accuracy
+    - **Property 6: Data Gap Detection Accuracy**
+    - **Validates: Requirements 3.3**
+  - [x] 6.5 Write property test for reconciliation consistency
+    - **Property 7: Reconciliation Consistency**
+    - **Validates: Requirements 3.4, 4.3, 5.4, 6.3**
+  - [x] 6.6 Write unit tests for Data Requirements Agent
+    - _Requirements: 5.1, 5.2, 5.3_
+
+- [x] 7. Checkpoint - Verify first two agents
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 8. Implement CDE Identification Agent
+  - [x] 8.1 Create CDE tools
+    - Implement: score_data_elements, generate_cde_inventory, reconcile_with_existing, suggest_data_owners
+    - Include scoring factors calculation
+    - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5_
+  - [x] 8.2 Create CDEIdentificationAgent with BedrockAgentCoreApp
+    - _Requirements: 6.1, 6.2_
+  - [x] 8.3 Write property test for CDE scoring determinism
+    - **Property 8: CDE Scoring Determinism**
+    - **Validates: Requirements 4.1**
+  - [x] 8.4 Write property test for CDE threshold inclusion
+    - **Property 9: CDE Threshold Inclusion**
+    - **Validates: Requirements 4.2**
+  - [x] 8.5 Write property test for CDE ownership validation
+    - **Property 10: CDE Ownership Validation**
+    - **Validates: Requirements 4.5**
+  - [x] 8.6 Write unit tests for CDE Identification Agent
+    - _Requirements: 6.1, 6.2, 6.3_
+
+- [x] 9. Implement Data Quality Rule Agent
+  - [x] 9.1 Create DQ rule tools
+    - Implement: generate_rules_for_cde, ingest_existing_rules, update_rule_threshold, execute_rules
+    - Generate rules for all 7 dimensions
+    - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5_
+  - [x] 9.2 Create DataQualityRuleAgent with BedrockAgentCoreApp
+    - _Requirements: 7.1, 7.2_
+  - [x] 9.3 Write property test for DQ rule dimension coverage
+    - **Property 11: DQ Rule Dimension Coverage**
+    - **Validates: Requirements 5.1**
+  - [x] 9.4 Write property test for DQ rule field completeness
+    - **Property 12: DQ Rule Field Completeness**
+    - **Validates: Requirements 5.3**
+  - [x] 9.5 Write unit tests for Data Quality Rule Agent
+    - _Requirements: 7.1, 7.2, 7.3_
+
+- [x] 10. Checkpoint - Verify CDE and DQ agents
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 11. Implement Controls Management Service
+  - [x] 11.1 Create controls management functions
+    - Implement: categorize_control, activate_control, log_evidence, track_compensating_control, schedule_effectiveness_review
+    - _Requirements: 11.1, 11.2, 11.3, 11.4_
+  - [x] 11.2 Write property test for control categorization validity
+    - **Property 13: Control Categorization Validity**
+    - **Validates: Requirements 6.1**
+  - [x] 11.3 Write property test for compensating control tracking
+    - **Property 14: Compensating Control Tracking**
+    - **Validates: Requirements 6.4**
+  - [x] 11.4 Write unit tests for Controls Management
+    - _Requirements: 11.1, 11.2_
+
+- [x] 12. Implement Lineage Mapping Agent
+  - [x] 12.1 Create lineage tools
+    - Implement: scan_data_pipelines, link_to_business_concepts, import_from_lineage_tool, analyze_change_impact, generate_lineage_diagram, generate_lineage_report
+    - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5_
+  - [x] 12.2 Create LineageMappingAgent with BedrockAgentCoreApp
+    - _Requirements: 8.1, 8.2_
+  - [x] 12.3 Write property test for lineage graph connectivity
+    - **Property 15: Lineage Graph Connectivity**
+    - **Validates: Requirements 7.1**
+  - [x] 12.4 Write property test for lineage business enrichment
+    - **Property 16: Lineage Business Enrichment**
+    - **Validates: Requirements 7.2**
+  - [x] 12.5 Write property test for change impact completeness
+    - **Property 17: Change Impact Completeness**
+    - **Validates: Requirements 7.5**
+  - [x] 12.6 Write unit tests for Lineage Mapping Agent
+    - _Requirements: 8.1, 8.2, 8.5_
+
+- [x] 13. Checkpoint - Verify controls and lineage
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 14. Implement Issue Management Agent
+  - [x] 14.1 Create issue tools
+    - Implement: create_issue, suggest_root_cause, find_similar_issues, assign_issue, escalate_issue, resolve_issue, get_issue_metrics
+    - _Requirements: 9.1, 9.2, 9.3, 9.4, 9.5, 9.6_
+  - [x] 14.2 Create IssueManagementAgent with BedrockAgentCoreApp
+    - _Requirements: 9.1, 9.2_
+  - [x] 14.3 Write property test for issue auto-creation
+    - **Property 18: Issue Auto-Creation from Rule Failures**
+    - **Validates: Requirements 9.1**
+  - [x] 14.4 Write property test for issue domain-based assignment
+    - **Property 19: Issue Domain-Based Assignment**
+    - **Validates: Requirements 9.2**
+  - [x] 14.5 Write property test for critical issue escalation
+    - **Property 20: Critical Issue Escalation**
+    - **Validates: Requirements 9.4**
+  - [x] 14.6 Write property test for issue resolution gate
+    - **Property 21: Issue Resolution Confirmation Gate**
+    - **Validates: Requirements 9.5**
+  - [x] 14.7 Write property test for issue metrics accuracy
+    - **Property 22: Issue Metrics Accuracy**
+    - **Validates: Requirements 9.6**
+  - [x] 14.8 Write unit tests for Issue Management Agent
+    - _Requirements: 9.1, 9.4, 9.5_
+
+- [x] 15. Implement Documentation Agent
+  - [x] 15.1 Create documentation tools
+    - Implement: generate_data_dictionary, generate_lineage_documentation, generate_quality_assurance_report, generate_control_effectiveness_report, generate_bcbs239_compliance_mapping, compile_compliance_package
+    - _Requirements: 10.1, 10.2, 10.3, 10.4_
+  - [x] 15.2 Create DocumentationAgent with BedrockAgentCoreApp
+    - _Requirements: 10.1, 10.2_
+  - [x] 15.3 Write unit tests for Documentation Agent
+    - _Requirements: 10.1, 10.2_
+
+- [x] 16. Checkpoint - Verify issue and documentation agents
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 17. Implement Dashboard Service
+  - [x] 17.1 Create dashboard service functions
+    - Implement: get_cde_quality_scores, get_quality_trends, get_issues_summary, get_control_status, add_annotation
+    - _Requirements: 11.1, 11.2, 11.3, 11.4, 11.5, 11.6_
+  - [x] 17.2 Write property test for dashboard quality score consistency
+    - **Property 23: Dashboard Quality Score Consistency**
+    - **Validates: Requirements 11.1**
+  - [x] 17.3 Write unit tests for Dashboard Service
+    - _Requirements: 11.1, 11.2_
+
+- [x] 18. Implement Governance Orchestrator
+  - [x] 18.1 Create orchestrator tools
+    - Implement: start_report_cycle, pause_cycle, resume_cycle, trigger_agent, create_human_task, complete_human_task, escalate_task
+    - _Requirements: 12.1, 12.2, 12.3, 12.4, 12.5_
+  - [x] 18.2 Create GovernanceOrchestrator with BedrockAgentCoreApp
+    - Implement agent coordination logic
+    - Handle workflow dependencies
+    - _Requirements: 12.1, 12.2_
+  - [x] 18.3 Write property test for workflow dependency enforcement
+    - **Property 3: Workflow Dependency Enforcement**
+    - **Validates: Requirements 2.2, 12.1**
+  - [x] 18.4 Write property test for attestation gate invariant
+    - **Property 4: Attestation Gate Invariant**
+    - **Validates: Requirements 2.3**
+  - [x] 18.5 Write property test for human checkpoint pause behavior
+    - **Property 24: Human Checkpoint Pause Behavior**
+    - **Validates: Requirements 12.2**
+  - [x] 18.6 Write property test for critical issue workflow blocking
+    - **Property 25: Critical Issue Workflow Blocking**
+    - **Validates: Requirements 12.4**
+  - [x] 18.7 Write unit tests for Governance Orchestrator
+    - _Requirements: 12.1, 12.2, 12.3_
+
+- [x] 19. Checkpoint - Verify orchestrator
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 20. Create Hypothesis test strategies
+  - [x] 20.1 Create test data strategies for all models
+    - Implement strategies for: regulatory, cde, dq_rule, lineage, issue, control, workflow models
+    - Use @st.composite for complex strategies
+    - _Requirements: 15.1, 15.2_
+
+- [x] 21. Implement AgentCore Policy Integration
+  - [x] 21.1 Create Cedar policy definitions
+    - Define policies for: catalog approval, CDE updates, issue escalation
+    - Implement role-based access controls
+    - _Requirements: 15.1, 15.2, 15.3_
+  - [x] 21.2 Create Policy Engine setup script
+    - Script to create policy engine with ENFORCE mode
+    - Add Cedar policies to engine
+    - _Requirements: 15.1, 15.4_
+  - [x] 21.3 Write unit tests for policy enforcement
+    - Test allow/deny scenarios for each role
+    - _Requirements: 15.3, 15.4_
+
+- [x] 22. Implement AgentCore Identity Integration
+  - [x] 22.1 Create identity configuration
+    - Configure OAuth2 Credential Provider
+    - Implement @requires_access_token decorator usage
+    - _Requirements: 16.1, 16.2_
+  - [x] 22.2 Update approval tools with identity
+    - Add user authentication to catalog approval
+    - Extract JWT claims for audit entries
+    - _Requirements: 16.2, 16.3_
+  - [x] 22.3 Write unit tests for identity integration
+    - Test token extraction and user context
+    - _Requirements: 16.3, 16.4_
+
+- [x] 23. Implement AgentCore Observability Integration
+  - [x] 23.1 Configure OpenTelemetry instrumentation
+    - Set up aws-opentelemetry-distro
+    - Configure environment variables
+    - _Requirements: 17.1, 17.2_
+  - [x] 23.2 Add governance-specific span attributes
+    - Implement custom span attributes for report_id, cycle_id, phase
+    - Add session correlation with baggage
+    - _Requirements: 17.3, 17.4_
+  - [x] 23.3 Write integration tests for observability
+    - Verify spans are created with correct attributes
+    - _Requirements: 17.2, 17.3_
+
+- [x] 24. Implement AgentCore Gateway Integration
+  - [x] 24.1 Create Gateway configuration
+    - Define gateway targets for regulatory scanner, lineage tool, notification service
+    - Configure Policy Engine association
+    - _Requirements: 18.1, 18.2, 18.4_
+  - [x] 24.2 Create Gateway setup script
+    - Script to create gateway and add targets
+    - Configure Lambda and OpenAPI targets
+    - _Requirements: 18.2, 18.5_
+  - [x] 24.3 Write integration tests for Gateway
+    - Test tool routing through Gateway
+    - _Requirements: 18.3, 18.4_
+
+- [x] 25. Checkpoint - Verify AgentCore integrations
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 26. Create deployment scripts
+  - [x] 26.1 Create memory setup script
+    - Script to create all 8 AgentCore Memory resources
+    - Output memory IDs for configuration
+    - _Requirements: 13.1, 13.2_
+  - [x] 26.2 Create agent deployment script
+    - Script to configure and deploy all agents
+    - Include health check verification
+    - _Requirements: 14.1, 14.2_
+  - [x] 26.3 Create full infrastructure setup script
+    - Combined script for Memory, Policy, Identity, Gateway, and Runtime setup
+    - Include IAM role configuration
+    - _Requirements: 13.1, 14.1, 15.1, 16.1, 17.1, 18.1_
+
+- [x] 27. Create Hypothesis test strategies
+  - [x] 27.1 Create test data strategies for all models
+    - Implement strategies for: regulatory, cde, dq_rule, lineage, issue, control, workflow models
+    - Use @st.composite for complex strategies
+    - _Requirements: 19.1, 19.2_
+
+- [x] 28. Implement Multi-Tenant SaaS Architecture
+  - [x] 28.1 Create tenant data models
+    - Implement: Tenant, TenantConfig, TenantBranding, Subscription models
+    - Add tenant_id to all existing models
+    - _Requirements: 20.1, 20.2_
+  - [x] 28.2 Implement tenant context middleware
+    - Extract tenant_id from JWT claims
+    - Create ContextVar for tenant propagation
+    - _Requirements: 20.2, 20.3_
+  - [x] 28.3 Create tenant-aware repository
+    - Implement automatic tenant scoping for all queries
+    - Add tenant-prefixed storage keys
+    - _Requirements: 20.3, 20.4_
+  - [x] 28.4 Implement tenant provisioning service
+    - Create isolated resources on tenant onboarding
+    - Support tenant offboarding with data deletion
+    - _Requirements: 20.1, 20.5_
+  - [x] 28.5 Write property tests for tenant isolation
+    - Verify cross-tenant data access is prevented
+    - _Requirements: 20.3, 20.4_
+
+- [x] 29. Implement Cloud-Agnostic Abstractions
+  - [x] 29.1 Create provider interfaces
+    - Define: AgentRuntimeProvider, MemoryStoreProvider, IdentityProvider protocols
+    - _Requirements: 21.1_
+  - [x] 29.2 Implement AWS provider
+    - AgentCore Runtime, Memory, Identity implementations
+    - _Requirements: 21.2_
+  - [x] 29.3 Implement Azure provider stubs
+    - Container Apps, Cosmos DB, Entra ID interfaces
+    - _Requirements: 21.3_
+  - [x] 29.4 Create provider factory
+    - Environment-based provider selection
+    - _Requirements: 21.1, 21.4_
+
+- [x] 30. Implement Usage Metering and Billing
+  - [x] 30.1 Create metering service
+    - Track: agent invocations, tokens, storage, API calls per tenant
+    - _Requirements: 22.1, 22.2_
+  - [x] 30.2 Implement billing pipeline
+    - Emit usage events to billing system
+    - Support hourly/daily/monthly aggregation
+    - _Requirements: 22.2, 22.3_
+  - [x] 30.3 Create usage dashboard API
+    - Tenant-accessible consumption endpoints
+    - _Requirements: 22.5_
+
+- [x] 31. Checkpoint - Verify SaaS infrastructure
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 32. Set up Frontend Project
+  - [x] 32.1 Initialize React project
+    - Create Vite + React + TypeScript project
+    - Configure Tailwind CSS and Shadcn/UI
+    - _Requirements: 23.1, 23.3_
+  - [x] 32.2 Set up state management
+    - Configure React Query for server state
+    - Set up Zustand stores for client state
+    - _Requirements: 23.4_
+  - [x] 32.3 Create layout components
+    - Implement: MainLayout, Sidebar, Header, MobileNav
+    - Add responsive breakpoints
+    - _Requirements: 23.2, 34.1_
+  - [x] 32.4 Configure API client
+    - Set up axios/fetch with auth interceptors
+    - Create React Query hooks
+    - _Requirements: 23.4_
+
+- [x] 33. Implement Dashboard Views
+  - [x] 33.1 Create dashboard page
+    - KPI cards: compliance score, active cycles, open issues, pending approvals
+    - _Requirements: 24.1_
+  - [x] 33.2 Implement chart components
+    - TrendChart, QualityGauge, IssueHeatmap using Recharts
+    - _Requirements: 24.2_
+  - [x] 33.3 Add filtering and drill-down
+    - Date range, report, jurisdiction, severity filters
+    - Click-through navigation
+    - _Requirements: 24.3, 24.4_
+  - [x] 33.4 Implement export functionality
+    - PDF reports, CSV exports
+    - _Requirements: 24.5_
+
+- [x] 34. Implement Cycle Management UI
+  - [x] 34.1 Create Kanban board component
+    - Drag-and-drop columns for workflow phases
+    - _Requirements: 25.1_
+  - [x] 34.2 Implement cycle detail view
+    - Progress, phase, tasks, issues, timeline display
+    - _Requirements: 25.2, 25.3_
+  - [x] 34.3 Create workflow flowchart
+    - Interactive visualization of completed/current/pending steps
+    - _Requirements: 25.4_
+  - [x] 34.4 Add deadline tracking
+    - Countdown timers, notification thresholds
+    - _Requirements: 25.5_
+
+- [x] 35. Implement CDE and Data Quality UI
+  - [x] 35.1 Create CDE list view
+    - Searchable, sortable data grid
+    - _Requirements: 26.1_
+  - [x] 35.2 Implement CDE detail page
+    - Definition, lineage, rules, scores, issues tabs
+    - _Requirements: 26.2_
+  - [x] 35.3 Create DQ rule builder
+    - Dimension selection, threshold config, expression editor
+    - _Requirements: 26.3_
+  - [x] 35.4 Implement quality results view
+    - Pass/fail status, trends, failed records
+    - _Requirements: 26.4_
+  - [x] 35.5 Add bulk operations
+    - Multi-select for owner assignment, status changes
+    - _Requirements: 26.5_
+
+- [x] 36. Implement Issue Management UI
+  - [x] 36.1 Create issue list view
+    - Filterable table with severity, status, assignee
+    - _Requirements: 27.1_
+  - [x] 36.2 Implement issue detail page
+    - Description, root cause, similar issues, timeline
+    - _Requirements: 27.2_
+  - [x] 36.3 Add collaboration features
+    - Comments, @mentions, attachments
+    - _Requirements: 27.3_
+  - [x] 36.4 Implement resolution workflow
+    - Documentation, verification, four-eyes confirmation
+    - _Requirements: 27.4_
+  - [x] 36.5 Create analytics views
+    - Velocity charts, word clouds, resolution distributions
+    - _Requirements: 27.5_
+
+- [x] 37. Checkpoint - Verify core UI components
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 38. Implement Approval Workflow UI
+  - [x] 38.1 Create approval inbox
+    - List with artifact type, requester, date, urgency
+    - _Requirements: 28.1_
+  - [x] 38.2 Implement approval detail view
+    - Diff viewer, full preview, history tabs
+    - _Requirements: 28.2_
+  - [x] 38.3 Create decision form
+    - Decision selection, rationale input, digital signature
+    - _Requirements: 28.3_
+  - [x] 38.4 Add delegation features
+    - Out-of-office, routing rules, escalation
+    - _Requirements: 28.4_
+
+- [x] 39. Implement Lineage Visualization
+  - [x] 39.1 Create lineage graph component
+    - React Flow integration with zoom, pan, expand
+    - _Requirements: 29.1_
+  - [x] 39.2 Implement node types
+    - Distinct icons for source, transformation, staging, report
+    - _Requirements: 29.2_
+  - [x] 39.3 Add impact highlighting
+    - Upstream/downstream highlighting on selection
+    - _Requirements: 29.3, 29.4_
+  - [x] 39.4 Implement export options
+    - PNG/SVG, Mermaid, HTML embed
+    - _Requirements: 29.5_
+
+- [x] 40. Implement AI Chat Interface
+  - [x] 40.1 Create chat panel component
+    - Message history, typing indicators, agent ID
+    - _Requirements: 30.1_
+  - [x] 40.2 Implement message rendering
+    - Markdown, code blocks, tables, action buttons
+    - _Requirements: 30.2_
+  - [x] 40.3 Add tool call display
+    - Parameters, status, results preview
+    - _Requirements: 30.3_
+  - [x] 40.4 Create quick actions
+    - Contextual suggestions, follow-up chips
+    - _Requirements: 30.4_
+  - [x] 40.5 Implement session management
+    - History preservation, session switching
+    - _Requirements: 30.5_
+
+- [x] 41. Implement Notification System
+  - [x] 41.1 Create notification center
+    - Toast messages, notification list, badges
+    - _Requirements: 31.1, 31.4_
+  - [x] 41.2 Implement notification preferences
+    - Per-user channel settings, quiet hours
+    - _Requirements: 31.3_
+  - [x] 41.3 Add notification triggers
+    - Deadlines, issues, approvals, status changes
+    - _Requirements: 31.5_
+
+- [x] 42. Implement User Management UI
+  - [x] 42.1 Create user list view
+    - Users with roles, status, actions
+    - _Requirements: 32.1_
+  - [x] 42.2 Implement invitation flow
+    - Email invite, bulk import, SSO provisioning
+    - _Requirements: 32.2_
+  - [x] 42.3 Create role management
+    - Predefined roles, custom roles, permissions
+    - _Requirements: 32.3, 32.4_
+
+- [x] 43. Implement Tenant Branding
+  - [x] 43.1 Create branding settings page
+    - Logo, colors, favicon upload
+    - _Requirements: 33.1_
+  - [x] 43.2 Implement dynamic theming
+    - CSS custom properties, live preview
+    - _Requirements: 33.2, 33.5_
+  - [x] 43.3 Add white-label support
+    - Custom domain, branding removal
+    - _Requirements: 33.4_
+
+- [x] 44. Implement Mobile Experience
+  - [x] 44.1 Create responsive layouts
+    - Touch-optimized components
+    - _Requirements: 34.1_
+  - [x] 44.2 Implement mobile approval flow
+    - Swipe gestures, quick actions
+    - _Requirements: 34.2_
+  - [x] 44.3 Add PWA support
+    - Push notifications, offline caching
+    - _Requirements: 34.4, 34.5_
+
+- [x] 45. Implement Onboarding System
+  - [x] 45.1 Create product tour
+    - Interactive walkthrough, role-specific guides
+    - _Requirements: 35.1_
+  - [x] 45.2 Add contextual help
+    - Tooltips, documentation links, help center
+    - _Requirements: 35.2_
+  - [x] 45.3 Implement step-by-step wizards
+    - Complex task guidance, progress indicators
+    - _Requirements: 35.3_
+
+- [x] 46. Checkpoint - Verify complete UI
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 47. Implement Immutable Audit Trail
+  - [x] 47.1 Create hash-chained audit entries
+    - Implement SHA-256 hashing with previous entry hash
+    - Create append-only storage adapter
+    - _Requirements: 36.1, 36.2_
+  - [x] 47.2 Implement integrity verification
+    - Hash chain verification API
+    - Merkle tree proof generation for exports
+    - _Requirements: 36.3, 36.4_
+  - [x] 47.3 Write property test for audit integrity
+    - **Property 26: Audit Trail Integrity Verification**
+    - **Validates: Requirements 36.1, 36.3**
+
+- [x] 48. Implement Marketplace Integrations
+  - [x] 48.1 Create AWS Marketplace integration
+    - SNS subscription handler for provisioning
+    - Metering Service usage reporting
+    - _Requirements: 37.1, 37.2, 37.3_
+  - [x] 48.2 Create Azure Marketplace integration
+    - Landing page and webhook handlers
+    - Metering API integration
+    - _Requirements: 38.1, 38.2, 38.3_
+  - [x]* 48.3 Write property test for marketplace provisioning
+    - **Property 27: Marketplace Subscription Provisioning**
+    - **Validates: Requirements 37.2, 38.2**
+
+- [x] 49. Implement Task Queue Service
+  - [x] 49.1 Create task queue abstraction
+    - SQS/Azure Service Bus adapters
+    - Priority queue support
+    - _Requirements: 39.1, 39.2_
+  - [x] 49.2 Implement worker processing
+    - Retry with exponential backoff
+    - Dead-letter queue handling
+    - _Requirements: 39.3, 39.4_
+  - [x] 49.3 Add auto-scaling configuration
+    - Queue depth based scaling
+    - _Requirements: 39.5_
+
+- [x] 50. Implement Business Rules Engine
+  - [x] 50.1 Create rule definition models
+    - Condition-action pairs, priorities, groups
+    - _Requirements: 40.1_
+  - [x] 50.2 Implement rule evaluation engine
+    - Priority-ordered processing
+    - Short-circuit evaluation
+    - _Requirements: 40.2_
+  - [x] 50.3 Add rule versioning and testing
+    - Version history, rollback, simulation mode
+    - _Requirements: 40.4, 40.5_
+
+- [x] 51. Implement Enhanced Observability
+  - [x] 51.1 Configure X-Ray integration
+    - Distributed tracing across services
+    - _Requirements: 41.1_
+  - [x] 51.2 Set up Security Lake export
+    - OCSF format security event logging
+    - _Requirements: 41.2_
+  - [x] 51.3 Enable GuardDuty integration
+    - Anomaly detection configuration
+    - _Requirements: 41.3_
+  - [x] 51.4 Configure alerting integrations
+    - PagerDuty/OpsGenie webhooks
+    - _Requirements: 41.5_
+
+- [x] 52. Checkpoint - Verify platform infrastructure
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 53. Create Hypothesis test strategies
+  - [x] 53.1 Create test data strategies for all models
+    - Implement strategies for: regulatory, cde, dq_rule, lineage, issue, control, workflow, tenant models
+    - Use @st.composite for complex strategies
+    - _Requirements: 19.1, 19.2_
+
+- [x] 54. Implement SaaS Correctness Property Tests
+  - [x] 54.1 Write property test for tenant isolation
+    - **Property 28: Tenant Data Isolation**
+    - **Validates: Requirements 42.1**
+  - [x] 54.2 Write property test for agent deployment packaging
+    - **Property 29: Agent Deployment Packaging**
+    - **Validates: Requirements 42.2**
+  - [x] 54.3 Write property test for request routing
+    - **Property 30: Request Routing Correctness**
+    - **Validates: Requirements 42.3**
+  - [x] 54.4 Write property test for memory initialization
+    - **Property 31: Memory Initialization Consistency**
+    - **Validates: Requirements 42.4**
+  - [x] 54.5 Write property test for tool registration
+    - **Property 32: Tool Registration Validity**
+    - **Validates: Requirements 42.5**
+  - [x] 54.6 Write property test for tool invocation audit
+    - **Property 33: Tool Invocation Audit Completeness**
+    - **Validates: Requirements 42.6**
+  - [x] 54.7 Write property test for policy enforcement
+    - **Property 34: Policy Enforcement Correctness**
+    - **Validates: Requirements 42.7**
+  - [x] 54.8 Write property test for PII masking
+    - **Property 35: PII Masking Completeness**
+    - **Validates: Requirements 42.8**
+  - [x] 54.9 Write property test for RBAC enforcement
+    - **Property 36: RBAC Enforcement**
+    - **Validates: Requirements 42.9**
+  - [x] 54.10 Write property test for trace capture
+    - **Property 37: Trace Capture Completeness**
+    - **Validates: Requirements 42.10**
+  - [x] 54.11 Write property test for audit regulatory compliance
+    - **Property 38: Audit Trail Regulatory Compliance**
+    - **Validates: Requirements 42.11**
+  - [x] 54.12 Write property test for data model serialization
+    - **Property 39: Data Model Serialization Round Trip**
+    - **Validates: Requirements 42.12**
+  - [x] 54.13 Write property test for approval workflow audit
+    - **Property 40: Approval Workflow Audit Trail**
+    - **Validates: Requirements 42.14**
+  - [x] 54.14 Write property test for data change audit
+    - **Property 41: Data Change Audit Capture**
+    - **Validates: Requirements 42.15**
+
+- [x] 55. Final Checkpoint - Ensure all tests pass
+  - All 240 property tests pass
+  - All 594 unit tests pass
+  - All 35 integration tests pass
+  - Total: 869 tests passing

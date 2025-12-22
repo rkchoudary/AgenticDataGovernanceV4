@@ -1,0 +1,352 @@
+# Implementation Plan
+
+- [x] 1. Set up project structure and core interfaces
+  - [x] 1.1 Initialize TypeScript project with build configuration
+    - Create package.json with dependencies (fast-check, uuid, date-fns)
+    - Configure tsconfig.json for strict mode
+    - Set up Jest/Vitest for testing
+    - _Requirements: All_
+  - [x] 1.2 Create core type definitions and interfaces
+    - Define all interfaces from design document (GovernanceOrchestrator, agents, data models)
+    - Create shared types (CycleStatus, Phase, DQDimension, etc.)
+    - _Requirements: All_
+  - [x] 1.3 Implement governance repository base structure
+    - Create in-memory repository implementation
+    - Implement CRUD operations for core entities
+    - _Requirements: All_
+  - [x] 1.4 Write property test for audit trail completeness
+    - **Property 2: Audit Trail Completeness**
+    - **Validates: Requirements 1.4, 2.4, 6.2, 11.6, 12.3**
+
+- [x] 2. Implement Regulatory Intelligence Agent
+  - [x] 2.1 Create RegulatoryIntelligenceAgent class
+    - Implement scanRegulatorySources method
+    - Implement detectChanges method
+    - Implement updateReportCatalog method
+    - _Requirements: 1.1, 1.2_
+  - [x] 2.2 Implement report catalog management
+    - Create ReportCatalog data structure
+    - Implement catalog versioning
+    - Implement stakeholder notification
+    - _Requirements: 1.2, 1.3, 1.4_
+  - [x] 2.3 Write property test for artifact review state invariant
+    - **Property 1: Artifact Review State Invariant**
+    - **Validates: Requirements 1.3, 3.5, 4.4, 10.3**
+  - [x] 2.4 Write unit tests for Regulatory Intelligence Agent
+    - Test regulatory source scanning
+    - Test change detection
+    - Test catalog updates
+    - _Requirements: 1.1, 1.2_
+
+- [x] 3. Implement Data Requirements Agent
+  - [x] 3.1 Create DataRequirementsAgent class
+    - Implement parseRegulatoryTemplate method
+    - Implement mapToInternalSources method
+    - Implement identifyDataGaps method
+    - _Requirements: 3.1, 3.2, 3.3_
+  - [x] 3.2 Implement requirements document generation
+    - Create RequirementsDocument data structure
+    - Implement document versioning
+    - Implement existing document ingestion and reconciliation
+    - _Requirements: 3.4, 3.5_
+  - [x] 3.3 Write property test for data element extraction completeness
+    - **Property 5: Data Element Extraction Completeness**
+    - **Validates: Requirements 3.1**
+  - [x] 3.4 Write property test for data gap detection accuracy
+    - **Property 6: Data Gap Detection Accuracy**
+    - **Validates: Requirements 3.3**
+  - [x] 3.5 Write property test for reconciliation consistency
+    - **Property 7: Reconciliation Consistency**
+    - **Validates: Requirements 3.4, 4.3, 5.4, 6.3**
+  - [x] 3.6 Write unit tests for Data Requirements Agent
+    - Test template parsing
+    - Test source mapping
+    - Test gap identification
+    - _Requirements: 3.1, 3.2, 3.3_
+
+- [x] 4. Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 5. Implement CDE Identification Agent
+  - [x] 5.1 Create CDEIdentificationAgent class
+    - Implement scoreDataElements method with scoring factors
+    - Implement generateCDEInventory method
+    - Implement reconcileWithExisting method
+    - _Requirements: 4.1, 4.2, 4.3_
+  - [x] 5.2 Implement CDE inventory management
+    - Create CDEInventory data structure
+    - Implement ownership suggestion
+    - Implement ownership validation
+    - _Requirements: 4.4, 4.5_
+  - [x] 5.3 Write property test for CDE scoring determinism
+    - **Property 8: CDE Scoring Determinism**
+    - **Validates: Requirements 4.1**
+  - [x] 5.4 Write property test for CDE threshold inclusion
+    - **Property 9: CDE Threshold Inclusion**
+    - **Validates: Requirements 4.2**
+  - [x] 5.5 Write property test for CDE ownership validation
+    - **Property 10: CDE Ownership Validation**
+    - **Validates: Requirements 4.5**
+  - [x] 5.6 Write unit tests for CDE Identification Agent
+    - Test scoring logic
+    - Test inventory generation
+    - Test reconciliation
+    - _Requirements: 4.1, 4.2, 4.3_
+
+- [x] 6. Implement Data Quality Rule Agent
+  - [x] 6.1 Create DataQualityRuleAgent class
+    - Implement generateRulesForCDE method
+    - Implement rule generation for each dimension
+    - Implement threshold calculation from historical data
+    - _Requirements: 5.1, 5.2_
+  - [x] 6.2 Implement rule management
+    - Create DQRule data structure
+    - Implement rule ingestion and reconciliation
+    - Implement rule modification with justification
+    - _Requirements: 5.3, 5.4, 5.5_
+  - [x] 6.3 Implement rule execution engine
+    - Create rule execution logic
+    - Implement result aggregation
+    - _Requirements: 5.1_
+  - [x] 6.4 Write property test for DQ rule dimension coverage
+    - **Property 11: DQ Rule Dimension Coverage**
+    - **Validates: Requirements 5.1**
+  - [x] 6.5 Write property test for DQ rule field completeness
+    - **Property 12: DQ Rule Field Completeness**
+    - **Validates: Requirements 5.3**
+  - [x] 6.6 Write unit tests for Data Quality Rule Agent
+    - Test rule generation
+    - Test threshold calculation
+    - Test rule execution
+    - _Requirements: 5.1, 5.2, 5.3_
+
+- [x] 7. Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 8. Implement Controls Management
+  - [x] 8.1 Create Control Matrix data structures
+    - Implement Control interface
+    - Implement ControlEvidence tracking
+    - Implement control categorization
+    - _Requirements: 6.1, 6.2_
+  - [x] 8.2 Implement control lifecycle management
+    - Implement control activation with evidence logging
+    - Implement compensating control tracking with expiration
+    - Implement control framework ingestion
+    - _Requirements: 6.2, 6.3, 6.4_
+  - [x] 8.3 Implement audit scheduling
+    - Create audit activity scheduling
+    - Implement effectiveness review tracking
+    - _Requirements: 6.5_
+  - [x] 8.4 Write property test for control categorization validity
+    - **Property 13: Control Categorization Validity**
+    - **Validates: Requirements 6.1**
+  - [x] 8.5 Write property test for compensating control tracking
+    - **Property 14: Compensating Control Tracking**
+    - **Validates: Requirements 6.4**
+  - [x] 8.6 Write unit tests for Controls Management
+    - Test control categorization
+    - Test evidence logging
+    - Test compensating control expiration
+    - _Requirements: 6.1, 6.2, 6.4_
+
+- [x] 9. Implement Lineage Mapping Agent
+  - [x] 9.1 Create LineageMappingAgent class
+    - Implement scanDataPipelines method
+    - Implement LineageGraph construction
+    - _Requirements: 7.1_
+  - [x] 9.2 Implement lineage enrichment
+    - Implement linkToBusinessConcepts method
+    - Connect technical lineage to glossary terms
+    - _Requirements: 7.2_
+  - [x] 9.3 Implement lineage integration and analysis
+    - Implement importFromLineageTool method
+    - Implement analyzeChangeImpact method
+    - _Requirements: 7.3, 7.5_
+  - [x] 9.4 Implement lineage documentation
+    - Implement generateLineageDiagram method
+    - Implement generateLineageReport method
+    - _Requirements: 7.4_
+  - [x] 9.5 Write property test for lineage graph connectivity
+    - **Property 15: Lineage Graph Connectivity**
+    - **Validates: Requirements 7.1**
+  - [x] 9.6 Write property test for lineage business enrichment
+    - **Property 16: Lineage Business Enrichment**
+    - **Validates: Requirements 7.2**
+  - [x] 9.7 Write property test for change impact completeness
+    - **Property 17: Change Impact Completeness**
+    - **Validates: Requirements 7.5**
+  - [x] 9.8 Write unit tests for Lineage Mapping Agent
+    - Test pipeline scanning
+    - Test business enrichment
+    - Test impact analysis
+    - _Requirements: 7.1, 7.2, 7.5_
+
+- [x] 10. Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 11. Implement Data Quality Standards
+  - [x] 11.1 Create DataQualityStandards data structures
+    - Implement DQDimensionDefinition interface
+    - Implement DQThreshold interface
+    - Define standard dimensions (accuracy, completeness, consistency, timeliness, validity, integrity, uniqueness)
+    - _Requirements: 8.1_
+  - [x] 11.2 Implement standards management
+    - Implement policy ingestion
+    - Implement terminology alignment
+    - Implement threshold application to CDEs
+    - _Requirements: 8.2, 8.3, 8.4_
+  - [x] 11.3 Write unit tests for Data Quality Standards
+    - Test dimension definitions
+    - Test threshold application
+    - _Requirements: 8.1, 8.4_
+
+- [x] 12. Implement Issue Management Agent
+  - [x] 12.1 Create IssueManagementAgent class
+    - Implement createIssue method with auto-population
+    - Implement issue assignment based on data domain
+    - _Requirements: 9.1, 9.2_
+  - [x] 12.2 Implement issue analysis
+    - Implement suggestRootCause method
+    - Implement findSimilarIssues method
+    - _Requirements: 9.3_
+  - [x] 12.3 Implement issue lifecycle
+    - Implement escalation logic for critical issues
+    - Implement resolution with human confirmation gate
+    - _Requirements: 9.4, 9.5_
+  - [x] 12.4 Implement issue metrics
+    - Implement getIssueMetrics method
+    - Calculate open counts, resolution times, recurring themes
+    - _Requirements: 9.6_
+  - [x] 12.5 Write property test for issue auto-creation from rule failures
+    - **Property 18: Issue Auto-Creation from Rule Failures**
+    - **Validates: Requirements 9.1**
+  - [x] 12.6 Write property test for issue domain-based assignment
+    - **Property 19: Issue Domain-Based Assignment**
+    - **Validates: Requirements 9.2**
+  - [x] 12.7 Write property test for critical issue escalation
+    - **Property 20: Critical Issue Escalation**
+    - **Validates: Requirements 9.4**
+  - [x] 12.8 Write property test for issue resolution confirmation gate
+    - **Property 21: Issue Resolution Confirmation Gate**
+    - **Validates: Requirements 9.5**
+  - [x] 12.9 Write property test for issue metrics accuracy
+    - **Property 22: Issue Metrics Accuracy**
+    - **Validates: Requirements 9.6**
+  - [x] 12.10 Write unit tests for Issue Management Agent
+    - Test issue creation
+    - Test escalation
+    - Test resolution workflow
+    - _Requirements: 9.1, 9.4, 9.5_
+
+- [x] 13. Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 14. Implement Documentation Agent
+  - [x] 14.1 Create DocumentationAgent class
+    - Implement generateDataDictionary method
+    - Implement generateLineageDocumentation method
+    - Implement generateQualityAssuranceReport method
+    - _Requirements: 10.1_
+  - [x] 14.2 Implement additional artifact generation
+    - Implement generateControlEffectivenessReport method
+    - Implement generateBCBS239ComplianceMapping method
+    - _Requirements: 10.1, 10.4_
+  - [x] 14.3 Implement compliance package compilation
+    - Implement compileCompliancePackage method
+    - Ensure single source of truth consistency
+    - _Requirements: 10.2, 10.3_
+  - [x] 14.4 Write unit tests for Documentation Agent
+    - Test artifact generation
+    - Test package compilation
+    - _Requirements: 10.1, 10.2_
+
+- [x] 15. Implement Dashboard Service
+  - [x] 15.1 Create DashboardService class
+    - Implement getCDEQualityScores method
+    - Implement getQualityTrends method
+    - _Requirements: 11.1, 11.2_
+  - [x] 15.2 Implement issue and control displays
+    - Implement getIssuesSummary method
+    - Implement getControlStatus method
+    - _Requirements: 11.3, 11.4_
+  - [x] 15.3 Implement drill-down and annotations
+    - Implement CDE detail retrieval (definition, owner, lineage, rules)
+    - Implement addAnnotation method with audit trail
+    - _Requirements: 11.5, 11.6_
+  - [x] 15.4 Write property test for dashboard quality score consistency
+    - **Property 23: Dashboard Quality Score Consistency**
+    - **Validates: Requirements 11.1**
+  - [x] 15.5 Write unit tests for Dashboard Service
+    - Test quality score calculation
+    - Test trend generation
+    - Test annotation functionality
+    - _Requirements: 11.1, 11.2, 11.6_
+
+- [x] 16. Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 17. Implement Governance Orchestrator
+  - [x] 17.1 Create GovernanceOrchestrator class
+    - Implement startReportCycle method
+    - Implement pauseCycle and resumeCycle methods
+    - _Requirements: 12.1_
+  - [x] 17.2 Implement agent coordination
+    - Implement triggerAgent method with dependency handling
+    - Implement agent sequencing logic
+    - _Requirements: 12.1_
+  - [x] 17.3 Implement HITL task management
+    - Implement createHumanTask method
+    - Implement completeHumanTask with decision logging
+    - Implement escalateTask method
+    - _Requirements: 12.2, 12.3_
+  - [x] 17.4 Implement workflow blocking and retrospectives
+    - Implement critical issue blocking logic
+    - Implement retrospective review workflow support
+    - _Requirements: 12.4, 12.5_
+  - [x] 17.5 Write property test for workflow dependency enforcement
+    - **Property 3: Workflow Dependency Enforcement**
+    - **Validates: Requirements 2.2, 12.1**
+  - [x] 17.6 Write property test for attestation gate invariant
+    - **Property 4: Attestation Gate Invariant**
+    - **Validates: Requirements 2.3**
+  - [x] 17.7 Write property test for human checkpoint pause behavior
+    - **Property 24: Human Checkpoint Pause Behavior**
+    - **Validates: Requirements 12.2**
+  - [x] 17.8 Write property test for critical issue workflow blocking
+    - **Property 25: Critical Issue Workflow Blocking**
+    - **Validates: Requirements 12.4**
+  - [x] 17.9 Write unit tests for Governance Orchestrator
+    - Test cycle management
+    - Test agent coordination
+    - Test HITL workflows
+    - _Requirements: 12.1, 12.2, 12.3_
+
+- [x] 18. Implement Workflow Engine Integration
+  - [x] 18.1 Create WorkflowEngine class
+    - Implement task scheduling
+    - Implement deadline alerting
+    - _Requirements: 2.1, 2.5_
+  - [x] 18.2 Implement submission checklist generation
+    - Create checklist templates per report type
+    - Implement checklist status tracking
+    - _Requirements: 2.1_
+  - [x] 18.3 Write unit tests for Workflow Engine
+    - Test scheduling
+    - Test alerting
+    - _Requirements: 2.1, 2.5_
+
+- [x] 19. Implement Test Data Generators
+  - [x] 19.1 Create property test generators
+    - Implement regulatoryReportGenerator
+    - Implement dataElementGenerator
+    - Implement cdeGenerator
+    - Implement dqRuleGenerator
+    - Implement controlGenerator
+    - Implement lineageGenerator
+    - Implement issueGenerator
+    - Implement workflowGenerator
+    - _Requirements: All_
+
+- [x] 20. Final Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.

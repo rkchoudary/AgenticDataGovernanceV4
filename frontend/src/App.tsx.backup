@@ -1,0 +1,50 @@
+import { Routes, Route } from 'react-router-dom'
+import { MainLayout } from './components/layout/MainLayout'
+import { Dashboard } from './pages/Dashboard'
+import { CycleList, CycleDetailPage } from './pages/Cycles'
+import { CDEList, CDEDetail } from './pages/CDEs'
+import { IssueList, IssueDetail, IssueAnalyticsPage } from './pages/Issues'
+import { ApprovalInbox, ApprovalDetail, ApprovalSettings } from './pages/Approvals'
+import { LineageExplorer } from './pages/Lineage'
+import { NotificationsPage, NotificationSettingsPage } from './pages/Notifications'
+import { UserList, RoleManagement } from './pages/Users'
+import { BrandingSettings } from './pages/Settings'
+import { MorePage } from './pages/More'
+import { Welcome } from './pages/Onboarding'
+import { ProductTour, HelpCenter, FloatingHelpButton } from './components/onboarding'
+
+function App() {
+  return (
+    <>
+      <Routes>
+        <Route path="/welcome" element={<Welcome />} />
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="cycles" element={<CycleList />} />
+          <Route path="cycles/:id" element={<CycleDetailPage />} />
+          <Route path="cdes" element={<CDEList />} />
+          <Route path="cdes/:id" element={<CDEDetail />} />
+          <Route path="issues" element={<IssueList />} />
+          <Route path="issues/:id" element={<IssueDetail />} />
+          <Route path="issues/analytics" element={<IssueAnalyticsPage />} />
+          <Route path="approvals" element={<ApprovalInbox />} />
+          <Route path="approvals/:id" element={<ApprovalDetail />} />
+          <Route path="approvals/settings" element={<ApprovalSettings />} />
+          <Route path="lineage" element={<LineageExplorer />} />
+          <Route path="notifications" element={<NotificationsPage />} />
+          <Route path="notifications/settings" element={<NotificationSettingsPage />} />
+          <Route path="users" element={<UserList />} />
+          <Route path="users/roles" element={<RoleManagement />} />
+          <Route path="settings/branding" element={<BrandingSettings />} />
+          <Route path="more" element={<MorePage />} />
+          <Route path="help" element={<Dashboard />} />
+        </Route>
+      </Routes>
+      <ProductTour />
+      <HelpCenter />
+      <FloatingHelpButton />
+    </>
+  )
+}
+
+export default App

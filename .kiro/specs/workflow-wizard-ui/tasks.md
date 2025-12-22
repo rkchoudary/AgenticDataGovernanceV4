@@ -1,0 +1,330 @@
+# Implementation Plan: Step-by-Step Workflow Wizard UI
+
+- [x] 1. Set up wizard infrastructure
+  - [x] 1.1 Create workflow wizard types and interfaces
+    - Define Phase, StepState, PhaseState, WorkflowState types
+    - Create WorkflowCycle, PhaseRecord, StepRecord models
+    - _Requirements: 1.1, 1.2_
+  - [x] 1.2 Create workflow store with Zustand
+    - Implement state management for phases, steps, progress
+    - Add actions for step completion, phase navigation
+    - _Requirements: 1.1, 2.1_
+  - [x] 1.3 Create WorkflowWizard shell component
+    - Implement full-screen wizard layout
+    - Add Progress Stepper, Phase Container, Context Sidebar slots
+    - _Requirements: 1.1, 1.5_
+  - [x] 1.4 Write property test for phase progression invariant
+    - **Property 1: Phase Progression Invariant**
+    - **Validates: Requirements 2.1, 2.2**
+
+- [x] 2. Implement Progress Stepper component
+  - [x] 2.1 Create ProgressStepper with phase indicators
+    - Display 9 phases horizontally with icons
+    - Show status: pending, current, completed, blocked
+    - _Requirements: 1.1, 1.3, 1.4_
+  - [x] 2.2 Add phase click navigation
+    - Enable clicking completed phases to review
+    - Show lock icon and tooltip for blocked phases
+    - _Requirements: 2.4, 1.4_
+  - [x] 2.3 Create mobile-responsive stepper
+    - Collapse to show current and adjacent phases on mobile
+    - _Requirements: 15.2_
+  - [x] 2.4 Write property test for navigation state preservation
+    - **Property 6: Navigation State Preservation**
+    - **Validates: Requirements 2.4**
+
+- [x] 3. Implement Context Sidebar component
+  - [x] 3.1 Create ContextSidebar with report info
+    - Display report name, cycle deadline, progress percentage
+    - Add quick links to related artifacts
+    - _Requirements: 1.5_
+  - [x] 3.2 Add phase info panel
+    - Show current phase name, steps completed/total
+    - Display estimated time remaining
+    - _Requirements: 1.2_
+  - [x] 3.3 Write property test for progress calculation accuracy
+    - **Property 4: Progress Calculation Accuracy**
+    - **Validates: Requirements 1.5, 4.5**
+
+- [x] 4. Implement Human Gate component
+  - [x] 4.1 Create HumanGate approval interface
+    - Display context summary and items for review
+    - Show AI-generated content with indicators
+    - _Requirements: 12.4_
+  - [x] 4.2 Add decision form with rationale
+    - Require minimum 20 character rationale
+    - Support Approve/Reject/Approve with Changes
+    - _Requirements: 3.5, 11.4_
+  - [x] 4.3 Implement digital signature capture
+    - Add signature pad component
+    - Support touch-based signature on mobile
+    - _Requirements: 3.5, 15.3_
+  - [x] 4.4 Write property test for human gate requirement
+    - **Property 3: Human Gate Requirement**
+    - **Validates: Requirements 3.5, 11.4**
+
+- [x] 5. Implement Agent Panel component
+  - [x] 5.1 Create AgentPanel with status display
+    - Show agent name, current action, progress
+    - Display activity log with timestamps
+    - _Requirements: 12.1, 12.2_
+  - [x] 5.2 Add agent interaction controls
+    - Display prompts when agent requires input
+    - Add retry and manual override buttons
+    - _Requirements: 12.3, 12.5_
+  - [x] 5.3 Write property test for AI content distinction
+    - **Property 9: AI Content Distinction**
+    - **Validates: Requirements 12.4**
+
+- [x] 6. Checkpoint - Verify core wizard infrastructure
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 7. Implement Phase 1: Regulatory Intelligence
+  - [x] 7.1 Create RegulatoryIntelligencePhase component
+    - Display 4 steps: Scan Results, Change Analysis, Catalog Updates, Approval
+    - _Requirements: 3.1_
+  - [x] 7.2 Implement scan results review step
+    - Display cards for each detected change
+    - Show source, change type, confidence, AI summary
+    - _Requirements: 3.2_
+  - [x] 7.3 Implement change analysis step
+    - Display side-by-side diff view
+    - Support accept/reject/modify per change
+    - _Requirements: 3.3_
+  - [x] 7.4 Implement catalog approval step
+    - Show summary of accepted/rejected changes
+    - Integrate HumanGate for stakeholder approval
+    - _Requirements: 3.4, 3.5_
+
+- [x] 8. Implement Phase 2: Data Requirements
+  - [x] 8.1 Create DataRequirementsPhase component
+    - Display 4 steps: Template Parsing, Source Mapping, Gap Analysis, Approval
+    - _Requirements: 4.1_
+  - [x] 8.2 Implement hierarchical element tree
+    - Display data elements with status indicators
+    - Support expand/collapse for sections
+    - _Requirements: 4.2_
+  - [x] 8.3 Implement gap resolution interface
+    - Highlight gaps with resolution options
+    - Support Manual Map, Flag for Later, Create Request
+    - _Requirements: 4.3_
+  - [x] 8.4 Implement mapping validation with preview
+    - Display sample data from source field
+    - Calculate and show completion percentage
+    - _Requirements: 4.4, 4.5_
+
+- [x] 9. Implement Phase 3: CDE Identification
+  - [x] 9.1 Create CDEIdentificationPhase component
+    - Display 4 steps: Scoring Review, Inventory Approval, Ownership, Reconciliation
+    - _Requirements: 5.1_
+  - [x] 9.2 Implement CDE scoring review
+    - Display radar chart with 4 scoring factors
+    - Show AI rationale for each CDE
+    - _Requirements: 5.2_
+  - [x] 9.3 Implement ownership assignment
+    - Block progression without owner
+    - Provide searchable user directory
+    - _Requirements: 5.3, 5.4_
+  - [x] 9.4 Implement reconciliation view
+    - Display three-column comparison
+    - Support bulk actions
+    - _Requirements: 5.5_
+  - [x] 9.5 Write property test for ownership gate enforcement
+    - **Property 7: Ownership Gate Enforcement**
+    - **Validates: Requirements 5.3**
+
+- [x] 10. Implement Phase 4: Data Quality Rules
+  - [x] 10.1 Create DataQualityRulesPhase component
+    - Display 4 steps: Rule Review, Threshold Config, Coverage, Activation
+    - _Requirements: 6.1_
+  - [x] 10.2 Implement rule cards display
+    - Show AI-generated rules with dimension, logic, threshold
+    - Support accept/modify/reject actions
+    - _Requirements: 6.2_
+  - [x] 10.3 Implement threshold configuration
+    - Display interactive histogram with draggable threshold
+    - Show impact preview (% records failing)
+    - _Requirements: 6.3_
+  - [x] 10.4 Implement coverage heatmap
+    - Display CDEs vs. dimensions matrix
+    - Highlight gaps in red
+    - _Requirements: 6.4_
+  - [x] 10.5 Implement rule activation
+    - Require confirmation before activation
+    - Display execution schedule
+    - _Requirements: 6.5_
+
+- [x] 11. Checkpoint - Verify first 4 phases
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 12. Implement Phase 5: Lineage Mapping
+  - [x] 12.1 Create LineageMappingPhase component
+    - Display 4 steps: Pipeline Scan, Business Terms, Impact Analysis, Approval
+    - _Requirements: 7.1_
+  - [x] 12.2 Implement lineage graph visualization
+    - Display interactive directed graph
+    - Add zoom, pan, node expansion controls
+    - _Requirements: 7.2_
+  - [x] 12.3 Implement business term linking
+    - Provide glossary search with auto-suggest
+    - Link terms to lineage nodes
+    - _Requirements: 7.3_
+  - [x] 12.4 Implement impact analysis setup
+    - Configure notification rules for source changes
+    - _Requirements: 7.4_
+  - [x] 12.5 Implement lineage export
+    - Generate diagram export for documentation
+    - _Requirements: 7.5_
+
+- [x] 13. Implement Phase 6: Issue Management
+  - [x] 13.1 Create IssueManagementPhase component
+    - Display 4 steps: Triage, Root Cause, Resolution, Verification
+    - _Requirements: 8.1_
+  - [x] 13.2 Implement issue triage view
+    - Display issues sorted by severity
+    - Show AI-suggested priorities
+    - _Requirements: 8.2_
+  - [x] 13.3 Implement root cause analysis
+    - Display AI suggestions with confidence scores
+    - Show similar historical issues
+    - _Requirements: 8.3_
+  - [x] 13.4 Implement resolution workflow
+    - Require documentation and evidence
+    - Integrate HumanGate for four-eyes confirmation
+    - _Requirements: 8.4_
+  - [x] 13.5 Implement critical issue blocking
+    - Block progression with unresolved critical issues
+    - _Requirements: 8.5_
+  - [x] 13.6 Write property test for blocking condition enforcement
+    - **Property 2: Blocking Condition Enforcement**
+    - **Validates: Requirements 8.5**
+
+- [x] 14. Implement Phase 7: Controls Management
+  - [x] 14.1 Create ControlsManagementPhase component
+    - Display 4 steps: Status Review, Evidence, Compensating, Sign-off
+    - _Requirements: 9.1_
+  - [x] 14.2 Implement control status board
+    - Display pass/fail indicators for each control
+    - _Requirements: 9.2_
+  - [x] 14.3 Implement evidence collection
+    - Provide upload with metadata tagging
+    - _Requirements: 9.3_
+  - [x] 14.4 Implement compensating control warnings
+    - Display expiration warnings
+    - Require renewal confirmation
+    - _Requirements: 9.4_
+  - [x] 14.5 Implement effectiveness sign-off
+    - Capture attestation for control effectiveness
+    - _Requirements: 9.5_
+
+- [x] 15. Checkpoint - Verify phases 5-7
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 16. Implement Phase 8: Documentation
+  - [x] 16.1 Create DocumentationPhase component
+    - Display 4 steps: Artifact Review, Annotations, BCBS 239, Compilation
+    - _Requirements: 10.1_
+  - [x] 16.2 Implement document viewer
+    - Embed PDF/HTML viewer with annotation tools
+    - Support highlight, comment, flag
+    - _Requirements: 10.2_
+  - [x] 16.3 Implement annotation resolution
+    - Require resolution of all flagged items
+    - Block progression with unresolved annotations
+    - _Requirements: 10.3_
+  - [x] 16.4 Implement BCBS 239 compliance matrix
+    - Display principles with evidence links
+    - Show compliance status indicators
+    - _Requirements: 10.4_
+  - [x] 16.5 Implement package compilation
+    - Generate consolidated PDF with TOC
+    - _Requirements: 10.5_
+
+- [x] 17. Implement Phase 9: Attestation
+  - [x] 17.1 Create AttestationPhase component
+    - Display 4 steps: Summary, Checklist, Attestation, Submission
+    - _Requirements: 11.1_
+  - [x] 17.2 Implement executive summary
+    - Display key metrics: quality score, issue rate, control rate, deadline
+    - _Requirements: 11.2_
+  - [x] 17.3 Implement attestation checklist
+    - Display items with acknowledgment checkboxes
+    - _Requirements: 11.3_
+  - [x] 17.4 Implement digital attestation capture
+    - Require signature with identity verification
+    - _Requirements: 11.4_
+  - [x] 17.5 Implement submission confirmation
+    - Lock all artifacts after submission
+    - Generate submission receipt
+    - _Requirements: 11.5_
+  - [x] 17.6 Write property test for artifact lock immutability
+    - **Property 8: Artifact Lock Immutability**
+    - **Validates: Requirements 11.5**
+
+- [x] 18. Implement progress persistence
+  - [x] 18.1 Implement auto-save on step completion
+    - Save progress to server after each step
+    - _Requirements: 13.1_
+  - [x] 18.2 Implement workflow resume
+    - Restore position when returning to in-progress workflow
+    - Display "Resume" prompt
+    - _Requirements: 13.2_
+  - [x] 18.3 Implement session timeout handling
+    - Preserve unsaved work on timeout
+    - Prompt re-authentication
+    - _Requirements: 13.3_
+  - [x] 18.4 Write property test for state persistence round trip
+    - **Property 5: State Persistence Round Trip**
+    - **Validates: Requirements 13.1, 13.2**
+
+- [x] 19. Implement collaboration features
+  - [x] 19.1 Implement active user indicators
+    - Display who is working on which step
+    - _Requirements: 13.4_
+  - [x] 19.2 Implement conflict resolution
+    - Detect concurrent edits
+    - Display resolution interface
+    - _Requirements: 13.5_
+
+- [x] 20. Implement help system
+  - [x] 20.1 Create contextual help panel
+    - Display step description, required actions, common issues
+    - Add video tutorial links
+    - _Requirements: 14.1, 14.2_
+  - [x] 20.2 Implement field tooltips
+    - Display description and validation rules on hover
+    - _Requirements: 14.3_
+  - [x] 20.3 Implement validation messages
+    - Display inline validation with correction guidance
+    - _Requirements: 14.4_
+  - [x] 20.4 Implement assistance request
+    - Create support ticket with context
+    - _Requirements: 14.5_
+  - [x] 20.5 Write property test for validation error completeness
+    - **Property 10: Validation Error Completeness**
+    - **Validates: Requirements 2.3**
+
+- [x] 21. Implement mobile responsiveness
+  - [x] 21.1 Create mobile wizard layout
+    - Single-column layout optimized for touch
+    - _Requirements: 15.1_
+  - [x] 21.2 Implement mobile document viewer
+    - Support pinch-to-zoom and swipe navigation
+    - _Requirements: 15.4_
+  - [x] 21.3 Implement offline queue
+    - Queue actions for sync when connectivity restored
+    - _Requirements: 15.5_
+
+- [x] 22. Final Checkpoint - Verify complete wizard
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 23. Integration with existing UI
+  - [x] 23.1 Add wizard route to App.tsx
+    - Create /cycles/:cycleId/wizard route
+    - _Requirements: 1.1_
+  - [x] 23.2 Add "Start Wizard" button to CycleList
+    - Navigate to wizard from cycle list
+    - _Requirements: 1.1_
+  - [x] 23.3 Connect wizard to backend APIs
+    - Integrate with existing cycle, CDE, DQ, issue APIs
+    - _Requirements: All_

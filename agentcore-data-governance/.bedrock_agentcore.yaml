@@ -1,0 +1,466 @@
+default_agent: GovernanceOrchestrator
+agents:
+  RegulatoryIntelligenceAgent:
+    name: RegulatoryIntelligenceAgent
+    entrypoint: regulatory_intelligence_agent.py
+    deployment_type: direct_code_deploy
+    runtime_type: PYTHON_3_12
+    platform: linux/amd64
+    container_runtime: null
+    source_path: null
+    aws:
+      execution_role: arn:aws:iam::704845220642:role/governance-AgentCoreExecutionRole
+      execution_role_auto_create: false
+      account: '704845220642'
+      region: us-west-2
+      ecr_repository: null
+      ecr_auto_create: false
+      s3_path: null
+      s3_auto_create: false
+      network_configuration:
+        network_mode: PUBLIC
+        network_mode_config: null
+      protocol_configuration:
+        server_protocol: HTTP
+      observability:
+        enabled: true
+      lifecycle_configuration:
+        idle_runtime_session_timeout: null
+        max_lifetime: null
+    bedrock_agentcore:
+      agent_id: RegulatoryIntelligenceAgent-oxA6yVGf5n
+      agent_arn: arn:aws:bedrock-agentcore:us-west-2:704845220642:runtime/RegulatoryIntelligenceAgent-oxA6yVGf5n
+      agent_session_id: null
+    codebuild:
+      project_name: null
+      execution_role: null
+      source_bucket: null
+    memory:
+      mode: STM_AND_LTM
+      memory_id: governance_regulatory-JiCr1P7uqj
+      memory_arn: null
+      memory_name: governance-regulatory-memory
+      event_expiry_days: 365
+      first_invoke_memory_check_done: false
+      was_created_by_toolkit: false
+    identity:
+      credential_providers: []
+      workload: null
+    aws_jwt:
+      enabled: false
+      audiences: []
+      signing_algorithm: ES384
+      issuer_url: null
+      duration_seconds: 300
+    authorizer_configuration: null
+    request_header_configuration: null
+    oauth_configuration: null
+    api_key_env_var_name: null
+    api_key_credential_provider_name: null
+    is_generated_by_agentcore_create: false
+  DataRequirementsAgent:
+    name: DataRequirementsAgent
+    entrypoint: data_requirements_agent.py
+    deployment_type: direct_code_deploy
+    runtime_type: PYTHON_3_12
+    platform: linux/amd64
+    container_runtime: null
+    source_path: null
+    aws:
+      execution_role: arn:aws:iam::704845220642:role/governance-AgentCoreExecutionRole
+      execution_role_auto_create: false
+      account: '704845220642'
+      region: us-west-2
+      ecr_repository: null
+      ecr_auto_create: false
+      s3_path: null
+      s3_auto_create: false
+      network_configuration:
+        network_mode: PUBLIC
+        network_mode_config: null
+      protocol_configuration:
+        server_protocol: HTTP
+      observability:
+        enabled: true
+      lifecycle_configuration:
+        idle_runtime_session_timeout: null
+        max_lifetime: null
+    bedrock_agentcore:
+      agent_id: DataRequirementsAgent-1ePTeM3JxB
+      agent_arn: arn:aws:bedrock-agentcore:us-west-2:704845220642:runtime/DataRequirementsAgent-1ePTeM3JxB
+      agent_session_id: null
+    codebuild:
+      project_name: null
+      execution_role: null
+      source_bucket: null
+    memory:
+      mode: STM_AND_LTM
+      memory_id: governance_data_req-yo8f9Q7u88
+      memory_arn: null
+      memory_name: governance-data-req-memory
+      event_expiry_days: 365
+      first_invoke_memory_check_done: false
+      was_created_by_toolkit: false
+    identity:
+      credential_providers: []
+      workload: null
+    aws_jwt:
+      enabled: false
+      audiences: []
+      signing_algorithm: ES384
+      issuer_url: null
+      duration_seconds: 300
+    authorizer_configuration: null
+    request_header_configuration: null
+    oauth_configuration: null
+    api_key_env_var_name: null
+    api_key_credential_provider_name: null
+    is_generated_by_agentcore_create: false
+  CDEIdentificationAgent:
+    name: CDEIdentificationAgent
+    entrypoint: cde_identification_agent.py
+    deployment_type: direct_code_deploy
+    runtime_type: PYTHON_3_12
+    platform: linux/amd64
+    container_runtime: null
+    source_path: null
+    aws:
+      execution_role: arn:aws:iam::704845220642:role/governance-AgentCoreExecutionRole
+      execution_role_auto_create: false
+      account: '704845220642'
+      region: us-west-2
+      ecr_repository: null
+      ecr_auto_create: false
+      s3_path: null
+      s3_auto_create: false
+      network_configuration:
+        network_mode: PUBLIC
+        network_mode_config: null
+      protocol_configuration:
+        server_protocol: HTTP
+      observability:
+        enabled: true
+      lifecycle_configuration:
+        idle_runtime_session_timeout: null
+        max_lifetime: null
+    bedrock_agentcore:
+      agent_id: CDEIdentificationAgent-oPSYioC3Ss
+      agent_arn: arn:aws:bedrock-agentcore:us-west-2:704845220642:runtime/CDEIdentificationAgent-oPSYioC3Ss
+      agent_session_id: null
+    codebuild:
+      project_name: null
+      execution_role: null
+      source_bucket: null
+    memory:
+      mode: STM_AND_LTM
+      memory_id: governance_cde-jXQtXNCrty
+      memory_arn: null
+      memory_name: governance-cde-memory
+      event_expiry_days: 365
+      first_invoke_memory_check_done: false
+      was_created_by_toolkit: false
+    identity:
+      credential_providers: []
+      workload: null
+    aws_jwt:
+      enabled: false
+      audiences: []
+      signing_algorithm: ES384
+      issuer_url: null
+      duration_seconds: 300
+    authorizer_configuration: null
+    request_header_configuration: null
+    oauth_configuration: null
+    api_key_env_var_name: null
+    api_key_credential_provider_name: null
+    is_generated_by_agentcore_create: false
+  DataQualityRuleAgent:
+    name: DataQualityRuleAgent
+    entrypoint: data_quality_rule_agent.py
+    deployment_type: direct_code_deploy
+    runtime_type: PYTHON_3_12
+    platform: linux/amd64
+    container_runtime: null
+    source_path: null
+    aws:
+      execution_role: arn:aws:iam::704845220642:role/governance-AgentCoreExecutionRole
+      execution_role_auto_create: false
+      account: '704845220642'
+      region: us-west-2
+      ecr_repository: null
+      ecr_auto_create: false
+      s3_path: null
+      s3_auto_create: false
+      network_configuration:
+        network_mode: PUBLIC
+        network_mode_config: null
+      protocol_configuration:
+        server_protocol: HTTP
+      observability:
+        enabled: true
+      lifecycle_configuration:
+        idle_runtime_session_timeout: null
+        max_lifetime: null
+    bedrock_agentcore:
+      agent_id: DataQualityRuleAgent-LucC5S4pOx
+      agent_arn: arn:aws:bedrock-agentcore:us-west-2:704845220642:runtime/DataQualityRuleAgent-LucC5S4pOx
+      agent_session_id: null
+    codebuild:
+      project_name: null
+      execution_role: null
+      source_bucket: null
+    memory:
+      mode: STM_AND_LTM
+      memory_id: governance_dq_rule-b9nhH9En4E
+      memory_arn: null
+      memory_name: governance-dq-rule-memory
+      event_expiry_days: 365
+      first_invoke_memory_check_done: false
+      was_created_by_toolkit: false
+    identity:
+      credential_providers: []
+      workload: null
+    aws_jwt:
+      enabled: false
+      audiences: []
+      signing_algorithm: ES384
+      issuer_url: null
+      duration_seconds: 300
+    authorizer_configuration: null
+    request_header_configuration: null
+    oauth_configuration: null
+    api_key_env_var_name: null
+    api_key_credential_provider_name: null
+    is_generated_by_agentcore_create: false
+  LineageMappingAgent:
+    name: LineageMappingAgent
+    entrypoint: lineage_mapping_agent.py
+    deployment_type: direct_code_deploy
+    runtime_type: PYTHON_3_12
+    platform: linux/amd64
+    container_runtime: null
+    source_path: null
+    aws:
+      execution_role: arn:aws:iam::704845220642:role/governance-AgentCoreExecutionRole
+      execution_role_auto_create: false
+      account: '704845220642'
+      region: us-west-2
+      ecr_repository: null
+      ecr_auto_create: false
+      s3_path: null
+      s3_auto_create: false
+      network_configuration:
+        network_mode: PUBLIC
+        network_mode_config: null
+      protocol_configuration:
+        server_protocol: HTTP
+      observability:
+        enabled: true
+      lifecycle_configuration:
+        idle_runtime_session_timeout: null
+        max_lifetime: null
+    bedrock_agentcore:
+      agent_id: LineageMappingAgent-ewg1PWHuWW
+      agent_arn: arn:aws:bedrock-agentcore:us-west-2:704845220642:runtime/LineageMappingAgent-ewg1PWHuWW
+      agent_session_id: null
+    codebuild:
+      project_name: null
+      execution_role: null
+      source_bucket: null
+    memory:
+      mode: STM_AND_LTM
+      memory_id: governance_lineage-mtWawwCqcD
+      memory_arn: null
+      memory_name: governance-lineage-memory
+      event_expiry_days: 365
+      first_invoke_memory_check_done: false
+      was_created_by_toolkit: false
+    identity:
+      credential_providers: []
+      workload: null
+    aws_jwt:
+      enabled: false
+      audiences: []
+      signing_algorithm: ES384
+      issuer_url: null
+      duration_seconds: 300
+    authorizer_configuration: null
+    request_header_configuration: null
+    oauth_configuration: null
+    api_key_env_var_name: null
+    api_key_credential_provider_name: null
+    is_generated_by_agentcore_create: false
+  IssueManagementAgent:
+    name: IssueManagementAgent
+    entrypoint: issue_management_agent.py
+    deployment_type: direct_code_deploy
+    runtime_type: PYTHON_3_12
+    platform: linux/amd64
+    container_runtime: null
+    source_path: null
+    aws:
+      execution_role: arn:aws:iam::704845220642:role/governance-AgentCoreExecutionRole
+      execution_role_auto_create: false
+      account: '704845220642'
+      region: us-west-2
+      ecr_repository: null
+      ecr_auto_create: false
+      s3_path: null
+      s3_auto_create: false
+      network_configuration:
+        network_mode: PUBLIC
+        network_mode_config: null
+      protocol_configuration:
+        server_protocol: HTTP
+      observability:
+        enabled: true
+      lifecycle_configuration:
+        idle_runtime_session_timeout: null
+        max_lifetime: null
+    bedrock_agentcore:
+      agent_id: IssueManagementAgent-d6F3KWDnFD
+      agent_arn: arn:aws:bedrock-agentcore:us-west-2:704845220642:runtime/IssueManagementAgent-d6F3KWDnFD
+      agent_session_id: null
+    codebuild:
+      project_name: null
+      execution_role: null
+      source_bucket: null
+    memory:
+      mode: STM_AND_LTM
+      memory_id: governance_issue-NEpykW3HB8
+      memory_arn: null
+      memory_name: governance-issue-memory
+      event_expiry_days: 365
+      first_invoke_memory_check_done: false
+      was_created_by_toolkit: false
+    identity:
+      credential_providers: []
+      workload: null
+    aws_jwt:
+      enabled: false
+      audiences: []
+      signing_algorithm: ES384
+      issuer_url: null
+      duration_seconds: 300
+    authorizer_configuration: null
+    request_header_configuration: null
+    oauth_configuration: null
+    api_key_env_var_name: null
+    api_key_credential_provider_name: null
+    is_generated_by_agentcore_create: false
+  DocumentationAgent:
+    name: DocumentationAgent
+    entrypoint: documentation_agent.py
+    deployment_type: direct_code_deploy
+    runtime_type: PYTHON_3_12
+    platform: linux/amd64
+    container_runtime: null
+    source_path: null
+    aws:
+      execution_role: arn:aws:iam::704845220642:role/governance-AgentCoreExecutionRole
+      execution_role_auto_create: false
+      account: '704845220642'
+      region: us-west-2
+      ecr_repository: null
+      ecr_auto_create: false
+      s3_path: null
+      s3_auto_create: false
+      network_configuration:
+        network_mode: PUBLIC
+        network_mode_config: null
+      protocol_configuration:
+        server_protocol: HTTP
+      observability:
+        enabled: true
+      lifecycle_configuration:
+        idle_runtime_session_timeout: null
+        max_lifetime: null
+    bedrock_agentcore:
+      agent_id: DocumentationAgent-X6QaVI3zqB
+      agent_arn: arn:aws:bedrock-agentcore:us-west-2:704845220642:runtime/DocumentationAgent-X6QaVI3zqB
+      agent_session_id: null
+    codebuild:
+      project_name: null
+      execution_role: null
+      source_bucket: null
+    memory:
+      mode: STM_AND_LTM
+      memory_id: governance_doc-3EpU2mFkHv
+      memory_arn: null
+      memory_name: governance-doc-memory
+      event_expiry_days: 365
+      first_invoke_memory_check_done: false
+      was_created_by_toolkit: false
+    identity:
+      credential_providers: []
+      workload: null
+    aws_jwt:
+      enabled: false
+      audiences: []
+      signing_algorithm: ES384
+      issuer_url: null
+      duration_seconds: 300
+    authorizer_configuration: null
+    request_header_configuration: null
+    oauth_configuration: null
+    api_key_env_var_name: null
+    api_key_credential_provider_name: null
+    is_generated_by_agentcore_create: false
+  GovernanceOrchestrator:
+    name: GovernanceOrchestrator
+    entrypoint: governance_orchestrator.py
+    deployment_type: direct_code_deploy
+    runtime_type: PYTHON_3_12
+    platform: linux/amd64
+    container_runtime: null
+    source_path: null
+    aws:
+      execution_role: arn:aws:iam::704845220642:role/governance-AgentCoreExecutionRole
+      execution_role_auto_create: false
+      account: '704845220642'
+      region: us-west-2
+      ecr_repository: null
+      ecr_auto_create: false
+      s3_path: null
+      s3_auto_create: false
+      network_configuration:
+        network_mode: PUBLIC
+        network_mode_config: null
+      protocol_configuration:
+        server_protocol: HTTP
+      observability:
+        enabled: true
+      lifecycle_configuration:
+        idle_runtime_session_timeout: null
+        max_lifetime: null
+    bedrock_agentcore:
+      agent_id: GovernanceOrchestrator-cdbjAaC5aj
+      agent_arn: arn:aws:bedrock-agentcore:us-west-2:704845220642:runtime/GovernanceOrchestrator-cdbjAaC5aj
+      agent_session_id: null
+    codebuild:
+      project_name: null
+      execution_role: null
+      source_bucket: null
+    memory:
+      mode: STM_AND_LTM
+      memory_id: governance_orchestrator-cpyhJ03yoV
+      memory_arn: null
+      memory_name: governance-orchestrator-memory
+      event_expiry_days: 365
+      first_invoke_memory_check_done: false
+      was_created_by_toolkit: false
+    identity:
+      credential_providers: []
+      workload: null
+    aws_jwt:
+      enabled: false
+      audiences: []
+      signing_algorithm: ES384
+      issuer_url: null
+      duration_seconds: 300
+    authorizer_configuration: null
+    request_header_configuration: null
+    oauth_configuration: null
+    api_key_env_var_name: null
+    api_key_credential_provider_name: null
+    is_generated_by_agentcore_create: false
