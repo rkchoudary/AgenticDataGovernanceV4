@@ -14,13 +14,20 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { ToolCall } from '@/stores/chatStore'
+import { ToolCall, Reference } from '@/stores/chatStore'
 import { cn } from '@/lib/utils'
 
 interface ToolCallCardProps {
   toolCall: ToolCall
+  sessionId?: string
+  messageId?: string
   className?: string
+  onStatusChange?: (toolCall: ToolCall) => void
+  onReferenceClick?: (reference: Reference) => void
+  sequenceNumber?: number
+  totalInSequence?: number
 }
+
 
 interface StatusConfig {
   icon: LucideIcon
@@ -237,6 +244,44 @@ function ResultPreview({ result }: ResultPreviewProps) {
   return (
     <div className="p-2 rounded bg-background border text-xs">
       {String(result)}
+    </div>
+  )
+}
+
+export function ToolCallSequence({
+  toolCalls,
+  sessionId,
+  messageId,
+  onReferenceClick,
+  className,
+}: {
+  toolCalls: ToolCall[]
+  sessionId?: string
+  messageId?: string
+  onReferenceClick?: (reference: Reference) => void
+  className?: string
+}) {
+  if (toolCalls.length === 0) return null
+
+  return (
+    <div className={cn('space-y-2', className)}>
+      {toolCalls.length > 1 && (
+        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+          <Wrench className="h-3 w-3" />
+          <span>Executed {toolCalls.length} tools</span>
+        </div>
+      )}
+      {toolCalls.map((toolCall, index) => (
+        <ToolCallCard
+          key={toolCall.id}
+          toolCall={toolCall}
+          sessionId={sessionId}
+          messageId={messageId}
+          onReferenceClick={onReferenceClick}
+          sequenceNumber={index + 1}
+          totalInSequence={toolCalls.length}
+        />
+      ))}
     </div>
   )
 }

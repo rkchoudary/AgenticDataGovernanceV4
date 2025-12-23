@@ -1,0 +1,96 @@
+{
+  "app": "node dist/bin/app.js",
+  "watch": {
+    "include": ["**"],
+    "exclude": [
+      "README.md",
+      "cdk*.json",
+      "**/*.d.ts",
+      "**/*.js",
+      "tsconfig.json",
+      "package*.json",
+      "node_modules",
+      "test"
+    ]
+  },
+  "context": {
+    "@aws-cdk/aws-lambda:recognizeLayerVersion": true,
+    "@aws-cdk/core:checkSecretUsage": true,
+    "@aws-cdk/core:target-partitions": ["aws"],
+    "@aws-cdk/aws-cloudwatch-actions:changeLambdaPermissionLogicalIdForLambdaAction": true,
+    "@aws-cdk/aws-s3:createDefaultLoggingPolicy": true,
+    "@aws-cdk/aws-sns-subscriptions:restrictSqsDescryption": true,
+    "@aws-cdk/aws-apigateway:disableCloudWatchRole": true,
+    "@aws-cdk/core:enablePartitionLiterals": true,
+    "@aws-cdk/aws-kms:aliasNameRef": true,
+    "@aws-cdk/aws-autoscaling:generateLaunchTemplateInsteadOfLaunchConfig": true,
+    "@aws-cdk/core:includePrefixInUniqueNameGeneration": true,
+    "@aws-cdk/aws-efs:denyAnonymousAccess": true,
+    "@aws-cdk/aws-opensearchservice:enableOpensearchMultiAzWithStandby": true,
+    "@aws-cdk/aws-lambda-nodejs:useLatestRuntimeVersion": true,
+    "@aws-cdk/aws-efs:mountTargetOrderInsensitiveLogicalId": true,
+    "@aws-cdk/aws-rds:auroraClusterChangeScopeOfInstanceParameterGroupWithEachParameters": true,
+    "@aws-cdk/aws-appsync:useArnForSourceApiAssociationIdentifier": true,
+    "@aws-cdk/aws-rds:preventRenderingDeprecatedCredentials": true,
+    "@aws-cdk/aws-codepipeline-actions:useNewDefaultBranchForCodeCommitSource": true,
+    "@aws-cdk/aws-cloudwatch-actions:changeLambdaPermissionLogicalIdForLambdaAction": true,
+    "@aws-cdk/aws-codepipeline:crossAccountKeysDefaultValueToFalse": true,
+    "@aws-cdk/aws-codepipeline:defaultPipelineTypeToV2": true,
+    "@aws-cdk/aws-kms:reduceCrossAccountRegionPolicyScope": true,
+    "@aws-cdk/aws-eks:nodegroupNameAttribute": true,
+    "@aws-cdk/aws-ec2:ebsDefaultGp3Volume": true,
+    "@aws-cdk/aws-ecs:removeDefaultDeploymentAlarm": true,
+    "@aws-cdk/custom-resources:logApiResponseDataPropertyTrueDefault": false,
+    "environments": {
+      "dev": {
+        "account": "704845220642",
+        "region": "us-west-2",
+        "domainName": "",
+        "enableWaf": false,
+        "enableCrossRegionReplication": false,
+        "budgetAmount": 100,
+        "tags": {
+          "Environment": "dev",
+          "Project": "agentic-data-governance",
+          "CostCenter": "engineering"
+        }
+      },
+      "staging": {
+        "account": "704845220642",
+        "region": "us-west-2",
+        "domainName": "",
+        "enableWaf": true,
+        "enableCrossRegionReplication": false,
+        "budgetAmount": 500,
+        "tags": {
+          "Environment": "staging",
+          "Project": "agentic-data-governance",
+          "CostCenter": "engineering"
+        }
+      },
+      "prod": {
+        "account": "704845220642",
+        "region": "us-west-2",
+        "domainName": "",
+        "enableWaf": true,
+        "enableCrossRegionReplication": true,
+        "budgetAmount": 2000,
+        "tags": {
+          "Environment": "prod",
+          "Project": "agentic-data-governance",
+          "CostCenter": "operations"
+        }
+      }
+    },
+    "agentArns": {
+      "regulatory": "arn:aws:bedrock-agentcore:us-west-2:704845220642:runtime/RegulatoryIntelligenceAgent-oxA6yVGf5n",
+      "dataRequirements": "arn:aws:bedrock-agentcore:us-west-2:704845220642:runtime/DataRequirementsAgent-1ePTeM3JxB",
+      "cdeIdentification": "arn:aws:bedrock-agentcore:us-west-2:704845220642:runtime/CDEIdentificationAgent-oPSYioC3Ss",
+      "dataQuality": "arn:aws:bedrock-agentcore:us-west-2:704845220642:runtime/DataQualityRuleAgent-LucC5S4pOx",
+      "lineageMapping": "arn:aws:bedrock-agentcore:us-west-2:704845220642:runtime/LineageMappingAgent-ewg1PWHuWW",
+      "issueManagement": "arn:aws:bedrock-agentcore:us-west-2:704845220642:runtime/IssueManagementAgent-d6F3KWDnFD",
+      "documentation": "arn:aws:bedrock-agentcore:us-west-2:704845220642:runtime/DocumentationAgent-X6QaVI3zqB",
+      "orchestrator": "arn:aws:bedrock-agentcore:us-west-2:704845220642:runtime/GovernanceOrchestrator-cdbjAaC5aj"
+    }
+  }
+}

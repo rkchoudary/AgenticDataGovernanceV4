@@ -1,61 +1,96 @@
 import * as React from 'react'
 import { Bot, User, Copy, Check, ExternalLink, Play } from 'lucide-react'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
-import { ChatMessage } from '@/stores/chatStore'
-import { ToolCallCard } from './ToolCallCard'
+import { ChatMessage, Reference } from '@/stores/chatStore'
+import { ToolCallSequence } from './ToolCallCard'
 import { cn } from '@/lib/utils'
 
+/**
+ * Props for MessageBubble component
+ */
 interface MessageBubbleProps {
   message: ChatMessage
   agentName?: string
+  sessionId?: string
+  onReferenceClick?: (reference: Reference) => void
 }
 
-export function MessageBubble({ message, agentName }: MessageBubbleProps) {
+/**
+ * MessageBubble component for displaying chat messages
+ * 
+ * Features:
+ * - Displays user and assistant messages with appropriate styling
+ * - Shows tool calls with execution details
+ * - Displays references with clickable links
+ * - Supports markdown-like content formatting
+ * 
+ * Validates: Requirements 1.1, 1.2, 11.1, 11.2
+ */
+export function MessageBubble({ 
+  message, 
+  agentName,
+  sessionId,
+  onReferenceClick,
+}: MessageBubbleProps) {
   const isUser = message.role === 'user'
   const isSystem = message.role === 'system'
 
   return (
     <div
       className={cn(
-        'flex gap-3',
+        'flex gap-4 group',
         isUser ? 'flex-row-reverse' : 'flex-row'
       )}
     >
-      <Avatar className="h-8 w-8 flex-shrink-0">
-        <AvatarFallback
-          className={cn(
-            isUser
-              ? 'bg-secondary text-secondary-foreground'
-              : isSystem
-              ? 'bg-destructive/10 text-destructive'
-              : 'bg-primary text-primary-foreground'
-          )}
-        >
-          {isUser ? <User className="h-4 w-4" /> : <Bot className="h-4 w-4" />}
-        </AvatarFallback>
-      </Avatar>
-
-      <div
-        className={cn(
-          'flex flex-col max-w-[80%]',
-          isUser ? 'items-end' : 'items-start'
-        )}
-      >
-        {/* Agent name badge */}
-        {!isUser && agentName && (
-          <span className="text-xs text-muted-foreground mb-1">{agentName}</span>
-        )}
-
-        {/* Message content */}
+      <div className="flex-shrink-0">
         <div
           className={cn(
-            'rounded-lg px-4 py-2',
+            'w-10 h-10 rounded-full flex items-center justify-center',
             isUser
               ? 'bg-primary text-primary-foreground'
               : isSystem
               ? 'bg-destructive/10 text-destructive border border-destructive/20'
-              : 'bg-muted'
+              : 'bg-primary/10 text-primary border border-primary/20'
+          )}
+        >
+          {isUser ? <User className="h-5 w-5" /> : <Bot className="h-5 w-5" />}
+        </div>
+      </div>
+
+      <div
+        className={cn(
+          'flex flex-col flex-1 max-w-[85%]',
+          isUser ? 'items-end' : 'items-start'
+        )}
+      >
+        {/* Agent name and timestamp */}
+        <div className={cn(
+          'flex items-center gap-2 mb-2',
+          isUser ? 'flex-row-reverse' : 'flex-row'
+        )}>
+          {!isUser && agentName && (
+            <span className="text-sm font-medium text-foreground">{agentName}</span>
+          )}
+          {isUser && (
+            <span className="text-sm font-medium text-foreground">You</span>
+          )}
+          <span className="text-xs text-muted-foreground">
+            {new Date(message.timestamp).toLocaleTimeString([], {
+              hour: '2-digit',
+              minute: '2-digit',
+            })}
+          </span>
+        </div>
+
+        {/* Message content */}
+        <div
+          className={cn(
+            'rounded-2xl px-6 py-4 shadow-sm border',
+            isUser
+              ? 'bg-primary text-primary-foreground border-primary/20'
+              : isSystem
+              ? 'bg-destructive/5 text-destructive border-destructive/20'
+              : 'bg-muted/50 border-border'
           )}
         >
           <MessageContent content={message.content} isUser={isUser} />
@@ -63,36 +98,59 @@ export function MessageBubble({ message, agentName }: MessageBubbleProps) {
 
         {/* Tool calls */}
         {message.toolCalls && message.toolCalls.length > 0 && (
-          <div className="mt-2 space-y-2 w-full">
-            {message.toolCalls.map((toolCall) => (
-              <ToolCallCard key={toolCall.id} toolCall={toolCall} />
-            ))}
+          <div className="mt-3 w-full">
+            <ToolCallSequence
+              toolCalls={message.toolCalls}
+              sessionId={sessionId}
+              messageId={message.id}
+              onReferenceClick={onReferenceClick}
+            />
           </div>
         )}
 
-        {/* Timestamp */}
-        <span className="text-xs text-muted-foreground mt-1">
-          {new Date(message.timestamp).toLocaleTimeString([], {
-            hour: '2-digit',
-            minute: '2-digit',
-          })}
-        </span>
+        {/* References */}
+        {message.references && message.references.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {message.references.map((ref, index) => (
+              <Button
+                key={index}
+                variant="outline"
+                size="sm"
+                className="h-auto py-2 px-3 text-xs bg-background/50 hover:bg-background border-border/50"
+                onClick={() => onReferenceClick?.(ref)}
+              >
+                <ExternalLink className="h-3 w-3 mr-2" />
+                {ref.title}
+              </Button>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )
 }
 
+/**
+ * Props for MessageContent component
+ */
 interface MessageContentProps {
   content: string
   isUser: boolean
 }
 
+/**
+ * MessageContent component for rendering message text with formatting
+ */
 function MessageContent({ content, isUser }: MessageContentProps) {
-  // Parse and render markdown-like content
   const parts = parseContent(content)
 
   return (
-    <div className={cn('text-sm', isUser ? '' : 'prose prose-sm dark:prose-invert max-w-none')}>
+    <div className={cn(
+      'text-sm leading-relaxed',
+      isUser 
+        ? 'text-primary-foreground' 
+        : 'prose prose-sm dark:prose-invert max-w-none prose-headings:text-foreground prose-p:text-foreground prose-strong:text-foreground prose-code:text-foreground'
+    )}>
       {parts.map((part, index) => (
         <ContentPart key={index} part={part} />
       ))}
@@ -112,7 +170,6 @@ function parseContent(content: string): ContentPartType[] {
   const parts: ContentPartType[] = []
   let remaining = content
 
-  // Simple markdown-like parsing
   while (remaining.length > 0) {
     // Check for code blocks
     const codeBlockMatch = remaining.match(/^```(\w*)\n([\s\S]*?)```/)
@@ -166,10 +223,9 @@ function parseContent(content: string): ContentPartType[] {
       }
     }
 
-    // Regular text - find next special character or end
+    // Regular text
     const nextSpecial = remaining.search(/```|`|\[|^\|/m)
     if (nextSpecial === -1 || nextSpecial === 0) {
-      // No more special content or at start, take one character
       const textEnd = nextSpecial === 0 ? 1 : remaining.length
       parts.push({ type: 'text', content: remaining.slice(0, textEnd) })
       remaining = remaining.slice(textEnd)
@@ -193,7 +249,6 @@ function parseContent(content: string): ContentPartType[] {
   return merged
 }
 
-
 function ContentPart({ part }: { part: ContentPartType }) {
   const [copied, setCopied] = React.useState(false)
 
@@ -209,15 +264,15 @@ function ContentPart({ part }: { part: ContentPartType }) {
 
     case 'code':
       return (
-        <div className="my-2 rounded-md overflow-hidden border bg-muted/50">
-          <div className="flex items-center justify-between px-3 py-1 bg-muted border-b">
-            <span className="text-xs text-muted-foreground font-mono">
-              {part.language}
+        <div className="my-3 rounded-xl overflow-hidden border bg-muted/30 shadow-sm">
+          <div className="flex items-center justify-between px-4 py-2 bg-muted/50 border-b">
+            <span className="text-xs text-muted-foreground font-mono font-medium">
+              {part.language || 'code'}
             </span>
             <Button
               variant="ghost"
               size="icon"
-              className="h-6 w-6"
+              className="h-7 w-7 hover:bg-background/50"
               onClick={() => handleCopy(part.content)}
             >
               {copied ? (
@@ -227,29 +282,29 @@ function ContentPart({ part }: { part: ContentPartType }) {
               )}
             </Button>
           </div>
-          <pre className="p-3 overflow-x-auto">
-            <code className="text-xs font-mono">{part.content}</code>
+          <pre className="p-4 overflow-x-auto bg-muted/20">
+            <code className="text-xs font-mono leading-relaxed">{part.content}</code>
           </pre>
         </div>
       )
 
     case 'inline-code':
       return (
-        <code className="px-1.5 py-0.5 rounded bg-muted font-mono text-xs">
+        <code className="px-2 py-1 rounded-md bg-muted/50 font-mono text-xs border">
           {part.content}
         </code>
       )
 
     case 'table':
       return (
-        <div className="my-2 overflow-x-auto">
-          <table className="min-w-full border-collapse border rounded-md">
+        <div className="my-4 overflow-x-auto rounded-xl border shadow-sm">
+          <table className="min-w-full border-collapse">
             <thead>
-              <tr className="bg-muted">
+              <tr className="bg-muted/50">
                 {part.headers.map((header, i) => (
                   <th
                     key={i}
-                    className="px-3 py-2 text-left text-xs font-medium border"
+                    className="px-4 py-3 text-left text-xs font-semibold border-b text-foreground"
                   >
                     {header}
                   </th>
@@ -258,9 +313,9 @@ function ContentPart({ part }: { part: ContentPartType }) {
             </thead>
             <tbody>
               {part.rows.map((row, i) => (
-                <tr key={i} className="hover:bg-muted/50">
+                <tr key={i} className="hover:bg-muted/30 transition-colors">
                   {row.map((cell, j) => (
-                    <td key={j} className="px-3 py-2 text-xs border">
+                    <td key={j} className="px-4 py-3 text-xs border-b border-border/50">
                       {cell}
                     </td>
                   ))}
@@ -276,10 +331,10 @@ function ContentPart({ part }: { part: ContentPartType }) {
         <Button
           variant="outline"
           size="sm"
-          className="my-1 mx-1"
+          className="my-2 mx-1 rounded-lg border-primary/20 hover:bg-primary/5"
           onClick={() => console.log('Action:', part.action)}
         >
-          <Play className="h-3 w-3 mr-1" />
+          <Play className="h-3 w-3 mr-2" />
           {part.label}
         </Button>
       )

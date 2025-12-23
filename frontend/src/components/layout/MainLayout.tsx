@@ -1,9 +1,11 @@
+import * as React from 'react'
 import { Outlet } from 'react-router-dom'
 import { Sidebar } from './Sidebar'
 import { Header } from './Header'
 import { MobileNav } from './MobileNav'
 import { ToastContainer, NotificationTriggers } from '@/components/notifications'
-import { useNotificationStore } from '@/stores'
+import { useNotificationStore, useUIStore } from '@/stores'
+import { ChatPanel } from '@/components/chat'
 import { 
   MobileBottomNav, 
   useMobileDetect,
@@ -12,10 +14,29 @@ import {
   UpdateAvailableBanner,
   NotificationPermissionPrompt,
 } from '@/components/mobile'
+import { cn } from '@/lib/utils'
 
 export function MainLayout() {
   const { toasts, removeToast } = useNotificationStore()
   const { isMobile } = useMobileDetect()
+  const { chatPanelOpen, setChatPanelOpen } = useUIStore()
+
+  // Keyboard shortcut for chat panel (Cmd/Ctrl + K)
+  React.useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
+        event.preventDefault()
+        setChatPanelOpen(!chatPanelOpen)
+      }
+      // Escape to close chat
+      if (event.key === 'Escape' && chatPanelOpen) {
+        setChatPanelOpen(false)
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [chatPanelOpen, setChatPanelOpen])
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -49,6 +70,33 @@ export function MainLayout() {
 
       {/* Notification triggers (headless component for real-time updates) */}
       <NotificationTriggers enabled />
+
+      {/* AI Chat Panel - Enhanced with more real estate and responsive design */}
+      {chatPanelOpen && (
+        <>
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm animate-in fade-in duration-300"
+            onClick={() => setChatPanelOpen(false)}
+          />
+          
+          {/* Chat Panel */}
+          <div className={cn(
+            "fixed inset-y-0 right-0 z-50 border-l bg-background shadow-2xl",
+            "animate-in slide-in-from-right duration-300",
+            isMobile 
+              ? "w-full" 
+              : "w-full max-w-4xl"
+          )}>
+            <ChatPanel 
+              className="h-full"
+              onClose={() => setChatPanelOpen(false)}
+              showSessionList={!isMobile}
+              showReferencePanel={!isMobile}
+            />
+          </div>
+        </>
+      )}
     </div>
   )
 }

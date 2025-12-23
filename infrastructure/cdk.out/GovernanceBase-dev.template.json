@@ -1,0 +1,196 @@
+{
+ "Resources": {
+  "EncryptionKey1B843E66": {
+   "Type": "AWS::KMS::Key",
+   "Properties": {
+    "Description": "KMS key for Governance Platform encryption (dev)",
+    "EnableKeyRotation": true,
+    "KeyPolicy": {
+     "Statement": [
+      {
+       "Action": "kms:*",
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": "arn:aws:iam::704845220642:root"
+       },
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "kms:Encrypt",
+        "kms:Decrypt",
+        "kms:ReEncrypt*",
+        "kms:GenerateDataKey*",
+        "kms:DescribeKey"
+       ],
+       "Condition": {
+        "StringEquals": {
+         "kms:CallerAccount": "704845220642"
+        }
+       },
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       },
+       "Resource": "*",
+       "Sid": "AllowLambdaEncryption"
+      },
+      {
+       "Action": [
+        "kms:Encrypt",
+        "kms:Decrypt",
+        "kms:ReEncrypt*",
+        "kms:GenerateDataKey*",
+        "kms:DescribeKey",
+        "kms:CreateGrant"
+       ],
+       "Condition": {
+        "StringEquals": {
+         "kms:CallerAccount": "704845220642"
+        }
+       },
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "dynamodb.amazonaws.com"
+       },
+       "Resource": "*",
+       "Sid": "AllowDynamoDBEncryption"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PendingWindowInDays": 7,
+    "Tags": [
+     {
+      "Key": "CostCenter",
+      "Value": "engineering"
+     },
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "Project",
+      "Value": "agentic-data-governance"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "GovernanceBase-dev/EncryptionKey/Resource"
+   }
+  },
+  "EncryptionKeyAliasC93FE124": {
+   "Type": "AWS::KMS::Alias",
+   "Properties": {
+    "AliasName": "alias/governance-dev-key",
+    "TargetKeyId": {
+     "Fn::GetAtt": [
+      "EncryptionKey1B843E66",
+      "Arn"
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "GovernanceBase-dev/EncryptionKey/Alias/Resource"
+   }
+  },
+  "AlarmTopicD01E77F9": {
+   "Type": "AWS::SNS::Topic",
+   "Properties": {
+    "DisplayName": "Governance Platform Alarms (dev)",
+    "KmsMasterKeyId": {
+     "Fn::GetAtt": [
+      "EncryptionKey1B843E66",
+      "Arn"
+     ]
+    },
+    "Tags": [
+     {
+      "Key": "CostCenter",
+      "Value": "engineering"
+     },
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "Project",
+      "Value": "agentic-data-governance"
+     }
+    ],
+    "TopicName": "governance-dev-alarms"
+   },
+   "Metadata": {
+    "aws:cdk:path": "GovernanceBase-dev/AlarmTopic/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzI21jNQTCwv1k1OydbNyUzSqw4uSUzO1gEKxVdn5xbrVXunVuo4p+WBKMeczMRiEAfMqNUpzgPKh+QXZCaDBMGM2loQ07+0pKC0pFYnLz8lVS+rWL/MyETPEmhRVnFmpm5RaV5JZm6qXhCEBgBRtue9hQAAAA=="
+   },
+   "Metadata": {
+    "aws:cdk:path": "GovernanceBase-dev/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "EncryptionKeyArn": {
+   "Description": "ARN of the KMS encryption key",
+   "Value": {
+    "Fn::GetAtt": [
+     "EncryptionKey1B843E66",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "governance-dev-encryption-key-arn"
+   }
+  },
+  "AlarmTopicArn": {
+   "Description": "ARN of the SNS alarm topic",
+   "Value": {
+    "Ref": "AlarmTopicD01E77F9"
+   },
+   "Export": {
+    "Name": "governance-dev-alarm-topic-arn"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

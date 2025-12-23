@@ -1,0 +1,21 @@
+{
+  "version": "48.0.0",
+  "files": {
+    "11f2b36f26a1d1fc73f83ee26dd492017ffe868aced10bacc5eaddf41944f607": {
+      "displayName": "GovernanceCognito-dev Template",
+      "source": {
+        "path": "GovernanceCognito-dev.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "704845220642-us-west-2-52469e65": {
+          "bucketName": "cdk-hnb659fds-assets-704845220642-us-west-2",
+          "objectKey": "11f2b36f26a1d1fc73f83ee26dd492017ffe868aced10bacc5eaddf41944f607.json",
+          "region": "us-west-2",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::704845220642:role/cdk-hnb659fds-file-publishing-role-704845220642-us-west-2"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

@@ -37,3 +37,21 @@ export * from './documentation.js';
 
 // Dashboard types
 export * from './dashboard.js';
+
+// Memory types for AI Assistant
+export * from './memory.js';
+
+// Tool Service types for AI Assistant
+export * from './tool-service.js';
+
+// Assistant Service types for AI Assistant
+export * from './assistant.js';
+
+// Regulatory Knowledge Base types for AI Assistant
+export * from './regulatory-knowledge-base.js';
+
+// Error Handling types for AI Assistant
+export * from './error-handling.js';
+
+// Conversation Persistence types for AI Assistant
+export * from './conversation-persistence.js';

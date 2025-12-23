@@ -62,10 +62,153 @@ Guidelines:
 """
 
 
+class MockAgentResponse:
+    """Mock response object that mimics Strands Agent response"""
+    def __init__(self, message: str):
+        self.message = message
+
+
+class MockRegulatoryAgent:
+    """
+    Mock Regulatory Intelligence Agent for local development.
+    
+    This provides realistic responses without requiring AWS Bedrock access.
+    """
+    
+    def __init__(self, repository: Any, tools: list):
+        self.repository = repository
+        self.tools = tools
+        self.system_prompt = SYSTEM_PROMPT
+    
+    def __call__(self, prompt: str) -> MockAgentResponse:
+        """Process a user prompt and return a mock response"""
+        
+        # Analyze the prompt to provide contextual responses
+        prompt_lower = prompt.lower()
+        
+        if any(word in prompt_lower for word in ['hello', 'hi', 'help', 'what can you do']):
+            response = """Hello! I'm the Regulatory Intelligence Agent for your data governance system. 
+
+I can help you with:
+• Scanning regulatory sources for new reporting requirements
+• Detecting changes in regulatory obligations
+• Managing the regulatory report catalog
+• Supporting compliance workflows and approvals
+
+What would you like to know about regulatory intelligence or data governance?"""
+        
+        elif any(word in prompt_lower for word in ['catalog', 'reports', 'regulatory reports']):
+            # Get actual catalog data from repository
+            catalog = self.repository.get_report_catalog()
+            if catalog and catalog.reports:
+                report_count = len(catalog.reports)
+                status = catalog.status
+                response = f"""Current Regulatory Report Catalog Status:
+
+📊 **Catalog Overview:**
+- Total Reports: {report_count}
+- Status: {status}
+- Version: {catalog.version}
+- Last Updated: {catalog.last_updated}
+
+The catalog contains regulatory reporting requirements from various jurisdictions including OSFI, Federal Reserve, OCC, and FDIC. Would you like me to scan for updates or show specific report details?"""
+            else:
+                response = """The regulatory report catalog is currently empty. 
+
+I can help you:
+• Scan regulatory sources to populate the catalog
+• Add new reporting requirements manually
+• Set up monitoring for regulatory changes
+
+Would you like me to perform an initial scan of regulatory sources?"""
+        
+        elif any(word in prompt_lower for word in ['scan', 'update', 'changes', 'new requirements']):
+            response = """I'll scan the regulatory sources for new and updated reporting requirements.
+
+🔍 **Scanning Sources:**
+- OSFI (Office of the Superintendent of Financial Institutions)
+- Federal Reserve System
+- OCC (Office of the Comptroller of the Currency)  
+- FDIC (Federal Deposit Insurance Corporation)
+
+*Note: In development mode, this would normally connect to live regulatory feeds. For now, I'm providing a simulated response.*
+
+**Simulated Scan Results:**
+✅ Found 3 potential updates to existing requirements
+✅ Detected 1 new reporting obligation (OSFI Capital Adequacy)
+⚠️  2 requirements flagged for review due to interpretation changes
+
+Would you like me to update the catalog with these findings? This will set the status to 'pending_review' for human approval."""
+        
+        elif any(word in prompt_lower for word in ['approve', 'review', 'pending']):
+            response = """**Catalog Review & Approval Process:**
+
+Current items pending review:
+• New OSFI Capital Adequacy requirements (detected today)
+• Updated Federal Reserve stress testing guidelines
+• Modified OCC liquidity reporting thresholds
+
+**Next Steps:**
+1. Review each change for accuracy and completeness
+2. Validate business impact and implementation timeline  
+3. Obtain stakeholder approval (four-eyes principle)
+4. Update catalog status to 'approved'
+
+Would you like me to prepare a detailed review package for these changes?"""
+        
+        elif any(word in prompt_lower for word in ['audit', 'trail', 'history', 'log']):
+            # Get actual audit entries
+            audit_entries = self.repository.get_audit_entries()
+            entry_count = len(audit_entries) if audit_entries else 0
+            
+            response = f"""**Audit Trail Summary:**
+
+📋 Total Audit Entries: {entry_count}
+
+Recent activities tracked:
+• Catalog updates and modifications
+• Approval workflows and decisions
+• System access and user actions
+• Data quality checks and validations
+
+All regulatory intelligence activities are automatically logged with:
+- Timestamp and actor identification
+- Action details and affected entities
+- Before/after states for changes
+- Compliance with four-eyes principle
+
+Would you like to see specific audit details or export the audit trail?"""
+        
+        else:
+            # Generic helpful response
+            response = f"""I understand you're asking about: "{prompt}"
+
+As your Regulatory Intelligence Agent, I'm here to help with:
+
+🏛️ **Regulatory Monitoring:**
+- Scanning OSFI, Fed, OCC, FDIC sources
+- Detecting new and changed requirements
+- Impact analysis and notifications
+
+📊 **Catalog Management:**
+- Maintaining regulatory report inventory
+- Version control and approval workflows
+- Compliance tracking and reporting
+
+🔍 **Analysis & Insights:**
+- Change impact assessment
+- Gap analysis and recommendations
+- Audit trail and compliance evidence
+
+Could you provide more specific details about what you'd like me to help you with?"""
+        
+        return MockAgentResponse(response)
+
+
 def create_agent(
     repository: Any,
     session_manager: Optional[Any] = None
-) -> Agent:
+) -> Any:
     """
     Create a Regulatory Intelligence Agent with the given repository.
     
@@ -74,19 +217,28 @@ def create_agent(
         session_manager: Optional session manager for memory persistence.
         
     Returns:
-        Configured Strands Agent instance.
+        Configured Agent instance (real or mock based on environment).
     """
     tools = create_regulatory_tools(repository)
     
-    agent_kwargs = {
-        "system_prompt": SYSTEM_PROMPT,
-        "tools": tools,
-    }
+    # Check if we're in development mode (default to false since Bedrock is configured)
+    development_mode = os.environ.get("DEVELOPMENT_MODE", "false").lower() == "true"
     
-    if session_manager:
-        agent_kwargs["session_manager"] = session_manager
-    
-    return Agent(**agent_kwargs)
+    if development_mode:
+        print("[DEV MODE] Using Mock Regulatory Intelligence Agent")
+        return MockRegulatoryAgent(repository, tools)
+    else:
+        # Production mode - use real Strands Agent with Bedrock
+        print("[PRODUCTION MODE] Using Real Strands Agent with AWS Bedrock")
+        agent_kwargs = {
+            "system_prompt": SYSTEM_PROMPT,
+            "tools": tools,
+        }
+        
+        if session_manager:
+            agent_kwargs["session_manager"] = session_manager
+        
+        return Agent(**agent_kwargs)
 
 
 @app.entrypoint

@@ -1,0 +1,21 @@
+{
+  "version": "48.0.0",
+  "files": {
+    "0f36fc8f45083c680f9d64786a4aedcc85078d4166cc6e00c222f222d2ccc423": {
+      "displayName": "GovernanceBase-dev Template",
+      "source": {
+        "path": "GovernanceBase-dev.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "704845220642-us-west-2-7454636c": {
+          "bucketName": "cdk-hnb659fds-assets-704845220642-us-west-2",
+          "objectKey": "0f36fc8f45083c680f9d64786a4aedcc85078d4166cc6e00c222f222d2ccc423.json",
+          "region": "us-west-2",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::704845220642:role/cdk-hnb659fds-file-publishing-role-704845220642-us-west-2"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

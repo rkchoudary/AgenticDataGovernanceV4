@@ -1,0 +1,354 @@
+# Implementation Plan
+
+- [x] 1. Set up CDK project structure and core infrastructure
+  - [x] 1.1 Initialize AWS CDK project with TypeScript
+    - Create `infrastructure/` directory with CDK app structure
+    - Configure `cdk.json` with context and environment settings
+    - Set up TypeScript configuration for CDK
+    - _Requirements: 8.1, 8.3_
+  - [x] 1.2 Create base stack with shared resources
+    - Create KMS key for encryption
+    - Create SNS topic for alarms
+    - Set up resource tagging construct
+    - _Requirements: 13.5, 7.3, 8.3_
+  - [x] 1.3 Write property test for resource tagging
+    - **Property 8: Resource Tagging Completeness**
+    - **Validates: Requirements 8.3, 15.2**
+
+- [x] 2. Implement S3 and CloudFront for frontend hosting
+  - [x] 2.1 Create S3 bucket for frontend assets
+    - Configure versioning and encryption
+    - Block all public access
+    - Set up lifecycle rules for old versions
+    - _Requirements: 1.1, 1.5_
+  - [x] 2.2 Create CloudFront distribution
+    - Configure HTTPS-only access
+    - Set up Origin Access Identity for S3
+    - Configure custom error responses for SPA routing
+    - Set cache behaviors and TTLs
+    - _Requirements: 1.2, 1.4_
+  - [x] 2.3 Create WAF WebACL for CloudFront
+    - Configure rate limiting rules
+    - Add AWS managed rule groups for common attacks
+    - Associate with CloudFront distribution
+    - _Requirements: 13.1_
+  - [x] 2.4 Write unit tests for frontend hosting stack
+    - Test S3 bucket configuration
+    - Test CloudFront distribution settings
+    - Test WAF association
+    - _Requirements: 1.1, 1.2, 1.5_
+
+- [ ] 3. Implement Cognito User Pool with invite-only registration
+  - [x] 3.1 Create Cognito User Pool
+    - Disable self-registration
+    - Configure password policy
+    - Set up email invitation templates
+    - Configure MFA settings
+    - _Requirements: 3.1, 3.2, 3.3_
+  - [x] 3.2 Create Cognito User Pool groups
+    - Create admin, compliance_officer, data_steward, viewer groups
+    - Configure group precedence
+    - _Requirements: 14.1_
+  - [x] 3.3 Create Cognito User Pool client
+    - Configure OAuth flows
+    - Set up token expiration
+    - Configure callback URLs
+    - _Requirements: 3.5_
+  - [x] 3.4 Create initial admin user
+    - Create admin user with temporary password
+    - Add to admin group
+    - _Requirements: 3.6_
+  - [x] 3.5 Write property test for invite-only registration
+    - **Property 3: Invite-Only Registration**
+    - **Validates: Requirements 3.4**
+  - [x] 3.6 Write property test for JWT claims
+    - **Property 4: JWT Claims Completeness**
+    - **Validates: Requirements 3.5, 14.3**
+
+- [x] 4. Checkpoint - Ensure all tests pass
+  - All 75 tests pass (5 test files: unit tests for cognito-stack, frontend-hosting-stack, and property tests for resource-tagging, invite-only-registration, jwt-claims)
+  - CDK synth successful for all three stacks (GovernanceBase-dev, GovernanceFrontend-dev, GovernanceCognito-dev)
+  - Deprecation warnings noted for S3Origin and AdvancedSecurityMode (informational only, no functional impact)
+
+- [x] 5. Implement DynamoDB tables with tenant isolation
+  - [x] 5.1 Create DynamoDB tables
+    - Create tenants, users, workflows, CDEs, issues, audit tables
+    - Configure partition and sort keys with tenant prefix
+    - Enable point-in-time recovery
+    - Configure on-demand capacity
+    - _Requirements: 4.1, 4.4, 4.5_
+  - [x] 5.2 Configure DynamoDB encryption
+    - Use KMS customer-managed key
+    - Configure key policy for Lambda access
+    - _Requirements: 13.5_
+  - [x] 5.3 Create Global Secondary Indexes
+    - Create email-index for users table
+    - Create status-index for workflows table
+    - _Requirements: 4.1_
+  - [x] 5.4 Write property test for tenant data isolation
+    - **Property 5: Tenant Data Isolation**
+    - **Validates: Requirements 4.2, 4.3**
+
+- [x] 6. Implement API Gateway HTTP API
+  - [x] 6.1 Create HTTP API with CORS configuration
+    - Configure allowed origins for CloudFront domain
+    - Set up allowed methods and headers
+    - _Requirements: 2.1_
+  - [x] 6.2 Create Cognito JWT authorizer
+    - Configure issuer URL and audience
+    - Set up authorization scopes
+    - _Requirements: 2.4, 2.5_
+  - [x] 6.3 Create API routes for data operations
+    - Create /api/users/* routes
+    - Create /api/workflows/* routes
+    - Create /api/data/* routes
+    - _Requirements: 2.3_
+  - [x] 6.4 Create API routes for agent operations
+    - Create /api/agents/* routes
+    - Configure route to agent proxy Lambda
+    - _Requirements: 2.2_
+  - [x] 6.5 Write property test for authentication enforcement
+    - **Property 2: Authentication Enforcement**
+    - **Validates: Requirements 2.4, 2.5**
+  - [x] 6.6 Write property test for RBAC enforcement
+    - **Property 11: RBAC Enforcement**
+    - **Validates: Requirements 14.4, 14.5**
+
+- [x] 7. Implement API Gateway WebSocket API
+  - [x] 7.1 Create WebSocket API
+    - Configure route selection expression
+    - Set idle timeout to 10 minutes
+    - _Requirements: 11.1, 11.4_
+  - [x] 7.2 Create WebSocket routes
+    - Create $connect route with auth validation
+    - Create $disconnect route
+    - Create agent route for streaming
+    - _Requirements: 11.2, 11.3_
+  - [x] 7.3 Write property test for WebSocket authentication
+    - **Property 9: WebSocket Authentication**
+    - **Validates: Requirements 11.5**
+
+- [x] 8. Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 9. Implement Lambda functions for data operations
+  - [x] 9.1 Create user management Lambda
+    - Implement user CRUD operations
+    - Implement user invitation flow
+    - Implement role assignment
+    - _Requirements: 6.1, 14.2_
+  - [x] 9.2 Create workflow operations Lambda
+    - Implement workflow CRUD operations
+    - Implement phase progression
+    - _Requirements: 6.1_
+  - [x] 9.3 Create data queries Lambda
+    - Implement CDE queries
+    - Implement issue queries
+    - Implement audit log queries
+    - _Requirements: 6.1_
+  - [x] 9.4 Implement tenant validation middleware
+    - Extract tenant_id from JWT claims
+    - Validate tenant access
+    - Scope all DynamoDB operations by tenant
+    - _Requirements: 6.2, 6.3_
+  - [x] 9.5 Implement error handling and logging
+    - Add correlation ID to all log entries
+    - Log request metadata (user_id, tenant_id)
+    - Implement structured error responses
+    - _Requirements: 6.5, 7.5_
+  - [x] 9.6 Write property test for Lambda tenant validation
+    - **Property 6: Lambda Tenant Validation**
+    - **Validates: Requirements 6.2, 6.3**
+  - [x] 9.7 Write property test for error logging completeness
+    - **Property 7: Error Logging Completeness**
+    - **Validates: Requirements 6.5, 7.5**
+
+- [x] 10. Implement Lambda function for AgentCore integration
+  - [x] 10.1 Create agent proxy Lambda
+    - Implement agent routing logic
+    - Configure IAM permissions for AgentCore invocation
+    - _Requirements: 5.1, 5.2_
+  - [x] 10.2 Implement agent invocation with user context
+    - Extract user_id and tenant_id from JWT
+    - Pass context to AgentCore agents
+    - _Requirements: 5.4_
+  - [x] 10.3 Implement response streaming
+    - Stream agent responses via WebSocket
+    - Handle agent errors with retry guidance
+    - _Requirements: 5.3, 5.5_
+  - [x] 10.4 Write property test for agent routing
+    - **Property 1: Agent Routing Correctness**
+    - **Validates: Requirements 2.2, 5.2**
+  - [x] 10.5 Write property test for user context propagation
+    - **Property 12: User Context Propagation**
+    - **Validates: Requirements 5.4**
+
+- [x] 11. Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 12. Implement monitoring and observability
+  - [x] 12.1 Create CloudWatch log groups
+    - Create log groups for all Lambda functions
+    - Create log group for API Gateway
+    - Configure retention policies
+    - _Requirements: 7.1_
+  - [x] 12.2 Create CloudWatch alarms
+    - Create alarms for API 5xx errors
+    - Create alarms for Lambda errors
+    - Create alarms for latency thresholds
+    - Configure SNS notifications
+    - _Requirements: 7.2, 7.3_
+  - [x] 12.3 Enable X-Ray tracing
+    - Enable tracing for API Gateway
+    - Enable tracing for Lambda functions
+    - _Requirements: 7.4_
+  - [x] 12.4 Write unit tests for monitoring configuration
+    - Test log group creation
+    - Test alarm configuration
+    - Test X-Ray tracing
+    - _Requirements: 7.1, 7.2, 7.4_
+
+- [x] 13. Implement secrets management
+  - [x] 13.1 Create Secrets Manager secrets
+    - Store Cognito client secret
+    - Store any API keys
+    - Configure automatic rotation
+    - _Requirements: 16.1, 16.4_
+  - [x] 13.2 Configure Lambda environment variables
+    - Reference Secrets Manager ARNs
+    - Configure IAM permissions for secret access
+    - _Requirements: 16.2, 16.3_
+  - [x] 13.3 Enable CloudTrail for Secrets Manager
+    - Configure CloudTrail logging
+    - _Requirements: 16.5_
+  - [x] 13.4 Write property test for KMS encryption
+    - **Property 10: KMS Encryption Enforcement**
+    - **Validates: Requirements 13.5**
+
+- [x] 14. Implement custom domain and SSL
+  - [x] 14.1 Create ACM certificate
+    - Request certificate for custom domain
+    - Configure DNS validation
+    - _Requirements: 9.1_
+  - [x] 14.2 Configure CloudFront with custom domain
+    - Add alternate domain name
+    - Associate ACM certificate
+    - _Requirements: 9.2, 9.4_
+  - [x] 14.3 Create Route 53 records
+    - Create A record alias to CloudFront
+    - Create AAAA record for IPv6
+    - _Requirements: 9.3_
+  - [x] 14.4 Write unit tests for custom domain configuration
+    - Test certificate creation
+    - Test CloudFront configuration
+    - Test Route 53 records
+    - _Requirements: 9.1, 9.2, 9.3_
+
+- [x] 15. Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 16. Implement backup and disaster recovery
+  - [x] 16.1 Configure DynamoDB backup
+    - Verify point-in-time recovery is enabled
+    - Configure backup retention
+    - _Requirements: 12.1_
+  - [x] 16.2 Configure S3 versioning and lifecycle
+    - Enable versioning on data bucket
+    - Configure lifecycle rules for old versions
+    - _Requirements: 12.2_
+  - [x] 16.3 Configure cross-region replication
+    - Create replica bucket in secondary region
+    - Configure replication rules for critical data
+    - _Requirements: 12.3_
+  - [x] 16.4 Write unit tests for backup configuration
+    - Test PITR configuration
+    - Test S3 versioning
+    - Test replication rules
+    - _Requirements: 12.1, 12.2, 12.3_
+
+- [x] 17. Implement security controls
+  - [x] 17.1 Configure VPC endpoints
+    - Create VPC for Lambda functions
+    - Create endpoints for DynamoDB, S3, Secrets Manager
+    - _Requirements: 13.2_
+  - [x] 17.2 Enable CloudTrail
+    - Create CloudTrail trail
+    - Configure S3 bucket for logs
+    - _Requirements: 13.3_
+  - [x] 17.3 Configure AWS Config rules
+    - Enable AWS Config
+    - Add compliance rules for encryption, public access
+    - _Requirements: 13.4_
+  - [x] 17.4 Write unit tests for security controls
+    - Test VPC endpoint configuration
+    - Test CloudTrail configuration
+    - Test AWS Config rules
+    - _Requirements: 13.2, 13.3, 13.4_
+
+- [x] 18. Implement cost management
+  - [x] 18.1 Create AWS Budgets
+    - Create budget with 50%, 80%, 100% alerts
+    - Configure SNS notifications
+    - _Requirements: 15.1, 15.5_
+  - [x] 18.2 Configure S3 Intelligent-Tiering
+    - Enable Intelligent-Tiering for data bucket
+    - _Requirements: 15.4_
+  - [x] 18.3 Optimize Lambda memory settings
+    - Configure appropriate memory for each function
+    - _Requirements: 15.3_
+  - [x] 18.4 Write unit tests for cost management
+    - Test budget configuration
+    - Test S3 storage class
+    - Test Lambda memory settings
+    - _Requirements: 15.1, 15.3, 15.4_
+
+- [x] 19. Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 20. Implement CI/CD pipeline
+  - [x] 20.1 Create CodePipeline
+    - Configure source stage with GitHub
+    - Configure build stage with CodeBuild
+    - Configure deploy stage with CDK
+    - _Requirements: 10.1, 10.2_
+  - [x] 20.2 Create CodeBuild project
+    - Configure build environment
+    - Add frontend build commands
+    - Add test execution
+    - Add CDK deploy commands
+    - _Requirements: 10.2_
+  - [x] 20.3 Configure cache invalidation
+    - Add CloudFront invalidation step
+    - _Requirements: 10.3_
+  - [x] 20.4 Configure pipeline notifications
+    - Add SNS notifications for failures
+    - _Requirements: 10.4_
+  - [x] 20.5 Create deployment tracking
+    - Store deployment records in DynamoDB
+    - Include version and timestamp
+    - _Requirements: 10.5_
+  - [x] 20.6 Write unit tests for CI/CD pipeline
+    - Test pipeline stages
+    - Test CodeBuild configuration
+    - Test notification configuration
+    - _Requirements: 10.1, 10.2, 10.4_
+
+- [x] 21. Create deployment scripts and documentation
+  - [x] 21.1 Create deployment scripts
+    - Create bootstrap script for initial setup
+    - Create deploy script for CDK deployment
+    - Create frontend build and upload script
+    - _Requirements: 1.3, 10.2_
+  - [x] 21.2 Create environment configuration files
+    - Create dev environment config
+    - Create staging environment config
+    - Create production environment config
+    - _Requirements: 8.1, 8.2_
+  - [x] 21.3 Update frontend configuration
+    - Configure API endpoint URLs
+    - Configure Cognito settings
+    - Configure WebSocket endpoint
+    - _Requirements: 2.1, 3.5, 11.1_
+
+- [x] 22. Final Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.

@@ -10,7 +10,7 @@ export { ProgressStepper } from './ProgressStepper'
 export { PhaseContainer } from './PhaseContainer'
 export { ContextSidebar } from './ContextSidebar'
 export type { ExtendedContextSidebarProps } from './ContextSidebar'
-export { HumanGate, isValidRationale, isValidSignature, validateHumanGateForm } from './HumanGate'
+export { HumanGate, DEFAULT_MIN_RATIONALE_LENGTH } from './HumanGate'
 export type { DecisionType } from './HumanGate'
 export { 
   AgentPanel, 

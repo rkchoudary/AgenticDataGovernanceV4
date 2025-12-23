@@ -1,12 +1,14 @@
 import { Menu, Search, MessageSquare } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { useAuthStore, useUIStore } from '@/stores'
 import { NotificationCenter } from '@/components/notifications'
+import { cn } from '@/lib/utils'
 
 export function Header() {
   const { user } = useAuthStore()
-  const { toggleMobileNav } = useUIStore()
+  const { toggleMobileNav, toggleChatPanel, chatPanelOpen } = useUIStore()
 
   const initials = user?.name
     ?.split(' ')
@@ -42,10 +44,30 @@ export function Header() {
       {/* Actions */}
       <div className="flex items-center gap-2">
         {/* AI Chat */}
-        <Button variant="ghost" size="icon" className="relative">
-          <MessageSquare className="h-5 w-5" />
-          <span className="sr-only">AI Assistant</span>
-        </Button>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button 
+              variant={chatPanelOpen ? "default" : "outline"} 
+              size="sm" 
+              className={cn(
+                "relative transition-all duration-200",
+                chatPanelOpen 
+                  ? "bg-primary text-primary-foreground shadow-md" 
+                  : "border-primary/20 text-primary hover:bg-primary/5"
+              )}
+              onClick={toggleChatPanel}
+            >
+              <MessageSquare className="h-4 w-4 mr-2" />
+              AI Assistant
+              {chatPanelOpen && (
+                <div className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              )}
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Open AI Assistant (⌘K)</p>
+          </TooltipContent>
+        </Tooltip>
 
         {/* Notifications */}
         <NotificationCenter />

@@ -1,0 +1,36 @@
+{
+  "version": "48.0.0",
+  "files": {
+    "faa95a81ae7d7373f3e1f242268f904eb748d8d0fdd306e8a6fe515a1905a7d6": {
+      "displayName": "GovernanceFrontend-dev/Custom::S3AutoDeleteObjectsCustomResourceProvider Code",
+      "source": {
+        "path": "asset.faa95a81ae7d7373f3e1f242268f904eb748d8d0fdd306e8a6fe515a1905a7d6",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "704845220642-us-west-2-60fc882c": {
+          "bucketName": "cdk-hnb659fds-assets-704845220642-us-west-2",
+          "objectKey": "faa95a81ae7d7373f3e1f242268f904eb748d8d0fdd306e8a6fe515a1905a7d6.zip",
+          "region": "us-west-2",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::704845220642:role/cdk-hnb659fds-file-publishing-role-704845220642-us-west-2"
+        }
+      }
+    },
+    "aa3d1592b21c294075e5eaf0130ff5ea2f2051ce0c5e8ec070b1dc551b2144b7": {
+      "displayName": "GovernanceFrontend-dev Template",
+      "source": {
+        "path": "GovernanceFrontend-dev.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "704845220642-us-west-2-18350270": {
+          "bucketName": "cdk-hnb659fds-assets-704845220642-us-west-2",
+          "objectKey": "aa3d1592b21c294075e5eaf0130ff5ea2f2051ce0c5e8ec070b1dc551b2144b7.json",
+          "region": "us-west-2",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::704845220642:role/cdk-hnb659fds-file-publishing-role-704845220642-us-west-2"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

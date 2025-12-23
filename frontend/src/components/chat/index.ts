@@ -1,5 +1,6 @@
 export { ChatPanel } from './ChatPanel'
 export { MessageBubble } from './MessageBubble'
-export { ToolCallCard } from './ToolCallCard'
+export { ToolCallCard, ToolCallSequence } from './ToolCallCard'
 export { SessionList } from './SessionList'
 export { QuickActions, FollowUpSuggestions, getContextualSuggestions } from './QuickActions'
+export { ReferencePanel, LineageContext, DataSourceCard } from './ReferencePanel'
