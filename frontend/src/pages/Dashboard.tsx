@@ -7,6 +7,8 @@ import {
   Clock,
   FileText,
   Download,
+  LogIn,
+  LogOut,
 } from 'lucide-react'
 import { KPICard } from '@/components/dashboard/KPICard'
 import { TrendChart } from '@/components/charts/TrendChart'
@@ -23,15 +25,32 @@ import {
   type DashboardFilters as FilterType,
 } from '@/hooks/useDashboard'
 import { exportToPDF, exportToCSV } from '@/lib/export'
+import { WorkflowWizardButton } from '@/components/WorkflowWizardButton'
+import { useAuthStore } from '@/stores'
 
 export function Dashboard() {
   const navigate = useNavigate()
   const [filters, setFilters] = useState<FilterType>({})
+  const { user, isAuthenticated, login, logout } = useAuthStore()
 
   const { data: kpis, isLoading: kpisLoading } = useDashboardKPIs(filters)
   const { data: qualityTrends } = useQualityTrends(filters)
   const { data: issuesBySeverity } = useIssuesBySeverity(filters)
   const { data: heatmapData } = useIssueHeatmap(filters)
+
+  // Dev helper: Quick login as test user
+  const handleDevLogin = () => {
+    login(
+      {
+        id: 'dev-user-1',
+        email: 'admin@example.com',
+        name: 'Dev Admin',
+        role: 'admin',
+        tenantId: 'tenant-1',
+      },
+      'dev-token-12345'
+    )
+  }
 
   const handleExportPDF = () => {
     exportToPDF('dashboard-report', {
@@ -58,6 +77,18 @@ export function Dashboard() {
           </p>
         </div>
         <div className="flex items-center gap-2">
+          {/* Dev Login Helper - for testing purposes */}
+          {!isAuthenticated ? (
+            <Button variant="default" size="sm" onClick={handleDevLogin}>
+              <LogIn className="h-4 w-4 mr-2" />
+              Dev Login
+            </Button>
+          ) : (
+            <Button variant="ghost" size="sm" onClick={logout}>
+              <LogOut className="h-4 w-4 mr-2" />
+              Logout ({user?.name})
+            </Button>
+          )}
           <Button variant="outline" size="sm" onClick={handleExportCSV}>
             <Download className="h-4 w-4 mr-2" />
             Export CSV
@@ -66,6 +97,16 @@ export function Dashboard() {
             <FileText className="h-4 w-4 mr-2" />
             Export PDF
           </Button>
+        </div>
+      </div>
+
+      {/* Prominent Workflow Wizard Button */}
+      <div className="flex justify-center md:justify-start">
+        <div className="w-full max-w-md md:max-w-none">
+          <WorkflowWizardButton 
+            className="w-full md:w-auto shadow-sm" 
+            size="lg"
+          />
         </div>
       </div>
 
