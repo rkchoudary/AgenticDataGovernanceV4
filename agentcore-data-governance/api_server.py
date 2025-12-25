@@ -25,6 +25,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from repository.in_memory import InMemoryGovernanceRepository
 from agents.regulatory_intelligence_agent import create_agent
+from agents.knowledge_base_agent import create_knowledge_base_agent, KnowledgeBaseResult
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -86,114 +87,6 @@ class RestoreResponse(BaseModel):
 async def health_check():
     """Health check endpoint"""
     return {"status": "healthy", "timestamp": datetime.now().isoformat()}
-
-
-@app.post("/api/chat/message")
-async def chat_message(request: ChatRequest):
-    """
-    Send a message to the Regulatory Intelligence Agent and get a response.
-    
-    This endpoint connects to the real Regulatory Intelligence Agent
-    with all its tools (scan_regulatory_sources, detect_changes, 
-    update_report_catalog, get_report_catalog, approve_catalog, etc.)
-    """
-    try:
-        # Generate session ID if not provided
-        session_id = request.session_id or str(uuid4())
-        
-        # Get or create session with the real agent
-        if session_id not in sessions:
-            # Create a new agent instance connected to the shared repository
-            agent = create_agent(repository)
-            sessions[session_id] = {
-                "messages": [],
-                "agent": agent,
-                "created_at": datetime.now().isoformat()
-            }
-            print(f"[SESSION] Created new session: {session_id}")
-        
-        session = sessions[session_id]
-        
-        # Store user message in session history
-        user_msg = {
-            "id": str(uuid4()),
-            "role": "user",
-            "content": request.message,
-            "timestamp": datetime.now().isoformat()
-        }
-        session["messages"].append(user_msg)
-        
-        print(f"[CHAT] User ({session_id[:8]}...): {request.message}")
-        
-        # Invoke the real Regulatory Intelligence Agent
-        agent = session["agent"]
-        result = agent(request.message)
-        
-        # Extract response message from agent result
-        # Handle different agent response types
-        if hasattr(result, 'message'):
-            # Check if message is a string or structured
-            if isinstance(result.message, str):
-                response_text = result.message
-            elif isinstance(result.message, dict) and 'content' in result.message:
-                # Structured message format
-                if isinstance(result.message['content'], list) and len(result.message['content']) > 0:
-                    response_text = result.message['content'][0].get('text', str(result.message))
-                else:
-                    response_text = str(result.message['content'])
-            else:
-                response_text = str(result.message)
-        elif hasattr(result, 'content'):
-            # Try to access content attribute directly
-            response_text = str(result.content)
-        elif hasattr(result, 'text'):
-            # Try to access text attribute directly
-            response_text = str(result.text)
-        else:
-            # Fallback to string representation
-            response_text = str(result)
-        
-        # Extract tool calls if available
-        tool_calls = None
-        if hasattr(result, 'tool_calls') and result.tool_calls:
-            tool_calls = [
-                {
-                    "id": str(uuid4()),
-                    "name": tc.name if hasattr(tc, 'name') else str(tc),
-                    "parameters": tc.parameters if hasattr(tc, 'parameters') else {},
-                    "status": "completed",
-                    "result": tc.result if hasattr(tc, 'result') else None
-                }
-                for tc in result.tool_calls
-            ]
-        
-        print(f"[CHAT] Agent: {str(response_text)[:200]}...")
-        
-        # Store assistant message in session history
-        assistant_msg = {
-            "id": str(uuid4()),
-            "role": "assistant",
-            "content": response_text,
-            "timestamp": datetime.now().isoformat(),
-            "agentId": request.agent_id or "regulatory"
-        }
-        session["messages"].append(assistant_msg)
-        
-        return {
-            "data": ChatResponse(
-                message=response_text,
-                agentId=request.agent_id or "regulatory",
-                toolCalls=tool_calls,
-                references=None,
-                contextSummary=None
-            )
-        }
-        
-    except Exception as e:
-        print(f"[ERROR] Chat error: {str(e)}")
-        import traceback
-        traceback.print_exc()
-        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.post("/api/chat/restore")
@@ -821,6 +714,291 @@ async def get_audit_entries():
     if entries:
         return {"data": [e.model_dump() for e in entries]}
     return {"data": []}
+
+
+# ============================================================
+# Knowledge Base Agent endpoints
+# ============================================================
+
+# Knowledge base agent instance (shared)
+kb_agent = None
+
+def get_kb_agent():
+    """Get or create the knowledge base agent"""
+    global kb_agent
+    if kb_agent is None:
+        kb_agent = create_knowledge_base_agent()
+    return kb_agent
+
+
+class KnowledgeBaseRequest(BaseModel):
+    """Knowledge base query request"""
+    query: str
+    session_id: Optional[str] = None
+    regulator_filter: Optional[str] = None
+
+
+class KnowledgeBaseResponse(BaseModel):
+    """Knowledge base query response"""
+    answer: str
+    citations: Optional[list] = None
+    documents: Optional[list] = None
+    confidence: Optional[float] = None
+
+
+@app.post("/api/knowledge-base/query")
+async def query_knowledge_base(request: KnowledgeBaseRequest):
+    """
+    Query the regulatory knowledge base.
+    
+    This endpoint allows natural language queries about regulatory requirements,
+    returning answers with citations and relevant documents.
+    """
+    try:
+        agent = get_kb_agent()
+        
+        print(f"[KB] Query: {request.query}")
+        
+        result = agent(request.query)
+        
+        # Handle different result types
+        if isinstance(result, KnowledgeBaseResult):
+            response = KnowledgeBaseResponse(
+                answer=result.text,
+                citations=result.citations,
+                documents=result.documents,
+                confidence=result.confidence,
+            )
+        elif hasattr(result, 'message'):
+            response = KnowledgeBaseResponse(
+                answer=result.message if isinstance(result.message, str) else str(result.message),
+                citations=[],
+                documents=[],
+                confidence=0.9,
+            )
+        else:
+            response = KnowledgeBaseResponse(
+                answer=str(result),
+                citations=[],
+                documents=[],
+                confidence=0.9,
+            )
+        
+        print(f"[KB] Response: {response.answer[:200]}...")
+        
+        return {"data": response}
+        
+    except Exception as e:
+        print(f"[ERROR] Knowledge base query error: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/knowledge-base/regulators")
+async def get_regulators():
+    """Get list of available regulators in the knowledge base"""
+    return {
+        "data": {
+            "us": [
+                {"id": "us_frb", "name": "Federal Reserve Board", "country": "United States"},
+                {"id": "us_occ", "name": "Office of the Comptroller of the Currency", "country": "United States"},
+                {"id": "us_fdic", "name": "Federal Deposit Insurance Corporation", "country": "United States"},
+                {"id": "us_fincen", "name": "Financial Crimes Enforcement Network", "country": "United States"},
+            ],
+            "ca": [
+                {"id": "ca_osfi", "name": "Office of the Superintendent of Financial Institutions", "country": "Canada"},
+                {"id": "ca_fintrac", "name": "Financial Transactions and Reports Analysis Centre", "country": "Canada"},
+            ]
+        }
+    }
+
+
+@app.get("/api/knowledge-base/topics")
+async def get_topics():
+    """Get list of regulatory topics covered in the knowledge base"""
+    return {
+        "data": [
+            {
+                "id": "capital",
+                "name": "Capital Requirements",
+                "description": "Basel III, CCAR, DFAST, CAR guidelines",
+                "subtopics": ["CET1", "Tier 1", "Total Capital", "Stress Testing"]
+            },
+            {
+                "id": "liquidity",
+                "name": "Liquidity Requirements",
+                "description": "LCR, NSFR, LAR guidelines",
+                "subtopics": ["HQLA", "Cash Outflows", "Cash Inflows", "FR 2052a"]
+            },
+            {
+                "id": "aml",
+                "name": "AML/BSA Compliance",
+                "description": "Anti-money laundering and Bank Secrecy Act requirements",
+                "subtopics": ["CTR", "SAR", "LCTR", "EFTR", "KYC"]
+            },
+            {
+                "id": "stress_testing",
+                "name": "Stress Testing",
+                "description": "Capital planning and stress testing requirements",
+                "subtopics": ["CCAR", "DFAST", "ICAAP", "Scenario Analysis"]
+            },
+            {
+                "id": "resolution",
+                "name": "Resolution Planning",
+                "description": "Living wills and resolution planning requirements",
+                "subtopics": ["Living Wills", "IDI Plans", "Recovery Planning"]
+            },
+            {
+                "id": "model_risk",
+                "name": "Model Risk Management",
+                "description": "SR 11-7, E-23 guidelines for model governance",
+                "subtopics": ["Model Validation", "Model Inventory", "Model Documentation"]
+            }
+        ]
+    }
+
+
+@app.post("/api/chat/message")
+async def chat_message(request: ChatRequest):
+    """
+    Send a message to the appropriate agent based on context.
+    
+    This endpoint routes messages to either:
+    - Regulatory Intelligence Agent (default)
+    - Knowledge Base Agent (for regulatory queries)
+    """
+    try:
+        # Generate session ID if not provided
+        session_id = request.session_id or str(uuid4())
+        
+        # Determine which agent to use based on message content
+        message_lower = request.message.lower()
+        use_kb_agent = any(keyword in message_lower for keyword in [
+            'what is', 'what are', 'explain', 'define', 'compare',
+            'difference between', 'requirements for', 'deadline',
+            'threshold', 'cfr', 'regulation', 'guideline',
+            'lcr', 'nsfr', 'ccar', 'dfast', 'ctr', 'sar',
+            'osfi', 'fintrac', 'fincen', 'frb', 'occ', 'fdic',
+            'capital requirement', 'liquidity requirement', 'aml',
+            'basel', 'stress test'
+        ])
+        
+        # Get or create session
+        if session_id not in sessions:
+            # Create agents for the session
+            regulatory_agent = create_agent(repository)
+            kb_agent_instance = create_knowledge_base_agent()
+            
+            sessions[session_id] = {
+                "messages": [],
+                "agent": regulatory_agent,
+                "kb_agent": kb_agent_instance,
+                "created_at": datetime.now().isoformat()
+            }
+            print(f"[SESSION] Created new session with both agents: {session_id}")
+        
+        session = sessions[session_id]
+        
+        # Ensure kb_agent exists in session (for existing sessions)
+        if "kb_agent" not in session:
+            session["kb_agent"] = create_knowledge_base_agent()
+        
+        # Store user message in session history
+        user_msg = {
+            "id": str(uuid4()),
+            "role": "user",
+            "content": request.message,
+            "timestamp": datetime.now().isoformat()
+        }
+        session["messages"].append(user_msg)
+        
+        print(f"[CHAT] User ({session_id[:8]}...): {request.message}")
+        print(f"[CHAT] Using {'Knowledge Base' if use_kb_agent else 'Regulatory Intelligence'} Agent")
+        
+        # Select and invoke the appropriate agent
+        if use_kb_agent:
+            agent = session["kb_agent"]
+            result = agent(request.message)
+            
+            # Handle KnowledgeBaseResult
+            if isinstance(result, KnowledgeBaseResult):
+                response_text = result.text
+                # Include citations in response if available
+                if result.citations:
+                    response_text += "\n\n**References:**\n"
+                    for citation in result.citations:
+                        if isinstance(citation, dict):
+                            doc = citation.get('document', '')
+                            section = citation.get('section', '')
+                            response_text += f"- {doc}: {section}\n"
+            elif hasattr(result, 'message'):
+                response_text = result.message if isinstance(result.message, str) else str(result.message)
+            else:
+                response_text = str(result)
+        else:
+            agent = session["agent"]
+            result = agent(request.message)
+            
+            # Extract response message from agent result
+            if hasattr(result, 'message'):
+                if isinstance(result.message, str):
+                    response_text = result.message
+                elif isinstance(result.message, dict) and 'content' in result.message:
+                    if isinstance(result.message['content'], list) and len(result.message['content']) > 0:
+                        response_text = result.message['content'][0].get('text', str(result.message))
+                    else:
+                        response_text = str(result.message['content'])
+                else:
+                    response_text = str(result.message)
+            elif hasattr(result, 'content'):
+                response_text = str(result.content)
+            elif hasattr(result, 'text'):
+                response_text = str(result.text)
+            else:
+                response_text = str(result)
+        
+        # Extract tool calls if available
+        tool_calls = None
+        if hasattr(result, 'tool_calls') and result.tool_calls:
+            tool_calls = [
+                {
+                    "id": str(uuid4()),
+                    "name": tc.name if hasattr(tc, 'name') else str(tc),
+                    "parameters": tc.parameters if hasattr(tc, 'parameters') else {},
+                    "status": "completed",
+                    "result": tc.result if hasattr(tc, 'result') else None
+                }
+                for tc in result.tool_calls
+            ]
+        
+        print(f"[CHAT] Agent: {str(response_text)[:200]}...")
+        
+        # Store assistant message in session history
+        assistant_msg = {
+            "id": str(uuid4()),
+            "role": "assistant",
+            "content": response_text,
+            "timestamp": datetime.now().isoformat(),
+            "agentId": "knowledge_base" if use_kb_agent else (request.agent_id or "regulatory")
+        }
+        session["messages"].append(assistant_msg)
+        
+        return {
+            "data": ChatResponse(
+                message=response_text,
+                agentId="knowledge_base" if use_kb_agent else (request.agent_id or "regulatory"),
+                toolCalls=tool_calls,
+                references=None,
+                contextSummary=None
+            )
+        }
+        
+    except Exception as e:
+        print(f"[ERROR] Chat error: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 if __name__ == "__main__":

@@ -3,6 +3,7 @@ Agents package for AgentCore Data Governance.
 
 Contains all specialized AI agents:
 - RegulatoryIntelligenceAgent
+- KnowledgeBaseAgent
 - DataRequirementsAgent
 - CDEIdentificationAgent
 - DataQualityRuleAgent
@@ -15,6 +16,11 @@ Contains all specialized AI agents:
 from agents.regulatory_intelligence_agent import (
     create_agent as create_regulatory_intelligence_agent,
     run_local as run_regulatory_intelligence_local,
+)
+from agents.knowledge_base_agent import (
+    create_knowledge_base_agent,
+    run_local as run_knowledge_base_local,
+    KnowledgeBaseResult,
 )
 from agents.data_requirements_agent import (
     create_agent as create_data_requirements_agent,
@@ -48,6 +54,9 @@ from agents.governance_orchestrator import (
 __all__ = [
     "create_regulatory_intelligence_agent",
     "run_regulatory_intelligence_local",
+    "create_knowledge_base_agent",
+    "run_knowledge_base_local",
+    "KnowledgeBaseResult",
     "create_data_requirements_agent",
     "run_data_requirements_local",
     "create_cde_identification_agent",
