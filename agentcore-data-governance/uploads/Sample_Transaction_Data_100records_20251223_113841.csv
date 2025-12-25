@@ -1,0 +1,101 @@
+transaction_id,customer_id,transaction_date,amount,currency,transaction_type,merchant,category,status,payment_method
+TXN00000001,CUST000019,2025-01-12T01:23:26.845906,4269.01,USD,Purchase,"Chavez, Cervantes and Lane",Restaurants,Completed,Cash
+TXN00000002,CUST000076,2025-08-23T21:04:40.228328,4180.3,USD,Withdrawal,"Brown, Conrad and Johnson",Gas,Pending,Cash
+TXN00000003,CUST000096,2025-03-05T17:10:21.315732,2088.18,USD,Transfer,"Ward, Taylor and Wade",Entertainment,Failed,Debit Card
+TXN00000004,CUST000074,2025-09-10T21:25:34.873522,1418.65,USD,Purchase,Myers and Sons,Groceries,Pending,Bank Transfer
+TXN00000005,CUST000073,2025-04-04T08:10:42.515159,4273.45,USD,Purchase,"Salas, Jones and Patel",Entertainment,Failed,Credit Card
+TXN00000006,CUST000085,2025-06-29T04:44:04.646865,4807.68,USD,Deposit,Bennett LLC,Shopping,Completed,Debit Card
+TXN00000007,CUST000051,2025-10-26T16:27:30.326784,2039.35,USD,Withdrawal,Rodriguez-Watson,Entertainment,Failed,Credit Card
+TXN00000008,CUST000041,2025-06-27T17:20:26.517090,2636.68,USD,Purchase,Miller Inc,Groceries,Completed,Credit Card
+TXN00000009,CUST000046,2025-05-16T19:53:42.988535,1592.42,USD,Purchase,"Beard, Robertson and King",Restaurants,Failed,Cash
+TXN00000010,CUST000070,2025-11-18T23:52:31.647022,221.52,USD,Purchase,"Snyder, Farrell and Beck",Gas,Pending,Credit Card
+TXN00000011,CUST000012,2025-02-03T16:16:27.572046,2494.45,USD,Refund,"Williams, Farrell and Mitchell",Gas,Pending,Credit Card
+TXN00000012,CUST000089,2024-12-26T11:28:04.851549,497.72,USD,Deposit,Flores-Phillips,Gas,Failed,Credit Card
+TXN00000013,CUST000034,2025-03-04T21:56:12.991684,846.8,USD,Refund,Cisneros and Sons,Shopping,Completed,Bank Transfer
+TXN00000014,CUST000095,2025-11-25T23:38:37.292913,1631.9,USD,Transfer,Goodwin Inc,Gas,Completed,Cash
+TXN00000015,CUST000041,2025-04-23T21:48:28.465543,1441.0,USD,Purchase,Olsen-Brown,Entertainment,Failed,Cash
+TXN00000016,CUST000072,2025-07-07T20:10:33.785520,4108.52,USD,Deposit,Schmidt-Anderson,Restaurants,Failed,Bank Transfer
+TXN00000017,CUST000024,2025-07-02T15:58:10.507721,3494.23,USD,Refund,"Cohen, Butler and Miller",Entertainment,Completed,Cash
+TXN00000018,CUST000034,2025-02-05T04:57:34.786061,3278.52,USD,Deposit,Parsons Inc,Groceries,Completed,Debit Card
+TXN00000019,CUST000095,2025-01-07T12:42:42.301160,4158.26,USD,Deposit,"Gray, Smith and Crane",Entertainment,Failed,Debit Card
+TXN00000020,CUST000066,2025-10-25T15:40:34.717118,3969.51,USD,Refund,"Diaz, Gallegos and Pearson",Shopping,Pending,Credit Card
+TXN00000021,CUST000014,2025-05-15T23:10:06.520477,1631.76,USD,Deposit,"Walker, Pacheco and Stuart",Gas,Failed,Debit Card
+TXN00000022,CUST000038,2025-04-15T17:25:51.351074,692.28,USD,Withdrawal,Guzman-Hamilton,Groceries,Completed,Cash
+TXN00000023,CUST000017,2025-01-08T06:11:39.181061,834.8,USD,Purchase,Oconnor-Jackson,Shopping,Pending,Cash
+TXN00000024,CUST000049,2025-11-03T07:16:52.871070,2964.06,USD,Deposit,"Miller, Ayala and Parker",Gas,Completed,Credit Card
+TXN00000025,CUST000097,2025-11-15T19:34:53.135848,3040.34,USD,Deposit,Jordan Group,Shopping,Failed,Credit Card
+TXN00000026,CUST000004,2025-03-16T05:12:25.819355,2012.88,USD,Purchase,Brown Ltd,Restaurants,Completed,Bank Transfer
+TXN00000027,CUST000099,2025-04-27T10:31:17.957277,1323.37,USD,Refund,Long-Smith,Shopping,Failed,Debit Card
+TXN00000028,CUST000050,2025-12-05T16:18:44.554055,3649.68,USD,Withdrawal,Richardson Group,Gas,Completed,Credit Card
+TXN00000029,CUST000078,2025-05-03T17:58:21.189485,1606.36,USD,Purchase,Rodriguez-Collins,Entertainment,Pending,Debit Card
+TXN00000030,CUST000054,2025-08-22T00:37:16.629210,2619.6,USD,Withdrawal,Romero-Stewart,Shopping,Failed,Credit Card
+TXN00000031,CUST000030,2025-04-14T19:06:41.399792,732.71,USD,Deposit,"Evans, Nguyen and Leonard",Entertainment,Pending,Debit Card
+TXN00000032,CUST000065,2025-03-05T02:20:51.363432,4585.53,USD,Purchase,Thomas PLC,Groceries,Completed,Debit Card
+TXN00000033,CUST000052,2025-02-19T04:01:32.917678,2698.58,USD,Purchase,"Vasquez, Molina and Brown",Restaurants,Completed,Cash
+TXN00000034,CUST000096,2025-06-13T03:56:00.269415,1612.58,USD,Withdrawal,Carter-Cummings,Groceries,Pending,Cash
+TXN00000035,CUST000059,2025-07-30T01:48:46.362987,274.27,USD,Transfer,Davis-Short,Restaurants,Failed,Debit Card
+TXN00000036,CUST000050,2025-01-18T08:30:51.199397,150.28,USD,Withdrawal,Fernandez PLC,Restaurants,Completed,Debit Card
+TXN00000037,CUST000017,2025-11-24T17:33:18.489378,713.75,USD,Withdrawal,Molina-Mitchell,Groceries,Pending,Bank Transfer
+TXN00000038,CUST000003,2024-12-31T15:49:18.449783,1093.64,USD,Refund,Gregory Ltd,Groceries,Completed,Credit Card
+TXN00000039,CUST000029,2024-12-28T14:11:10.600296,1541.42,USD,Withdrawal,Sweeney-Bauer,Gas,Failed,Credit Card
+TXN00000040,CUST000011,2025-10-22T12:21:34.731747,1387.58,USD,Withdrawal,Deleon-Owen,Gas,Pending,Credit Card
+TXN00000041,CUST000050,2025-01-30T00:46:02.552193,3683.5,USD,Refund,Thompson LLC,Entertainment,Failed,Cash
+TXN00000042,CUST000001,2025-03-30T17:54:15.458759,2493.84,USD,Purchase,Wright-Brown,Gas,Failed,Debit Card
+TXN00000043,CUST000057,2025-04-15T19:41:37.827374,4795.38,USD,Refund,Anderson Ltd,Groceries,Failed,Debit Card
+TXN00000044,CUST000070,2025-01-31T23:25:35.409605,1495.58,USD,Deposit,Ellis PLC,Shopping,Pending,Credit Card
+TXN00000045,CUST000056,2025-06-01T21:47:30.354119,3627.51,USD,Withdrawal,"Sullivan, Cunningham and Andrews",Groceries,Completed,Debit Card
+TXN00000046,CUST000083,2025-06-12T18:03:22.606014,2008.29,USD,Deposit,"Kelley, Macdonald and James",Entertainment,Failed,Cash
+TXN00000047,CUST000041,2025-01-01T23:40:29.747451,619.46,USD,Deposit,Smith-Delgado,Restaurants,Pending,Debit Card
+TXN00000048,CUST000054,2025-01-22T17:21:18.483370,1445.75,USD,Deposit,Wright Ltd,Entertainment,Pending,Cash
+TXN00000049,CUST000011,2025-12-07T00:15:31.493791,3647.74,USD,Deposit,"Bauer, Williams and Preston",Gas,Failed,Credit Card
+TXN00000050,CUST000027,2025-12-17T06:09:06.124045,1961.22,USD,Transfer,Larsen-Mcfarland,Restaurants,Pending,Cash
+TXN00000051,CUST000039,2025-05-22T10:53:37.230082,3888.24,USD,Purchase,Hooper LLC,Restaurants,Completed,Debit Card
+TXN00000052,CUST000023,2025-07-04T01:53:55.547219,4708.31,USD,Transfer,Spencer-Sherman,Restaurants,Failed,Cash
+TXN00000053,CUST000011,2025-11-12T18:55:52.724201,3009.85,USD,Refund,Wright Group,Groceries,Failed,Bank Transfer
+TXN00000054,CUST000023,2025-09-22T00:32:47.260627,2254.0,USD,Refund,Nelson-Fisher,Restaurants,Completed,Credit Card
+TXN00000055,CUST000056,2025-03-09T21:00:55.360013,3907.28,USD,Purchase,"Haynes, Burton and Smith",Restaurants,Failed,Cash
+TXN00000056,CUST000057,2025-08-15T18:55:26.111022,2758.7,USD,Transfer,"Lindsey, Murray and Hall",Gas,Pending,Bank Transfer
+TXN00000057,CUST000075,2025-02-08T11:10:49.615209,4717.03,USD,Deposit,Nicholson-Hall,Restaurants,Failed,Debit Card
+TXN00000058,CUST000028,2025-05-04T14:47:55.104676,3260.03,USD,Purchase,Harris PLC,Gas,Pending,Bank Transfer
+TXN00000059,CUST000028,2025-02-19T08:19:37.861379,515.04,USD,Deposit,"Peters, Nelson and Diaz",Gas,Failed,Bank Transfer
+TXN00000060,CUST000006,2025-04-05T00:58:00.637208,391.44,USD,Refund,Allen Inc,Groceries,Completed,Cash
+TXN00000061,CUST000020,2024-12-30T12:02:36.834408,798.63,USD,Transfer,"Watson, Peters and Griffith",Entertainment,Failed,Cash
+TXN00000062,CUST000004,2025-07-16T19:14:12.437795,2425.34,USD,Purchase,Romero Group,Groceries,Failed,Credit Card
+TXN00000063,CUST000081,2025-07-26T07:07:11.655552,165.9,USD,Withdrawal,Coleman-Villarreal,Groceries,Failed,Debit Card
+TXN00000064,CUST000057,2025-05-09T22:17:49.385886,4085.24,USD,Deposit,Moore Inc,Gas,Pending,Cash
+TXN00000065,CUST000093,2025-02-05T01:26:10.291895,886.81,USD,Purchase,West-Miller,Shopping,Pending,Credit Card
+TXN00000066,CUST000027,2025-10-08T05:36:24.083222,2566.98,USD,Withdrawal,"Harris, Ware and Nelson",Gas,Failed,Cash
+TXN00000067,CUST000007,2025-06-18T21:22:24.025737,2453.4,USD,Withdrawal,Lee Inc,Entertainment,Failed,Debit Card
+TXN00000068,CUST000044,2025-09-05T19:03:46.998276,4484.97,USD,Refund,"Hoffman, Gonzalez and Larson",Groceries,Completed,Cash
+TXN00000069,CUST000092,2025-09-02T22:46:46.861852,843.36,USD,Refund,Ho-Wood,Gas,Completed,Bank Transfer
+TXN00000070,CUST000042,2025-07-13T13:55:35.580761,375.8,USD,Withdrawal,Benitez-Hughes,Gas,Failed,Debit Card
+TXN00000071,CUST000028,2025-04-17T00:22:05.535587,2231.29,USD,Purchase,"Schneider, Alvarez and Clark",Restaurants,Failed,Credit Card
+TXN00000072,CUST000017,2025-04-17T12:29:40.775165,3951.89,USD,Deposit,"Valentine, Pena and Horn",Gas,Failed,Credit Card
+TXN00000073,CUST000017,2025-10-12T11:49:09.232175,4950.83,USD,Withdrawal,Taylor-Rodriguez,Entertainment,Completed,Credit Card
+TXN00000074,CUST000073,2025-10-28T06:22:09.216544,201.95,USD,Deposit,Velez-Adams,Entertainment,Pending,Credit Card
+TXN00000075,CUST000042,2025-12-19T04:34:31.037922,2361.04,USD,Withdrawal,Taylor Ltd,Restaurants,Completed,Cash
+TXN00000076,CUST000096,2025-06-23T17:03:19.503653,2881.39,USD,Withdrawal,Solis-Brewer,Entertainment,Pending,Bank Transfer
+TXN00000077,CUST000019,2025-06-12T00:36:27.323503,3983.15,USD,Withdrawal,"Perry, Hughes and Davidson",Groceries,Completed,Debit Card
+TXN00000078,CUST000062,2025-12-12T06:52:44.223790,3563.49,USD,Deposit,Holder Ltd,Groceries,Pending,Debit Card
+TXN00000079,CUST000095,2025-03-08T07:07:12.097667,1875.46,USD,Refund,Schmidt-Gray,Groceries,Failed,Cash
+TXN00000080,CUST000061,2025-02-12T06:07:59.246561,228.94,USD,Withdrawal,Graham-Wiggins,Shopping,Pending,Bank Transfer
+TXN00000081,CUST000073,2025-01-08T12:54:12.791178,1099.09,USD,Purchase,"Jones, Patton and Munoz",Gas,Completed,Bank Transfer
+TXN00000082,CUST000012,2025-07-18T23:30:47.856162,3629.73,USD,Purchase,Rodriguez-Cole,Gas,Completed,Credit Card
+TXN00000083,CUST000016,2024-12-30T05:08:23.846108,2212.95,USD,Deposit,"Nguyen, Thompson and Rodriguez",Restaurants,Completed,Credit Card
+TXN00000084,CUST000036,2025-01-05T20:47:07.375597,1821.62,USD,Refund,Garcia Ltd,Entertainment,Pending,Cash
+TXN00000085,CUST000096,2025-02-18T15:16:43.037204,1022.1,USD,Refund,"Roberts, Knight and Erickson",Gas,Completed,Debit Card
+TXN00000086,CUST000096,2025-11-09T19:57:35.492822,3218.45,USD,Withdrawal,Brown-Daugherty,Groceries,Pending,Debit Card
+TXN00000087,CUST000096,2025-09-10T03:34:09.367873,167.96,USD,Deposit,Butler-Ramirez,Restaurants,Failed,Credit Card
+TXN00000088,CUST000031,2025-09-15T19:17:26.994012,4840.65,USD,Withdrawal,"Lamb, Frank and Perez",Gas,Pending,Credit Card
+TXN00000089,CUST000042,2025-06-23T00:27:20.574318,243.85,USD,Refund,Flynn-Smith,Restaurants,Pending,Bank Transfer
+TXN00000090,CUST000064,2025-11-07T06:33:44.639156,4632.55,USD,Refund,West Inc,Groceries,Failed,Cash
+TXN00000091,CUST000082,2025-03-19T08:14:41.499483,407.38,USD,Transfer,"Cox, Robinson and Rodriguez",Gas,Pending,Bank Transfer
+TXN00000092,CUST000080,2025-01-05T14:21:56.816074,1955.53,USD,Purchase,Noble-Petersen,Gas,Pending,Debit Card
+TXN00000093,CUST000093,2025-04-06T19:02:35.415115,2521.42,USD,Withdrawal,George LLC,Restaurants,Failed,Cash
+TXN00000094,CUST000051,2025-05-19T04:48:30.412095,1824.67,USD,Transfer,Boyd-York,Restaurants,Pending,Debit Card
+TXN00000095,CUST000048,2025-05-31T01:36:10.171535,1420.79,USD,Transfer,"Morris, Johnson and Rice",Groceries,Failed,Debit Card
+TXN00000096,CUST000021,2025-07-10T11:41:12.227672,1827.04,USD,Transfer,Douglas-Hoffman,Shopping,Completed,Debit Card
+TXN00000097,CUST000065,2025-02-02T10:16:13.423838,3677.74,USD,Transfer,"Burke, Moore and Brown",Groceries,Completed,Debit Card
+TXN00000098,CUST000057,2025-09-20T02:10:21.167177,2815.14,USD,Refund,Steele-Jones,Groceries,Failed,Credit Card
+TXN00000099,CUST000040,2025-10-24T08:24:37.840540,3571.59,USD,Withdrawal,Scott LLC,Groceries,Failed,Bank Transfer
+TXN00000100,CUST000039,2025-04-11T13:22:04.450057,55.41,USD,Transfer,Matthews-White,Groceries,Completed,Bank Transfer

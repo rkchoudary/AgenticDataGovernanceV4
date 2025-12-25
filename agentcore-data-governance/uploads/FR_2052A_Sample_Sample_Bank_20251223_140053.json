@@ -1,0 +1,112 @@
+{
+  "report_info": {
+    "report_type": "FR 2052A",
+    "report_name": "Liquidity Coverage Ratio",
+    "bank_name": "Sample Bank",
+    "reporting_date": "2025-11-30",
+    "generated_at": "2025-12-23T14:00:53.999911",
+    "currency": "USD",
+    "units": "Thousands"
+  },
+  "schedule_a_hqla": {
+    "description": "High-Quality Liquid Assets (HQLA)",
+    "level_1_assets": {
+      "cash": 50000,
+      "central_bank_reserves": 75000,
+      "government_securities": 125000,
+      "total_level_1": 250000
+    },
+    "level_2a_assets": {
+      "government_sponsored_securities": 30000,
+      "corporate_debt_securities": 25000,
+      "total_level_2a": 55000
+    },
+    "level_2b_assets": {
+      "corporate_equity_securities": 15000,
+      "reit_securities": 10000,
+      "total_level_2b": 25000
+    },
+    "total_hqla": 330000
+  },
+  "schedule_b_cash_outflows": {
+    "description": "Cash Outflow Amounts",
+    "retail_deposits": {
+      "stable_deposits": 800000,
+      "less_stable_deposits": 400000,
+      "outflow_rate_stable": 0.03,
+      "outflow_rate_less_stable": 0.1,
+      "total_retail_outflows": 64000
+    },
+    "wholesale_funding": {
+      "operational_deposits": 200000,
+      "non_operational_deposits": 150000,
+      "unsecured_wholesale_funding": 100000,
+      "total_wholesale_outflows": 350000
+    },
+    "secured_funding": {
+      "asset_backed_securities": 50000,
+      "other_secured_funding": 25000,
+      "total_secured_outflows": 75000
+    },
+    "additional_requirements": {
+      "derivatives_outflows": 30000,
+      "credit_facilities": 40000,
+      "other_contingent_funding": 20000,
+      "total_additional": 90000
+    },
+    "total_cash_outflows": 579000
+  },
+  "schedule_c_cash_inflows": {
+    "description": "Cash Inflow Amounts",
+    "secured_lending": {
+      "reverse_repos": 40000,
+      "securities_lending": 15000,
+      "total_secured_lending": 55000
+    },
+    "unsecured_lending": {
+      "committed_facilities": 25000,
+      "other_lending": 20000,
+      "total_unsecured_lending": 45000
+    },
+    "other_inflows": {
+      "derivatives_inflows": 10000,
+      "other_contractual_inflows": 15000,
+      "total_other": 25000
+    },
+    "total_cash_inflows": 125000,
+    "net_cash_inflows_cap": 144750
+  },
+  "schedule_d_supplemental": {
+    "description": "Supplemental Information",
+    "average_hqla": 335000,
+    "average_net_outflows": 454250,
+    "peak_funding_requirements": 600000,
+    "concentration_limits": {
+      "single_counterparty_limit": 50000,
+      "sector_concentration_limit": 100000
+    }
+  },
+  "lcr_calculation": {
+    "description": "Liquidity Coverage Ratio Calculation",
+    "total_hqla": 330000,
+    "total_net_cash_outflows": 454250,
+    "lcr_ratio": 0.7267,
+    "lcr_percentage": 72.67,
+    "minimum_required": 100.0,
+    "surplus_deficit": -27.33,
+    "compliance_status": "Below Minimum"
+  },
+  "validation_rules": [
+    "Total HQLA must equal sum of Level 1, 2A, and 2B assets",
+    "Level 2A assets cannot exceed 40% of total HQLA",
+    "Level 2B assets cannot exceed 15% of total HQLA",
+    "Cash inflows are capped at 25% of total cash outflows",
+    "LCR must be at least 100% for compliance"
+  ],
+  "notes": [
+    "This is a sample template for training and testing purposes",
+    "Actual FR 2052A submissions require real bank data and regulatory approval",
+    "Consult with your liquidity risk management team for actual reporting",
+    "All amounts are in thousands of USD unless otherwise specified"
+  ]
+}

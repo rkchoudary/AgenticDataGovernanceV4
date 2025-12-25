@@ -1,0 +1,42 @@
+{
+  "template_info": {
+    "template_type": "Regulatory Compliance Checklist",
+    "organization": "XYZ Corporation",
+    "version": "1.0",
+    "generated_at": "2025-12-23T12:26:45.435168"
+  },
+  "compliance_areas": {
+    "data_privacy": {
+      "regulations": [
+        "GDPR",
+        "CCPA",
+        "PIPEDA"
+      ],
+      "checklist_items": [
+        {
+          "item_id": "DP001",
+          "requirement": "Data Processing Legal Basis",
+          "description": "Ensure legal basis exists for all personal data processing",
+          "status": "Pending",
+          "evidence_required": "Privacy policy, consent records, legitimate interest assessments"
+        }
+      ]
+    },
+    "financial_reporting": {
+      "regulations": [
+        "SOX",
+        "Basel III",
+        "CCAR"
+      ],
+      "checklist_items": [
+        {
+          "item_id": "FR001",
+          "requirement": "Data Lineage Documentation",
+          "description": "Document data lineage for all financial reports",
+          "status": "Pending",
+          "evidence_required": "Lineage diagrams, data flow documentation"
+        }
+      ]
+    }
+  }
+}

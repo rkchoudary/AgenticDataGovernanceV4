@@ -1,0 +1,12 @@
+{
+  "report_type": "conversation_summary",
+  "generated_at": "2025-12-23T09:23:02.635157",
+  "session_id": "test-session-123",
+  "conversation_summary": "Conversation with 0 messages",
+  "files_analyzed": 1,
+  "key_findings": [
+    "Analysis of test-upload.txt: I apologize, but I don't have access to view or analyze the uploaded file \"test-upload.txt\" directly. As a Regulatory Intelligence Agent, I don't have file reading capabilities in my current tool set...."
+  ],
+  "recommendations": [],
+  "next_steps": []
+}

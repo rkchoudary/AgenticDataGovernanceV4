@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useState, useRef, useEffect, useMemo } from 'react'
-import { Send, Bot, Loader2, MessageSquare, Plus, RefreshCw, AlertCircle, Maximize2, Minimize2, X } from 'lucide-react'
+import { Send, Bot, Loader2, MessageSquare, Plus, RefreshCw, AlertCircle, Maximize2, Minimize2, X, Upload, Download } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { useChatStore, Reference } from '@/stores/chatStore'
@@ -9,6 +9,8 @@ import { MessageBubble } from './MessageBubble'
 import { SessionList } from './SessionList'
 import { QuickActions, FollowUpSuggestions, getContextualSuggestions } from './QuickActions'
 import { ReferencePanel } from './ReferencePanel'
+import { FileUpload, UploadedFile } from './FileUpload'
+import { ReportDownload, GeneratedReport } from './ReportDownload'
 import { cn } from '@/lib/utils'
 
 /**
@@ -122,6 +124,8 @@ export function ChatPanel({
   const [restorationError, setRestorationError] = useState<string | null>(null)
   const [selectedReferences, setSelectedReferences] = useState<Reference[]>([])
   const [isExpanded, setIsExpanded] = useState(false)
+  const [showUploadPanel, setShowUploadPanel] = useState(false)
+  const [showDownloadPanel, setShowDownloadPanel] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLTextAreaElement>(null)
   
@@ -285,6 +289,22 @@ export function ChatPanel({
     })
   }
 
+  const handleFileUploaded = (file: UploadedFile) => {
+    // Optionally send a message about the uploaded file
+    const fileMessage = `I've uploaded "${file.filename}" for analysis. Please review the document and provide insights on its governance implications.`
+    setInput(fileMessage)
+  }
+
+  const handleFileAnalyzed = (file: UploadedFile) => {
+    // File analysis completed - could trigger a notification or update UI
+    console.log('File analyzed:', file.filename)
+  }
+
+  const handleReportGenerated = (report: GeneratedReport) => {
+    // Report generated - could show a success message
+    console.log('Report generated:', report.filename)
+  }
+
   return (
     <div className={cn(
       'flex flex-col h-full bg-background border-l shadow-2xl transition-all duration-300',
@@ -316,6 +336,30 @@ export function ChatPanel({
             >
               <Plus className="h-4 w-4 mr-2" />
               New Chat
+            </Button>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => setShowUploadPanel(!showUploadPanel)}
+              className={cn(
+                "text-muted-foreground hover:text-foreground",
+                showUploadPanel && "bg-primary/10 text-primary"
+              )}
+            >
+              <Upload className="h-4 w-4 mr-2" />
+              Upload
+            </Button>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => setShowDownloadPanel(!showDownloadPanel)}
+              className={cn(
+                "text-muted-foreground hover:text-foreground",
+                showDownloadPanel && "bg-primary/10 text-primary"
+              )}
+            >
+              <Download className="h-4 w-4 mr-2" />
+              Export
             </Button>
             <Button 
               variant="ghost" 
@@ -396,6 +440,28 @@ export function ChatPanel({
                     </p>
                   </div>
                 </div>
+              </div>
+            )}
+
+            {/* Upload Panel */}
+            {showUploadPanel && effectiveSessionId && (
+              <div className="px-6 py-4 border-b bg-muted/10">
+                <FileUpload
+                  sessionId={effectiveSessionId}
+                  onFileUploaded={handleFileUploaded}
+                  onFileAnalyzed={handleFileAnalyzed}
+                  maxFiles={5}
+                />
+              </div>
+            )}
+
+            {/* Download Panel */}
+            {showDownloadPanel && effectiveSessionId && (
+              <div className="px-6 py-4 border-b bg-muted/10">
+                <ReportDownload
+                  sessionId={effectiveSessionId}
+                  onReportGenerated={handleReportGenerated}
+                />
               </div>
             )}
 

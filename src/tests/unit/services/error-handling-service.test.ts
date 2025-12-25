@@ -70,20 +70,16 @@ describe('Error Handling Service', () => {
     it('should throw after max attempts exhausted', async () => {
       const operation = vi.fn().mockRejectedValue(new Error('timeout'));
       
-      const resultPromise = withRetry(operation, { ...DEFAULT_RETRY_CONFIG, maxAttempts: 3 });
-      await vi.runAllTimersAsync();
-      
-      await expect(resultPromise).rejects.toThrow('timeout');
+      await expect(withRetry(operation, { ...DEFAULT_RETRY_CONFIG, maxAttempts: 3 }))
+        .rejects.toThrow('timeout');
       expect(operation).toHaveBeenCalledTimes(3);
     });
 
     it('should not retry non-retryable errors', async () => {
       const operation = vi.fn().mockRejectedValue(new AuthorizationError('Access denied', 'admin:write'));
       
-      const resultPromise = withRetry(operation, DEFAULT_RETRY_CONFIG);
-      await vi.runAllTimersAsync();
-      
-      await expect(resultPromise).rejects.toThrow('Access denied');
+      await expect(withRetry(operation, DEFAULT_RETRY_CONFIG))
+        .rejects.toThrow('Access denied');
       expect(operation).toHaveBeenCalledTimes(1);
     });
 

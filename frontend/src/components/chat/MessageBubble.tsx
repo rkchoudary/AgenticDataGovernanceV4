@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Bot, User, Copy, Check, ExternalLink, Play } from 'lucide-react'
+import { Bot, User, Copy, Check, ExternalLink, Play, Download } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ChatMessage, Reference } from '@/stores/chatStore'
 import { ToolCallSequence } from './ToolCallCard'
@@ -165,6 +165,7 @@ type ContentPartType =
   | { type: 'table'; headers: string[]; rows: string[][] }
   | { type: 'action'; label: string; action: string }
   | { type: 'link'; text: string; url: string }
+  | { type: 'download-link'; text: string; url: string }
 
 function parseContent(content: string): ContentPartType[] {
   const parts: ContentPartType[] = []
@@ -183,7 +184,34 @@ function parseContent(content: string): ContentPartType[] {
       continue
     }
 
-    // Check for inline code
+    // Check for download links in backticks format FIRST (before inline code)
+    const backtickDownloadMatch = remaining.match(/`(\/api\/download\/[^`]+)`/)
+    if (backtickDownloadMatch && backtickDownloadMatch.index !== undefined) {
+      const url = backtickDownloadMatch[1]
+      const filename = url.split('/').pop() || 'Download File'
+      
+      // Split the text before and after the backtick URL
+      const beforeUrl = remaining.slice(0, backtickDownloadMatch.index)
+      const afterUrl = remaining.slice(backtickDownloadMatch.index + backtickDownloadMatch[0].length)
+      
+      // Add text before URL if any
+      if (beforeUrl) {
+        parts.push({ type: 'text', content: beforeUrl })
+      }
+      
+      // Add download link
+      parts.push({ 
+        type: 'download-link', 
+        text: filename, 
+        url: url 
+      })
+      
+      // Continue with remaining text
+      remaining = afterUrl
+      continue
+    }
+
+    // Check for inline code (after backtick download check)
     const inlineCodeMatch = remaining.match(/^`([^`]+)`/)
     if (inlineCodeMatch) {
       parts.push({ type: 'inline-code', content: inlineCodeMatch[1] })
@@ -199,11 +227,99 @@ function parseContent(content: string): ContentPartType[] {
       continue
     }
 
-    // Check for links [text](url)
-    const linkMatch = remaining.match(/^\[([^\]]+)\]\(([^)]+)\)/)
-    if (linkMatch && !linkMatch[2].startsWith('action:')) {
+    // Check for download links - enhanced to detect /api/download/ URLs (anywhere in text)
+    const downloadLinkMatch = remaining.match(/\[([^\]]+)\]\((\/api\/download\/[^)]+)\)/)
+    if (downloadLinkMatch && downloadLinkMatch.index !== undefined) {
+      const beforeLink = remaining.slice(0, downloadLinkMatch.index)
+      const afterLink = remaining.slice(downloadLinkMatch.index + downloadLinkMatch[0].length)
+      
+      // Add text before link if any
+      if (beforeLink) {
+        parts.push({ type: 'text', content: beforeLink })
+      }
+      
+      // Add download link
+      parts.push({ 
+        type: 'download-link', 
+        text: downloadLinkMatch[1], 
+        url: downloadLinkMatch[2] 
+      })
+      
+      // Continue with remaining text
+      remaining = afterLink
+      continue
+    }
+
+    // Check for download links in backticks format: `download_url`
+    const backtickDownloadMatch2 = remaining.match(/`(\/api\/download\/[^`]+)`/)
+    if (backtickDownloadMatch2 && backtickDownloadMatch2.index !== undefined) {
+      const url = backtickDownloadMatch2[1]
+      const filename = url.split('/').pop() || 'Download File'
+      
+      // Split the text before and after the backtick URL
+      const beforeUrl = remaining.slice(0, backtickDownloadMatch2.index)
+      const afterUrl = remaining.slice(backtickDownloadMatch2.index + backtickDownloadMatch2[0].length)
+      
+      // Add text before URL if any
+      if (beforeUrl) {
+        parts.push({ type: 'text', content: beforeUrl })
+      }
+      
+      // Add download link
+      parts.push({ 
+        type: 'download-link', 
+        text: filename, 
+        url: url 
+      })
+      
+      // Continue with remaining text
+      remaining = afterUrl
+      continue
+    }
+
+    // Check for regular links [text](url) (anywhere in text)
+    const linkMatch = remaining.match(/\[([^\]]+)\]\(([^)]+)\)/)
+    if (linkMatch && !linkMatch[2].startsWith('action:') && !linkMatch[2].includes('/api/download/') && linkMatch.index !== undefined) {
+      const beforeLink = remaining.slice(0, linkMatch.index)
+      const afterLink = remaining.slice(linkMatch.index + linkMatch[0].length)
+      
+      // Add text before link if any
+      if (beforeLink) {
+        parts.push({ type: 'text', content: beforeLink })
+      }
+      
+      // Add regular link
       parts.push({ type: 'link', text: linkMatch[1], url: linkMatch[2] })
-      remaining = remaining.slice(linkMatch[0].length)
+      
+      // Continue with remaining text
+      remaining = afterLink
+      continue
+    }
+
+    // Check for bare download URLs in text (only match URLs that start with /api/download/)
+    const bareDownloadMatch = remaining.match(/(?:^|\s)(\/api\/download\/[^\s\n,]+)/)
+    if (bareDownloadMatch && bareDownloadMatch.index !== undefined) {
+      const url = bareDownloadMatch[1]
+      const filename = url.split('/').pop() || 'Download File'
+      
+      // Split the text before and after the URL
+      const beforeUrl = remaining.slice(0, bareDownloadMatch.index + (bareDownloadMatch[0].length - bareDownloadMatch[1].length))
+      const afterUrl = remaining.slice(bareDownloadMatch.index + bareDownloadMatch[0].length)
+      
+      // Add text before URL if any
+      if (beforeUrl) {
+        parts.push({ type: 'text', content: beforeUrl })
+      }
+      
+      // Add download link
+      parts.push({ 
+        type: 'download-link', 
+        text: filename, 
+        url: url 
+      })
+      
+      // Continue with remaining text
+      remaining = afterUrl
       continue
     }
 
@@ -224,7 +340,7 @@ function parseContent(content: string): ContentPartType[] {
     }
 
     // Regular text
-    const nextSpecial = remaining.search(/```|`|\[|^\|/m)
+    const nextSpecial = remaining.search(/```|`|\[|^\||\/api\/download\//m)
     if (nextSpecial === -1 || nextSpecial === 0) {
       const textEnd = nextSpecial === 0 ? 1 : remaining.length
       parts.push({ type: 'text', content: remaining.slice(0, textEnd) })
@@ -256,6 +372,85 @@ function ContentPart({ part }: { part: ContentPartType }) {
     await navigator.clipboard.writeText(text)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
+  }
+
+  const handleDownload = async (url: string, filename: string) => {
+    try {
+      const response = await fetch(url)
+      if (!response.ok) throw new Error('Download failed')
+      
+      const blob = await response.blob()
+      const downloadUrl = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = downloadUrl
+      a.download = filename
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      URL.revokeObjectURL(downloadUrl)
+    } catch (error) {
+      console.error('Download error:', error)
+      alert('Download failed. Please try again.')
+    }
+  }
+
+  const getFileIcon = (filename: string) => {
+    const ext = filename.split('.').pop()?.toLowerCase()
+    switch (ext) {
+      case 'json': return '🔧'
+      case 'csv': return '📊'
+      case 'pdf': return '📄'
+      case 'txt': return '📝'
+      case 'xlsx': case 'xls': return '📈'
+      default: return '📁'
+    }
+  }
+
+  const getHumanReadableFilename = (filename: string) => {
+    // Convert technical filename to human-readable format
+    const nameWithoutExt = filename.replace(/\.[^/.]+$/, '')
+    
+    // Handle common patterns
+    if (nameWithoutExt.includes('FR_2052A_Sample_')) {
+      const bankName = nameWithoutExt.replace('FR_2052A_Sample_', '').replace(/_\d{8}_\d{6}$/, '').replace(/_/g, ' ')
+      return `FR 2052A Template - ${bankName}`
+    }
+    
+    if (nameWithoutExt.includes('Data_Quality_Rules_Template_')) {
+      const orgName = nameWithoutExt.replace('Data_Quality_Rules_Template_', '').replace(/_\d{8}_\d{6}$/, '').replace(/_/g, ' ')
+      return `Data Quality Rules - ${orgName}`
+    }
+    
+    if (nameWithoutExt.includes('Compliance_Checklist_')) {
+      const orgName = nameWithoutExt.replace('Compliance_Checklist_', '').replace(/_\d{8}_\d{6}$/, '').replace(/_/g, ' ')
+      return `Compliance Checklist - ${orgName}`
+    }
+    
+    if (nameWithoutExt.includes('Data_Catalog_Template_')) {
+      const orgName = nameWithoutExt.replace('Data_Catalog_Template_', '').replace(/_\d{8}_\d{6}$/, '').replace(/_/g, ' ')
+      return `Data Catalog Template - ${orgName}`
+    }
+    
+    if (nameWithoutExt.includes('Sample_Customer_Data_')) {
+      const recordCount = nameWithoutExt.match(/(\d+)records/)?.[1] || ''
+      return `Customer Data Sample${recordCount ? ` (${recordCount} records)` : ''}`
+    }
+    
+    if (nameWithoutExt.includes('Sample_Transaction_Data_')) {
+      const recordCount = nameWithoutExt.match(/(\d+)records/)?.[1] || ''
+      return `Transaction Data Sample${recordCount ? ` (${recordCount} records)` : ''}`
+    }
+    
+    if (nameWithoutExt.includes('Sample_Product_Data_')) {
+      const recordCount = nameWithoutExt.match(/(\d+)records/)?.[1] || ''
+      return `Product Data Sample${recordCount ? ` (${recordCount} records)` : ''}`
+    }
+    
+    // Fallback: clean up underscores and timestamps
+    return nameWithoutExt
+      .replace(/_\d{8}_\d{6}$/, '') // Remove timestamp
+      .replace(/_/g, ' ') // Replace underscores with spaces
+      .replace(/\b\w/g, l => l.toUpperCase()) // Title case
   }
 
   switch (part.type) {
@@ -336,6 +531,21 @@ function ContentPart({ part }: { part: ContentPartType }) {
         >
           <Play className="h-3 w-3 mr-2" />
           {part.label}
+        </Button>
+      )
+
+    case 'download-link':
+      const humanReadableName = getHumanReadableFilename(part.text)
+      return (
+        <Button
+          variant="outline"
+          size="sm"
+          className="my-2 mx-1 rounded-lg border-green-500/20 bg-green-50 hover:bg-green-100 text-green-700 hover:text-green-800 dark:bg-green-950 dark:hover:bg-green-900 dark:text-green-300"
+          onClick={() => handleDownload(part.url, part.text)}
+        >
+          <span className="mr-2">{getFileIcon(part.text)}</span>
+          <Download className="h-3 w-3 mr-2" />
+          {humanReadableName}
         </Button>
       )
 

@@ -1,0 +1,78 @@
+{
+  "template_info": {
+    "template_type": "Data Quality Rules Framework",
+    "organization": "ABC Corporation",
+    "version": "1.0",
+    "generated_at": "2025-12-23T11:59:53.206880",
+    "description": "Comprehensive data quality rules template for governance"
+  },
+  "data_quality_dimensions": {
+    "completeness": {
+      "description": "Measures the degree to which data is complete",
+      "rules": [
+        {
+          "rule_id": "DQ001",
+          "rule_name": "Mandatory Field Completeness",
+          "description": "All mandatory fields must be populated",
+          "sql_expression": "COUNT(*) WHERE mandatory_field IS NULL = 0",
+          "threshold": "100%",
+          "severity": "Critical"
+        }
+      ]
+    },
+    "accuracy": {
+      "description": "Measures how closely data values match the true values",
+      "rules": [
+        {
+          "rule_id": "DQ002",
+          "rule_name": "Email Format Validation",
+          "description": "Email addresses must follow valid format",
+          "sql_expression": "email_field REGEXP '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$'",
+          "threshold": "95%",
+          "severity": "High"
+        }
+      ]
+    },
+    "consistency": {
+      "description": "Measures uniformity of data across systems",
+      "rules": [
+        {
+          "rule_id": "DQ003",
+          "rule_name": "Cross-System Consistency",
+          "description": "Customer data must be consistent across systems",
+          "sql_expression": "system1.customer_id = system2.customer_id",
+          "threshold": "98%",
+          "severity": "High"
+        }
+      ]
+    },
+    "timeliness": {
+      "description": "Measures how up-to-date data is",
+      "rules": [
+        {
+          "rule_id": "DQ004",
+          "rule_name": "Data Freshness",
+          "description": "Data must be updated within specified timeframe",
+          "sql_expression": "DATEDIFF(NOW(), last_updated) <= 1",
+          "threshold": "90%",
+          "severity": "Medium"
+        }
+      ]
+    }
+  },
+  "implementation_guide": {
+    "setup_steps": [
+      "1. Define data quality dimensions relevant to your organization",
+      "2. Identify critical data elements and their quality requirements",
+      "3. Implement automated data quality monitoring",
+      "4. Establish data quality scorecards and reporting",
+      "5. Create data quality incident response procedures"
+    ],
+    "monitoring_frequency": {
+      "critical_rules": "Real-time",
+      "high_priority_rules": "Daily",
+      "medium_priority_rules": "Weekly",
+      "low_priority_rules": "Monthly"
+    }
+  }
+}

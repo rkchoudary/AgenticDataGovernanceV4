@@ -19,6 +19,8 @@ from bedrock_agentcore.memory.integrations.strands.session_manager import AgentC
 from repository.agentcore_memory import AgentCoreMemoryRepository
 from repository.in_memory import InMemoryGovernanceRepository
 from tools.regulatory_tools import create_regulatory_tools
+from tools.document_generation_tools import create_document_generation_tools
+from pathlib import Path
 
 # Observability imports (Requirements: 17.1, 17.2, 17.3, 17.4)
 from services.observability_config import (
@@ -43,6 +45,7 @@ data governance system. Your responsibilities include:
 3. Maintaining the Regulatory Report Catalog with accurate metadata
 4. Notifying compliance officers of changes
 5. Supporting human review and approval workflows
+6. Generating regulatory documents, templates, and sample datasets
 
 Available tools:
 - scan_regulatory_sources: Scan regulatory sources for a list of jurisdictions
@@ -52,6 +55,10 @@ Available tools:
 - approve_catalog: Approve the catalog after human review
 - submit_for_review: Submit the catalog for human review
 - modify_catalog: Add, update, or remove reports from the catalog
+- generate_fr_2052a_template: Generate FR 2052A Liquidity Coverage Ratio templates
+- generate_data_governance_template: Generate data governance frameworks and templates
+- generate_sample_dataset: Generate sample datasets for testing and training
+- list_available_templates: List all available document templates
 
 Guidelines:
 - Always ensure audit trail entries are created for all actions
@@ -59,6 +66,8 @@ Guidelines:
 - Provide clear explanations of detected changes and their implications
 - Follow the four-eyes principle for approvals (different person must approve than who submitted)
 - Log all notifications with recipient, subject, and message details
+- When generating documents, provide download links and clear descriptions
+- Include realistic sample data when requested for training purposes
 """
 
 
@@ -86,6 +95,132 @@ class MockRegulatoryAgent:
         # Analyze the prompt to provide contextual responses
         prompt_lower = prompt.lower()
         
+        # Check if this is a document generation request and actually call the tools
+        # Check for data governance template generation first (more specific)
+        if any(word in prompt_lower for word in ['generate', 'create']) and any(word in prompt_lower for word in ['data governance', 'data quality', 'template']) and not any(word in prompt_lower for word in ['fr 2052a', 'liquidity']):
+            try:
+                for tool in self.tools:
+                    if hasattr(tool, '__name__') and 'generate_data_governance_template' in tool.__name__:
+                        # Determine template type from prompt
+                        template_type = "data_quality_rules"
+                        if "data catalog" in prompt_lower:
+                            template_type = "data_catalog"
+                        elif "compliance" in prompt_lower:
+                            template_type = "compliance_checklist"
+                        
+                        result = tool(template_type=template_type, organization="Sample Organization", include_examples=True)
+                        
+                        response = f"""✅ **Data Governance Template Generated Successfully!**
+
+📊 **Generated File Details:**
+- **Filename:** {result['filename']}
+- **Template Type:** {template_type.replace('_', ' ').title()}
+- **File Size:** {result['size']} bytes
+- **Format:** JSON with comprehensive structure
+- **Generated:** {result['generated_at']}
+
+**Download Link:** {result['download_url']}
+
+This template includes examples and is ready for implementation in your data governance processes!"""
+                        
+                        return MockAgentResponse(response)
+                        
+            except Exception as e:
+                return MockAgentResponse(f"I encountered an error generating the data governance template: {str(e)}. Please try again.")
+        
+        # Check for FR 2052A generation
+        elif any(word in prompt_lower for word in ['generate', 'create']) and any(word in prompt_lower for word in ['fr 2052a', 'template', 'sample']) and any(word in prompt_lower for word in ['fr 2052a', 'liquidity']):
+            try:
+                # Find the appropriate tool and call it
+                for tool in self.tools:
+                    if hasattr(tool, '__name__') and 'generate_fr_2052a_template' in tool.__name__:
+                        # Extract bank name from prompt if provided
+                        bank_name = "Sample Bank"
+                        if "bank" in prompt_lower:
+                            # Simple extraction - in production would use NLP
+                            words = prompt.split()
+                            for i, word in enumerate(words):
+                                if word.lower() in ['bank', 'for'] and i + 1 < len(words):
+                                    potential_name = words[i + 1]
+                                    if potential_name.isalpha():
+                                        bank_name = potential_name + " Bank"
+                                        break
+                        
+                        # Call the actual tool
+                        result = tool(bank_name=bank_name, include_sample_data=True)
+                        
+                        response = f"""✅ **FR 2052A Template Generated Successfully!**
+
+🏦 **Generated File Details:**
+- **Filename:** {result['filename']}
+- **Bank Name:** {bank_name}
+- **File Size:** {result['size']} bytes
+- **Format:** JSON with complete LCR structure
+- **Generated:** {result['generated_at']}
+
+📊 **Template Contents:**
+✅ Schedule A: High-Quality Liquid Assets (HQLA)
+✅ Schedule B: Cash Outflow Amounts  
+✅ Schedule C: Cash Inflow Amounts
+✅ Schedule D: Supplemental Information
+✅ LCR Calculation with compliance status
+
+**Download Link:** {result['download_url']}
+
+The template includes realistic sample data perfect for:
+• Training compliance teams
+• Testing data governance processes  
+• Understanding FR 2052A structure
+• Regulatory reporting preparation
+
+**File is ready for download!** Use the download button or visit the download URL to get your template."""
+                        
+                        return MockAgentResponse(response)
+                        
+            except Exception as e:
+                return MockAgentResponse(f"I encountered an error generating the FR 2052A template: {str(e)}. Please try again or contact support.")
+        
+        # Check for sample dataset generation
+        elif any(word in prompt_lower for word in ['generate', 'create']) and any(word in prompt_lower for word in ['sample data', 'dataset', 'customer data', 'transaction']):
+            try:
+                for tool in self.tools:
+                    if hasattr(tool, '__name__') and 'generate_sample_dataset' in tool.__name__:
+                        # Determine dataset type
+                        dataset_type = "customer_data"
+                        if "transaction" in prompt_lower:
+                            dataset_type = "transaction_data"
+                        elif "product" in prompt_lower:
+                            dataset_type = "product_data"
+                        
+                        # Extract record count if specified
+                        record_count = 100
+                        import re
+                        numbers = re.findall(r'\d+', prompt)
+                        if numbers:
+                            record_count = min(int(numbers[0]), 10000)  # Cap at 10k records
+                        
+                        result = tool(dataset_type=dataset_type, record_count=record_count, format="csv", include_quality_issues=False)
+                        
+                        response = f"""✅ **Sample Dataset Generated Successfully!**
+
+📈 **Generated File Details:**
+- **Filename:** {result['filename']}
+- **Dataset Type:** {dataset_type.replace('_', ' ').title()}
+- **Record Count:** {result['record_count']}
+- **File Size:** {result['size']} bytes
+- **Format:** CSV
+- **Generated:** {result['generated_at']}
+
+**Download Link:** {result['download_url']}
+
+This dataset contains realistic sample data perfect for testing your data governance processes!"""
+                        
+                        return MockAgentResponse(response)
+                        
+            except Exception as e:
+                return MockAgentResponse(f"I encountered an error generating the sample dataset: {str(e)}. Please try again.")
+        
+        # Original mock responses for other queries
         if any(word in prompt_lower for word in ['hello', 'hi', 'help', 'what can you do']):
             response = """Hello! I'm the Regulatory Intelligence Agent for your data governance system. 
 
@@ -156,7 +291,138 @@ Current items pending review:
 
 Would you like me to prepare a detailed review package for these changes?"""
         
+        elif any(word in prompt_lower for word in ['generate', 'create', 'template', 'sample', 'fr 2052a', 'document']):
+            # Handle document generation requests
+            if 'fr 2052a' in prompt_lower or 'liquidity' in prompt_lower:
+                response = """I'll generate a sample FR 2052A Liquidity Coverage Ratio template for you.
+
+🏦 **FR 2052A Template Generation:**
+- Report Type: Liquidity Coverage Ratio (LCR)
+- Format: JSON with complete data structure
+- Includes: HQLA, Cash Outflows, Cash Inflows, LCR Calculation
+- Sample Data: Realistic banking figures for training
+
+The template includes:
+✅ Schedule A: High-Quality Liquid Assets (HQLA)
+✅ Schedule B: Cash Outflow Amounts  
+✅ Schedule C: Cash Inflow Amounts
+✅ Schedule D: Supplemental Information
+✅ LCR Calculation with compliance status
+
+**Generated File:** FR_2052A_Sample_Template.json
+**Download Available:** Use the download button to get your template
+**File Size:** ~15KB with comprehensive sample data
+
+This template is perfect for:
+• Training compliance teams
+• Testing data governance processes  
+• Understanding FR 2052A structure
+• Regulatory reporting preparation
+
+Would you like me to generate additional templates or modify the sample data?"""
+            
+            elif 'data governance' in prompt_lower or 'data quality' in prompt_lower:
+                response = """I'll create a comprehensive data governance template for you.
+
+📊 **Data Governance Template Options:**
+
+**1. Data Quality Rules Framework**
+- Complete DQ dimensions (Completeness, Accuracy, Consistency, Timeliness)
+- Sample rules with SQL expressions and thresholds
+- Implementation guide and monitoring frequencies
+
+**2. Data Catalog Template**  
+- Asset inventory structure
+- Metadata standards and classifications
+- Ownership and stewardship assignments
+
+**3. Compliance Checklist**
+- GDPR, CCPA, SOX, Basel III requirements
+- Evidence tracking and status monitoring
+- Regulatory mapping and controls
+
+**Generated Template:** Data_Quality_Rules_Framework.json
+**Includes:** Sample rules, thresholds, and implementation guidance
+**Use Cases:** DQ monitoring, compliance tracking, governance setup
+
+Which specific template would you like me to generate, or shall I create the comprehensive data quality rules framework?"""
+            
+            elif 'sample data' in prompt_lower or 'dataset' in prompt_lower:
+                response = """I'll generate sample datasets for testing your data governance processes.
+
+📈 **Available Sample Datasets:**
+
+**1. Customer Master Data**
+- Demographics, account information, contact details
+- Configurable record count (100-10,000 records)
+- Optional data quality issues for testing
+
+**2. Transaction Data**
+- Financial transactions with amounts, dates, categories
+- Realistic merchant and payment method data
+- Configurable volume and date ranges
+
+**3. Product Catalog Data**
+- Product information, pricing, inventory
+- Categories, descriptions, manufacturer details
+- Stock levels and dimensional data
+
+**Format Options:** CSV or JSON
+**Quality Issues:** Optional intentional issues for DQ rule testing
+**Record Count:** Customizable (default: 100 records)
+
+**Generated:** Sample_Customer_Data_100records.csv
+**Features:** Realistic data using Faker library, GDPR-compliant samples
+
+Which dataset type would you like me to generate?"""
+            
+            else:
+                response = """I can generate various regulatory documents and templates for you:
+
+📋 **Document Generation Capabilities:**
+
+**Regulatory Reports:**
+• FR 2052A Liquidity Coverage Ratio templates
+• CCAR stress testing frameworks  
+• Capital adequacy reporting structures
+
+**Data Governance Templates:**
+• Data quality rules and monitoring frameworks
+• Data catalog and asset inventory templates
+• Compliance checklists (GDPR, SOX, Basel III)
+
+**Sample Datasets:**
+• Customer master data (demographics, accounts)
+• Transaction data (payments, transfers)
+• Product catalog data (inventory, pricing)
+
+**Available Formats:** JSON, CSV, TXT
+**Sample Data:** Realistic test data using Faker library
+**Quality Issues:** Optional intentional issues for testing
+
+What type of document or dataset would you like me to generate?"""
+        
         elif any(word in prompt_lower for word in ['audit', 'trail', 'history', 'log']):
+            response = """**File Download and Export Options:**
+
+📁 **Available Downloads:**
+- Generated regulatory templates (FR 2052A, etc.)
+- Data governance frameworks and checklists
+- Sample datasets for testing
+- Analysis reports from uploaded files
+
+**Download Process:**
+1. Files are generated and stored securely
+2. Download links provided in chat responses
+3. Files available in multiple formats (JSON, CSV, PDF)
+4. Automatic cleanup after 24 hours
+
+**Current Generated Files:**
+• FR_2052A_Sample_Template.json (15KB)
+• Data_Quality_Rules_Framework.json (12KB)  
+• Sample_Customer_Data_100records.csv (8KB)
+
+Use the download buttons in the chat interface or the file management panel to access your generated documents."""
             # Get actual audit entries
             audit_entries = self.repository.get_audit_entries()
             entry_count = len(audit_entries) if audit_entries else 0
@@ -219,20 +485,27 @@ def create_agent(
     Returns:
         Configured Agent instance (real or mock based on environment).
     """
-    tools = create_regulatory_tools(repository)
+    # Create upload directory for generated files
+    upload_dir = Path("uploads")
+    upload_dir.mkdir(exist_ok=True)
+    
+    # Create all tools (regulatory + document generation)
+    regulatory_tools = create_regulatory_tools(repository)
+    document_tools = create_document_generation_tools(repository, upload_dir)
+    all_tools = regulatory_tools + document_tools
     
     # Check if we're in development mode (default to false since Bedrock is configured)
     development_mode = os.environ.get("DEVELOPMENT_MODE", "false").lower() == "true"
     
     if development_mode:
         print("[DEV MODE] Using Mock Regulatory Intelligence Agent")
-        return MockRegulatoryAgent(repository, tools)
+        return MockRegulatoryAgent(repository, all_tools)
     else:
         # Production mode - use real Strands Agent with Bedrock
         print("[PRODUCTION MODE] Using Real Strands Agent with AWS Bedrock")
         agent_kwargs = {
             "system_prompt": SYSTEM_PROMPT,
-            "tools": tools,
+            "tools": all_tools,
         }
         
         if session_manager:

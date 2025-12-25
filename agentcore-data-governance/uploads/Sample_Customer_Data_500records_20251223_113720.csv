@@ -1,0 +1,501 @@
+customer_id,first_name,last_name,email,phone,address,city,state,zip_code,date_of_birth,account_balance,account_status,created_date,last_updated
+CUST000001,Steven,Turner,lucascarpenter@example.com,789.761.0894x48780,"6630 Maria Plaza, Lake Ronald, ID 69943",South Kim,MN,28528,1988-07-22,42487.46,Inactive,2024-11-13,2025-11-25
+CUST000002,Henry,Stevenson,jameshess@example.com,(997)455-4983x3901,"PSC 1139, Box 3135, APO AE 87720",Port Charlesbury,NY,57121,1981-09-23,49093.17,Active,2024-10-17,2025-12-14
+CUST000003,Teresa,Fischer,smithmatthew@example.net,001-625-768-6171x918,"1482 Nguyen Forest Apt. 743, New Susan, NE 55931",East Jeffrey,MN,65491,1979-02-25,29366.6,Inactive,2024-10-21,2025-12-04
+CUST000004,Kayla,Lee,yorkalyssa@example.net,(434)456-6600x9150,"5316 Castillo Court, Lopezport, KY 24961",Nathanmouth,ND,23728,1974-08-25,5137.68,Active,2024-10-17,2025-12-10
+CUST000005,Joseph,West,franklinkrystal@example.com,+1-998-766-9514,"394 David Island, North Allison, AL 93110",Alvarezchester,KY,79239,2001-06-10,36787.19,Active,2024-04-08,2025-11-27
+CUST000006,William,Heath,davidbooth@example.org,(476)234-7833x4398,"03504 Mendez Square, Lake Davidmouth, NE 12835",Reynoldsfurt,CT,45873,1991-08-09,14679.37,Active,2024-09-25,2025-12-14
+CUST000007,Calvin,Webb,ojones@example.net,5422077914,"982 Vicki Corner, Dyerhaven, OR 83720",Port Michaelville,ME,12484,1991-05-25,42432.4,Inactive,2025-11-02,2025-12-20
+CUST000008,Matthew,Smith,bradley20@example.com,444-927-3241,"6428 Roth Loop, West Trevor, VA 40005",Veronicaside,MA,94799,1946-04-05,2496.82,Active,2024-02-12,2025-11-28
+CUST000009,Mary,Craig,zsilva@example.org,(586)757-4105x12197,"99653 Liu Cliff, South Juanberg, WV 84530",Davidmouth,PR,08507,1994-05-23,22610.37,Suspended,2025-08-10,2025-11-30
+CUST000010,Jeffrey,Rodriguez,christinacohen@example.net,423.633.5010,"718 Bethany Port, Patrickton, MP 28524",Jamesside,FL,38364,1969-03-15,16181.78,Suspended,2024-07-18,2025-12-18
+CUST000011,Samantha,Chapman,john20@example.com,283-369-9347,"7858 Amy Shoals, West Aaronshire, AK 87616",Robertland,ID,43145,1961-05-15,41871.01,Active,2024-10-25,2025-12-18
+CUST000012,Wesley,Watson,linda86@example.org,+1-864-831-7236x43269,"PSC 6349, Box 2388, APO AE 03002",Greenfurt,MD,90904,1948-02-18,7732.45,Inactive,2025-09-03,2025-12-21
+CUST000013,Lisa,Kaiser,jacquelineadams@example.com,712-290-9995x5147,"878 Thomas Forks Suite 695, North Jordan, LA 62456",West Tamara,GU,35192,1997-07-01,19068.01,Suspended,2024-03-11,2025-11-30
+CUST000014,Olivia,Walsh,diana34@example.org,(511)858-7048x322,"097 Dawn Highway, Chelseahaven, AL 84460",Nashfort,MP,85507,1966-07-28,36494.04,Active,2024-05-22,2025-12-04
+CUST000015,Alexander,Kerr,carrolljohn@example.com,+1-905-778-8641x758,"895 Tonya Ferry, South Vickiberg, AL 52516",Lake Carlosfort,UT,82223,1970-05-29,39060.55,Inactive,2024-07-29,2025-12-05
+CUST000016,Jose,Gonzalez,shawnlarson@example.com,6279539091,"5697 William Locks Apt. 344, Port Evanview, IL 24460",Port Ianside,MI,70593,2000-11-11,30272.7,Suspended,2025-07-22,2025-12-03
+CUST000017,Deanna,Bishop,sonyagarcia@example.org,3963805397,"5451 Richards Villages Suite 735, Taylorside, CT 23996",Paulashire,NJ,59727,1966-11-26,33739.0,Suspended,2025-01-11,2025-11-30
+CUST000018,Laura,Cline,jamesolivia@example.net,764.892.9427x672,"5466 Jamie Cape, Port Jennifer, ID 48562",New David,NM,28050,1967-10-18,9332.35,Inactive,2025-07-22,2025-12-02
+CUST000019,Cathy,Mays,qleonard@example.org,426.892.2892x787,"2727 Hawkins Corner Apt. 251, New Nicole, ND 38515",New Jaimebury,AL,37654,1955-05-07,38254.44,Active,2024-10-28,2025-11-30
+CUST000020,Sharon,Brown,gsmall@example.org,001-230-797-1396,"2149 Kara Rue, Austinville, MI 32401",Lawrencebury,NY,35058,1980-01-16,44969.89,Inactive,2025-01-15,2025-11-27
+CUST000021,Timothy,Jordan,matthewjohnson@example.org,(586)708-8434x3122,"5480 Lisa Well Suite 831, North Paulfort, NH 79884",East Jamie,NE,15052,1991-04-09,14355.71,Suspended,2024-10-18,2025-12-05
+CUST000022,Amanda,Parker,cgonzalez@example.com,331.984.1055x641,"973 Aaron Key Apt. 746, North Davidville, NJ 89413",Dianeview,VI,24731,1997-10-05,1531.51,Suspended,2023-12-31,2025-12-20
+CUST000023,Joel,Mitchell,walkerlacey@example.com,8653901458,"01482 Sandra Glens, New Sheilaview, GA 55091",Maryhaven,MP,71384,1984-11-07,22373.64,Suspended,2025-04-23,2025-11-29
+CUST000024,Tiffany,Williams,whitejohn@example.org,394.837.4659,"PSC 5753, Box 7411, APO AE 69742",Lake Jeffborough,FM,80527,1964-12-22,27679.01,Suspended,2025-09-05,2025-12-16
+CUST000025,Gabriel,White,darinbrock@example.org,001-783-278-3769,"36596 Martin Pines Apt. 199, South Margaretbury, LA 92974",Port Andreschester,DC,14517,1969-05-04,4852.76,Inactive,2025-06-26,2025-12-22
+CUST000026,Eric,Simpson,campbellmichael@example.net,487.971.8766,"116 Evan Radial Suite 814, East Garyfurt, CA 32141",Lake Lauriechester,IL,17070,1990-05-10,12318.27,Active,2024-09-22,2025-12-21
+CUST000027,Alexandra,Diaz,scarrillo@example.org,422-253-6822x2652,"726 Harmon Centers, Nancymouth, AS 03264",Port Joshua,VT,91263,1986-03-25,38932.26,Active,2024-09-25,2025-11-23
+CUST000028,Logan,Hutchinson,ljohnson@example.org,+1-396-205-0925,"8501 Terry Port, New Michael, ID 72200",Stewartstad,SC,67969,1970-10-08,3870.82,Inactive,2025-08-22,2025-11-24
+CUST000029,Amy,Cunningham,ksmith@example.com,892.328.2736x75446,"5870 Smith Corner Apt. 366, West Sara, PA 79039",Lake Evanhaven,WV,35570,1966-12-29,2509.98,Inactive,2025-02-05,2025-11-23
+CUST000030,Alex,Williams,atkinsonjean@example.com,+1-227-473-5902,"47381 Allen Fall Suite 805, Williamton, OR 38313",Port Laurenbury,OK,38714,1967-09-11,42870.18,Inactive,2025-06-18,2025-11-29
+CUST000031,Julie,Sanchez,shawnarodriguez@example.com,+1-498-483-7168x166,"512 Jenkins Fords Apt. 573, Kathrynside, PR 09927",Petersenside,NE,86899,1988-08-02,5040.19,Inactive,2024-08-09,2025-11-23
+CUST000032,Christina,Evans,smithheather@example.net,+1-839-990-2864x3117,"5018 Christian Tunnel Suite 095, Cabreramouth, IN 33063",North Leahtown,IL,70403,1983-09-03,18809.57,Inactive,2024-06-07,2025-12-02
+CUST000033,Amber,Williams,blake29@example.org,692.378.8977x733,"505 Castillo Wall, Victoriastad, NV 89191",Lake Jamesberg,MS,75393,1986-05-22,3045.12,Suspended,2025-08-24,2025-12-14
+CUST000034,Thomas,Archer,grahammichael@example.com,+1-961-788-4994x80540,"3049 Warner Stream, North Kelly, UT 15020",East Leslieport,NE,04629,1952-09-26,17663.74,Inactive,2024-03-21,2025-12-21
+CUST000035,Anna,Powell,derrickbauer@example.net,001-755-459-6947x27332,"300 Victoria Prairie, South Heatherfurt, MO 73896",South Andrewmouth,GA,58740,1965-07-04,12581.29,Active,2025-03-29,2025-11-29
+CUST000036,Stephanie,Aguilar,hancockbrandon@example.org,6045588404,"USCGC Martin, FPO AP 58476",East Wesley,ID,35328,1980-03-12,1473.42,Active,2024-02-12,2025-12-02
+CUST000037,Sandra,Franklin,jennifer95@example.org,001-512-665-5548x5767,"418 Leah Mission Apt. 665, Jamestown, OH 65574",Myerston,RI,79788,1945-06-18,10638.47,Inactive,2025-07-24,2025-12-14
+CUST000038,Johnny,Ochoa,lindseyryan@example.net,618-358-1969x23926,"62436 Velez Isle Apt. 094, Lake Scottville, NC 34887",Samanthabury,PW,13970,1957-09-28,39141.34,Suspended,2024-05-24,2025-12-14
+CUST000039,Karen,Hawkins,williehernandez@example.com,538-515-9031x36928,"1869 Fernandez Heights Apt. 391, Feliciaview, NV 19872",Bakerberg,MO,55168,1980-07-03,14032.31,Inactive,2025-05-02,2025-12-02
+CUST000040,Joshua,Hernandez,robin57@example.com,865.216.4879x141,"242 Schwartz Mountain Apt. 806, South Mario, AS 35373",South Diana,RI,82582,1996-06-30,37311.27,Active,2024-08-15,2025-12-11
+CUST000041,Shawn,Vargas,mhuber@example.com,(591)323-7381,"465 Oconnor Crescent, Jessehaven, IL 25222",North Crystal,OH,13598,1950-07-26,19801.58,Inactive,2025-08-06,2025-12-16
+CUST000042,Micheal,Miller,watsonsteven@example.net,+1-310-758-5274x8108,"PSC 8297, Box 3651, APO AA 78948",Griffinfurt,KS,43705,1977-05-18,48216.52,Inactive,2025-07-05,2025-12-13
+CUST000043,Rebecca,Allen,nicholasmartin@example.com,001-962-631-7797x4893,"9178 Young Plaza, Lake Jenniferville, OK 65052",Debbiehaven,NY,15482,1957-12-26,17589.1,Inactive,2024-10-20,2025-12-15
+CUST000044,Steven,Robertson,iwoods@example.com,(644)959-3081,"65006 Meyer Inlet, Georgehaven, MD 63729",Julieberg,ME,37899,1991-10-27,28238.12,Inactive,2024-04-01,2025-12-11
+CUST000045,Heather,Wells,murrayscott@example.net,368.458.0040x580,"42445 Monica Rue, Christinashire, MP 01620",South Ashleyville,OR,38652,2006-11-27,35794.01,Suspended,2025-12-17,2025-11-29
+CUST000046,Aaron,Fox,zacharyrobles@example.com,001-342-686-7785x00313,"200 Chelsey Route Apt. 533, Smithshire, MH 88006",Sharpstad,NE,16734,2002-11-06,27177.82,Active,2024-03-15,2025-11-24
+CUST000047,Jonathan,Stephens,cesar07@example.net,(531)619-9715,"583 Goodwin Lodge Suite 038, Colemantown, VI 94120",East Christian,PA,87892,1949-10-08,28128.99,Active,2024-01-11,2025-12-21
+CUST000048,Richard,Maxwell,timothy26@example.com,+1-582-407-4870x2681,"USNV Martin, FPO AP 75189",Port Angela,WA,17802,1957-10-24,10126.05,Inactive,2024-02-03,2025-12-13
+CUST000049,Lindsey,Garrison,kingjacob@example.org,+1-929-366-8157x3611,"837 Keith Mews, East Elizabeth, MD 32283",Craigburgh,CT,88505,1973-11-24,28615.13,Suspended,2025-10-26,2025-11-24
+CUST000050,Allison,Johnson,annjordan@example.net,258.988.7679,"Unit 3241 Box 4319, DPO AA 70402",New Jimchester,MP,37991,1979-12-01,36802.89,Inactive,2025-11-29,2025-12-06
+CUST000051,Charles,Espinoza,charles08@example.net,001-931-696-0120x987,"Unit 4017 Box 1322, DPO AE 92221",East Austin,WV,99728,1954-02-09,4215.9,Suspended,2025-09-01,2025-12-17
+CUST000052,Brittany,Ryan,hmora@example.net,206.591.3060,"Unit 5471 Box 0632, DPO AP 47126",Rebeccaton,AR,58557,1990-02-23,46033.55,Suspended,2023-12-30,2025-12-09
+CUST000053,Theodore,Morales,stevenwilliamson@example.net,001-901-502-3673,"30564 Johnson Junctions, Christianhaven, PR 04995",Lake Shaun,OK,88906,2007-10-04,43071.15,Active,2025-01-09,2025-11-28
+CUST000054,John,Butler,whitneyjacobson@example.net,+1-957-742-6387x2078,"49010 Yates Shore Apt. 196, Schmitthaven, DE 48263",Lake Deannaville,MD,83202,1957-06-23,37425.11,Suspended,2024-06-03,2025-12-08
+CUST000055,Rebecca,Rodriguez,juanjohnson@example.org,+1-844-643-5686x98380,"579 Brad Course Apt. 426, Justinland, MH 98119",Martintown,NC,17172,1960-01-20,625.92,Inactive,2025-01-20,2025-12-10
+CUST000056,Casey,Lee,vsalazar@example.org,001-750-654-8493x2410,"USNV Wagner, FPO AP 88286",North Alan,MH,63527,1993-01-10,7224.38,Active,2025-05-21,2025-12-20
+CUST000057,Edward,Snow,meyermargaret@example.com,742-370-4344,"8975 Christopher Ramp Apt. 937, Jerrystad, AL 92938",Pricemouth,HI,35633,1965-03-19,15743.05,Suspended,2025-06-09,2025-11-26
+CUST000058,Anthony,Williams,carterjacqueline@example.net,001-868-829-9706x09862,"925 Tammy Crossroad, West Gregoryberg, CO 77699",Port Carl,MH,57673,1994-12-13,28495.66,Inactive,2024-07-25,2025-12-13
+CUST000059,Lindsey,Cox,pjohnson@example.com,+1-549-986-8628,"0946 Peter Harbors Apt. 909, Kimberlyhaven, OR 16019",Lisastad,PW,60434,1950-02-17,25785.17,Inactive,2025-03-17,2025-11-28
+CUST000060,Lisa,Moore,hillkimberly@example.net,+1-452-476-0988x144,"9860 Trevino Estates, Johnsonfort, MP 01202",West Jessicamouth,MH,09315,1950-12-18,9356.82,Inactive,2024-12-28,2025-12-22
+CUST000061,Michael,Phillips,nguyenstephanie@example.net,001-344-542-9399,"457 Herrera Parkway Apt. 256, New Josephton, MO 04074",New Josephmouth,MS,05761,1945-08-19,5035.73,Suspended,2025-02-28,2025-11-24
+CUST000062,Jose,Rodriguez,crystal79@example.org,+1-652-294-0196,"3250 Hale Court, Wrightborough, LA 89890",East Christine,HI,90618,1995-07-24,47508.18,Active,2024-06-19,2025-12-03
+CUST000063,Carol,Young,otaylor@example.org,3516745046,"995 Erica Isle Suite 683, South Margaret, MH 02998",Gardnerton,WV,64235,2002-02-15,15172.87,Suspended,2024-09-09,2025-12-22
+CUST000064,Carlos,Nelson,nathan56@example.com,248.214.8816x488,"396 Duncan Motorway, Murphyberg, OK 25491",New Christopher,ME,91416,1992-09-14,10989.33,Inactive,2024-05-23,2025-11-30
+CUST000065,Selena,Robinson,rachaelbishop@example.net,+1-251-860-8184,"9989 Dunn Lake, Christopherview, ND 98716",Deanshire,MD,09497,2004-03-20,5242.48,Active,2024-09-23,2025-12-12
+CUST000066,Gregory,Hernandez,jenniferhunt@example.com,887.612.0198x660,"705 Amber Plaza, South Emilymouth, GU 97264",Huntershire,KS,80298,1961-06-03,4175.64,Suspended,2024-03-12,2025-11-23
+CUST000067,Michelle,Hogan,uwilliams@example.net,+1-481-213-0686x43991,"743 Webster Oval, North Brittany, RI 15948",Karenberg,RI,15385,1973-03-16,45142.1,Active,2025-12-01,2025-12-04
+CUST000068,Grace,Perkins,ypowell@example.net,4803309027,"07835 Tucker Cliff, New Christine, VI 46993",Andrewburgh,GU,45582,1952-08-31,29869.67,Inactive,2025-05-12,2025-11-29
+CUST000069,Jennifer,Scott,chasejackson@example.net,001-471-751-8266x079,"074 Jose Branch, Lake Michael, WA 08315",New Rachelfort,MS,33302,1971-04-03,18468.15,Inactive,2025-02-19,2025-12-18
+CUST000070,Jesse,Beck,tracysimpson@example.org,(743)580-2091,"767 Rowland Isle, Christiefort, PR 61631",South Lucashaven,CO,97937,1983-02-23,22346.93,Active,2025-12-16,2025-12-14
+CUST000071,Brian,Curtis,wardkimberly@example.net,661.839.0409,"13416 Cody Knolls, Thompsonville, MP 48566",Lake Kimberlyport,NM,72647,1985-05-17,19734.23,Suspended,2025-12-03,2025-12-18
+CUST000072,Karen,Petty,davisanthony@example.org,651-469-4925,"Unit 2609 Box 5844, DPO AA 89717",New Zachary,OR,73069,1986-05-13,35850.34,Suspended,2024-10-25,2025-12-05
+CUST000073,Brad,Vang,uguerrero@example.net,(740)293-1068,"75535 Callahan Green Apt. 142, Lake Annabury, UT 53559",Jonesland,WY,85505,1950-09-17,15566.02,Suspended,2025-08-09,2025-11-29
+CUST000074,Erica,Ingram,jessica78@example.net,972.693.6804x579,"9049 Moore Extensions, Allenberg, MA 98082",Heatherborough,AL,02380,1978-07-07,9239.16,Active,2024-05-05,2025-11-29
+CUST000075,Rodney,Patton,rogercollins@example.net,711.268.0813x85040,"624 Dennis Tunnel, Port Tyronemouth, MP 03191",East Markmouth,VA,42827,2001-09-12,29351.51,Active,2024-03-10,2025-12-12
+CUST000076,Devin,Poole,piercejennifer@example.net,(670)471-9010x58092,"8096 Williams Neck Suite 013, Haleybury, FM 25839",East Jacob,PW,07904,2004-06-02,42592.43,Inactive,2025-08-04,2025-12-05
+CUST000077,Melissa,Fisher,meganpetersen@example.org,(692)332-1532,"75083 Kelly Prairie, South Kaylaborough, NM 89062",New James,LA,93430,1968-07-31,1865.25,Suspended,2024-04-17,2025-11-27
+CUST000078,Amber,Smith,rodriguezdavid@example.net,417-330-5834,"PSC 4833, Box 3786, APO AP 82448",Paultown,IN,83165,1967-10-26,29158.12,Suspended,2025-05-09,2025-12-15
+CUST000079,Kevin,Miller,johnmedina@example.org,001-284-657-8277x06503,"704 Cindy Forest, Keithland, MH 63460",New Christopher,LA,87791,1978-07-29,17512.76,Suspended,2025-10-30,2025-11-25
+CUST000080,Lori,Sparks,jonesstephen@example.org,(582)791-0143,"4760 Angela Circle, Allenville, ME 20595",West Jessica,RI,50864,1980-04-05,23163.31,Suspended,2024-03-04,2025-12-17
+CUST000081,Edward,Zhang,john60@example.org,914.616.3346,"7324 Harvey Drives Apt. 291, Leeberg, MH 82928",New Michael,VA,19982,1959-09-30,13120.99,Active,2024-01-25,2025-12-19
+CUST000082,Renee,Johnson,esparzachelsea@example.net,991.746.0804,"154 Andrew Harbor Suite 586, North Jasonburgh, CA 34652",East Elizabethfurt,HI,30695,1987-10-17,7400.92,Active,2024-03-22,2025-12-06
+CUST000083,David,Lin,barnessean@example.com,(970)609-6704x4428,"2624 Jones Mission Suite 497, New Lisa, WY 67034",Stevensburgh,OR,45328,1988-01-06,26669.28,Active,2024-06-11,2025-12-11
+CUST000084,Juan,Deleon,margaret96@example.net,7352042405,"1656 Williams Harbors Suite 641, Joshuaport, AR 22303",Penachester,NY,33404,1972-07-23,2577.89,Active,2025-06-06,2025-11-26
+CUST000085,Amy,Nichols,nguyenchristopher@example.com,400.932.8377x118,"5775 Troy Mountains Apt. 684, Ericaburgh, DC 81655",Andrewfort,NY,68709,1996-01-02,47875.68,Suspended,2024-02-14,2025-12-22
+CUST000086,Alexander,Lewis,davenportcraig@example.org,(966)957-9330x920,"32542 Heather Village Suite 209, Elizabethside, ND 85359",Randyborough,OK,56947,1968-12-01,28710.6,Suspended,2024-07-29,2025-11-26
+CUST000087,Donna,Wright,njones@example.org,839-528-5780,"556 Erik Village Apt. 743, Ramirezmouth, NY 52730",Vanessaside,ME,49187,1949-07-07,32322.57,Inactive,2025-08-01,2025-11-25
+CUST000088,Erica,Mora,ashley51@example.com,509.928.2775,"587 Jones Land, North Mary, MD 60357",Port Charles,WI,03127,1976-11-29,37496.76,Inactive,2025-10-16,2025-11-30
+CUST000089,James,Owens,anthonyshannon@example.com,535-623-8999x987,"99511 Glenn Brooks, South David, TX 06625",South Nicholasmouth,DC,43448,1945-10-01,24816.74,Suspended,2025-07-24,2025-12-04
+CUST000090,Olivia,Davis,wrightxavier@example.com,001-407-748-8752x49269,"478 Foley Fields, Lake Destinyborough, MD 88155",North David,LA,19227,1988-06-06,32020.97,Suspended,2025-10-31,2025-12-01
+CUST000091,Karen,Lawrence,barrettcynthia@example.org,529-287-1995x889,"266 Gray Stravenue Suite 073, South Daniel, VT 06388",New Veronica,KY,02063,1955-12-03,3151.79,Inactive,2024-05-30,2025-12-20
+CUST000092,Christopher,Cisneros,davidshaw@example.org,696-602-2807,"1771 Sanders Green Apt. 715, Jeffreymouth, NC 64996",West Paul,MD,94758,2003-11-22,23627.91,Suspended,2024-08-19,2025-12-07
+CUST000093,Mary,Macdonald,alvaradojoshua@example.org,001-661-568-3821x1218,"57575 Kathryn Road Suite 650, Christopherbury, IA 08890",Cooperside,FM,15609,1971-04-09,41099.49,Inactive,2024-06-23,2025-12-12
+CUST000094,Jeremy,Pruitt,stevenskimberly@example.com,981-344-7150x927,"1064 Yolanda Haven, East Paula, NJ 74531",Lake Victoriabury,OK,16912,1992-01-18,29257.19,Suspended,2025-06-16,2025-11-27
+CUST000095,Cody,Smith,sandybell@example.net,337-570-5723,"811 Clark Wall Suite 146, South Kelseyborough, MN 30549",Port Dustin,VT,27928,1959-08-18,23289.11,Active,2024-12-22,2025-11-24
+CUST000096,Kimberly,Lee,george04@example.net,001-737-651-1706x926,"0255 Morris Village Apt. 625, New Courtneymouth, MA 11296",Lake Jonathan,CO,03113,1955-02-24,47087.18,Suspended,2024-03-19,2025-12-11
+CUST000097,Donald,Fernandez,williamfletcher@example.org,532.555.7760x7626,"62166 Sanchez Isle, Terranceberg, KY 92478",Gallagherstad,FM,14366,1969-10-26,2075.18,Inactive,2025-09-01,2025-12-19
+CUST000098,Julie,Burgess,rodgersnancy@example.net,677.442.9522,"481 Mary Walks, Callahanbury, AS 91600",West Robert,DC,74704,1996-01-26,24243.93,Active,2025-02-16,2025-12-03
+CUST000099,Elizabeth,Graham,susan79@example.org,278.844.7182,"64636 Ross Square, East Jennifer, VA 18901",Samanthaport,WV,29496,1964-12-18,12509.82,Active,2024-12-22,2025-12-15
+CUST000100,Derek,Lopez,gblack@example.com,001-952-512-9683x455,"6742 Janet Oval, Doyletown, NJ 20023",Collinsburgh,AS,08419,1951-05-15,6192.47,Active,2024-11-25,2025-12-08
+CUST000101,Kelly,Cox,mcclaintracey@example.org,(275)352-2497,"Unit 0001 Box 9279, DPO AA 87735",Obrienfurt,ND,55328,1994-08-31,29934.36,Suspended,2024-05-22,2025-12-06
+CUST000102,David,Beasley,ashley44@example.org,(351)502-1257x4057,"49702 Jefferson Forest, Lake Victoria, FL 24530",East Danaton,NC,38132,1990-07-26,4258.97,Inactive,2024-05-08,2025-12-15
+CUST000103,Tina,Walsh,tracilarson@example.org,(882)945-2642x10612,"85848 Christina Extension, West Jacquelinemouth, AS 44641",South Joannaside,NM,35304,2003-03-27,38368.59,Inactive,2025-12-17,2025-12-02
+CUST000104,Arthur,Pitts,tmartinez@example.org,985.977.7570x24107,"950 James Summit, Piercehaven, PA 49882",Brownborough,AZ,02068,1963-06-03,9972.55,Suspended,2025-07-20,2025-12-15
+CUST000105,Deborah,Contreras,jeffery79@example.net,348-594-7608x5584,"3566 Reese Drives Apt. 027, West Williamside, MS 87544",Ortizview,SD,52287,2004-05-19,15878.51,Inactive,2025-06-23,2025-11-29
+CUST000106,Beth,Sanchez,tbush@example.com,001-971-308-0077x664,"02380 Rojas Islands, South Davidside, CA 04847",North Amy,MH,53682,1991-03-17,48437.59,Inactive,2025-03-30,2025-12-13
+CUST000107,James,Lester,leerobert@example.org,+1-244-276-9584x2234,"24408 Phillips Port, Patriciahaven, AL 59114",Johnstad,SC,80514,1954-07-08,14020.14,Active,2025-09-16,2025-11-29
+CUST000108,Stephanie,Prince,victoria78@example.com,5113783319,"9869 Cervantes Square, West Patricia, AZ 78193",Lake Christopherburgh,IN,50795,2000-05-18,31892.88,Inactive,2025-10-04,2025-12-13
+CUST000109,Eric,Ortiz,jonathan95@example.com,+1-713-511-3434x406,"467 Ethan Mall Apt. 003, West Thomasland, AS 01567",West Deborahfurt,NJ,61045,1987-08-05,39613.83,Suspended,2025-10-17,2025-12-15
+CUST000110,Austin,Buchanan,heatherallen@example.net,8733516492,"89077 Wolf Lane, Cruzmouth, NM 96192",Smithstad,CA,00718,1960-11-26,10829.11,Suspended,2024-09-11,2025-12-11
+CUST000111,Thomas,Holmes,kevinmayo@example.net,895.857.8073,"2376 Timothy Estates Apt. 436, Tracyport, NJ 92714",Lawrencefort,VT,67071,2007-05-04,31826.52,Inactive,2025-11-03,2025-12-16
+CUST000112,Alexis,Powell,kevinbrown@example.com,7428271913,"220 Hayes Rapid Suite 446, New Sarahland, SC 29469",Williammouth,TN,07902,1985-11-08,14130.39,Suspended,2025-02-01,2025-11-30
+CUST000113,Elizabeth,Smith,brittney37@example.org,001-809-466-4970x52954,"317 Willie Brook Suite 660, New Emily, AL 95517",North Juan,WY,78273,1971-12-06,30002.44,Inactive,2025-01-29,2025-12-18
+CUST000114,Tina,Bowman,phardy@example.net,001-687-697-9564x924,"0914 James Prairie, Port Stephaniemouth, OR 97170",Christineside,GU,92196,1991-02-08,2660.82,Inactive,2024-11-03,2025-12-16
+CUST000115,Julie,Cowan,steven12@example.net,(760)274-1093x82089,"73355 Potts Harbors Suite 320, Andersonton, MO 45173",East Alexandra,GA,27488,1950-06-05,2760.62,Suspended,2025-06-20,2025-11-25
+CUST000116,Alan,Sanchez,emiller@example.com,201.636.2206x7004,"USS Wade, FPO AP 72026",Port Scottfort,OK,42257,1949-12-20,3111.26,Active,2024-07-14,2025-11-23
+CUST000117,Stephanie,Hayes,kellychristopher@example.org,614-465-1808x34704,"2686 Jonathan Shore, Bradleyport, MI 24170",South Jonathan,IN,19454,1969-12-15,49919.43,Suspended,2025-03-11,2025-12-09
+CUST000118,Patricia,Chavez,jenniferjones@example.com,+1-384-478-0201,"7272 Amy Pike, Lake Samuelport, LA 02093",Aaronton,GA,81788,2001-10-12,42414.48,Suspended,2025-10-03,2025-11-30
+CUST000119,Logan,Winters,jamesmurphy@example.com,480.783.8294,"218 Lee Knoll Apt. 643, South Curtisburgh, OK 91217",East Sharon,MA,17730,1953-06-13,45969.24,Active,2024-06-18,2025-12-12
+CUST000120,Rebecca,Moore,deniseshelton@example.org,001-691-218-5858,"246 Dean Underpass Apt. 828, East Lisaview, AK 02705",New David,SD,76633,1959-07-25,6191.15,Suspended,2024-10-14,2025-12-12
+CUST000121,Michael,Bradshaw,dawnadams@example.org,+1-731-548-7740x638,"6139 Brown Dam, Hannahmouth, HI 85381",Port John,PA,20239,1947-05-28,7720.59,Inactive,2024-01-14,2025-12-22
+CUST000122,Dawn,Nunez,melissa03@example.com,876.235.7608,"8523 Dustin Valleys, Port Larry, DC 41662",Hollytown,KY,97773,1953-12-04,18651.96,Suspended,2025-08-09,2025-12-10
+CUST000123,Amanda,Mills,reyeschristina@example.net,+1-985-813-8227x4716,"260 Scott Lights Suite 012, North Elizabeth, MN 50915",Lake Mark,VT,49077,1961-04-30,45006.96,Suspended,2024-01-02,2025-12-04
+CUST000124,Michael,Diaz,longvictoria@example.com,296.506.5813x45108,"76150 Kyle Field Apt. 351, Matthewhaven, MI 24338",Kristenside,GA,49110,1986-08-20,6824.18,Inactive,2025-07-23,2025-12-11
+CUST000125,Dan,Clark,ystout@example.com,001-696-252-8848x482,"75965 Chelsea Spurs Suite 767, Robinsonburgh, CT 60736",West Barbaratown,CT,92320,1972-11-17,10736.76,Active,2023-12-30,2025-12-03
+CUST000126,Jamie,Peterson,shelby30@example.net,+1-237-331-9479x591,"91664 Sanders Islands, Port Cindyshire, MP 71611",New Elizabeth,AL,31796,1971-08-03,45354.32,Suspended,2025-02-28,2025-12-12
+CUST000127,Vanessa,Blake,brandon39@example.net,589.974.7205,"81825 Debbie Walk Apt. 716, Port Henryville, SC 97194",Brianmouth,MN,28314,1953-11-26,42554.35,Suspended,2024-07-15,2025-11-28
+CUST000128,Chad,Smith,josesimpson@example.com,001-257-666-3319x10113,"357 Thomas Valley Apt. 988, Nguyentown, MA 72088",Tonyaburgh,PA,96420,1954-03-28,35752.9,Active,2024-09-30,2025-11-25
+CUST000129,Erica,Fox,laurenbailey@example.com,(644)947-7753,"020 Mitchell Shoal, South Frankstad, NV 04789",Lake Annette,WY,73223,1987-11-06,4914.76,Inactive,2024-12-23,2025-12-09
+CUST000130,Sean,Jackson,camerontanya@example.com,(734)964-4343x34672,"18036 Rivera Path, Fuentesfurt, TN 90405",Hallport,AK,96704,1946-09-12,27023.35,Inactive,2024-02-09,2025-11-24
+CUST000131,Brittany,Johnson,dianabrown@example.net,5687691115,"959 James Mountain, West Georgestad, VI 47889",Lake David,NC,87741,2007-06-07,31096.51,Active,2024-08-12,2025-11-23
+CUST000132,Stefanie,Mcdonald,douglasanderson@example.org,986-356-2752x8140,"1442 Chen Trail Apt. 564, Kimberlybury, WV 99675",Bradleyview,GA,60622,1949-10-15,38682.43,Inactive,2025-05-07,2025-11-27
+CUST000133,Dustin,Smith,frank08@example.org,336-758-3130,"927 Rios Dale, Hallland, NJ 22465",Jessicamouth,CO,93988,1975-04-20,27254.26,Active,2024-11-22,2025-12-13
+CUST000134,Jon,Gibson,gflores@example.net,483-648-8880,"24544 Miller Well, West Nicolemouth, IA 54733",East Sean,OR,02024,1952-12-26,25780.11,Suspended,2024-12-14,2025-12-04
+CUST000135,Justin,Weaver,frances38@example.com,001-957-219-7507x70613,"0110 Stephens Points Suite 235, Port Brendaville, TN 85323",Lake Ashley,FM,17533,1945-01-03,14440.82,Active,2024-01-20,2025-12-09
+CUST000136,James,Watson,ysmith@example.net,991.326.8254x338,"5374 Lisa Burg Apt. 422, Christopherfurt, PA 13414",Stevensmouth,TN,90546,2007-10-11,26340.28,Inactive,2024-12-09,2025-12-11
+CUST000137,Paul,Rivers,wclark@example.com,+1-696-826-8705x841,"6858 Bowman Causeway Suite 411, West Cory, MA 07881",East Tanya,MT,12381,1948-09-26,42952.38,Suspended,2024-05-21,2025-12-01
+CUST000138,Nicole,Mercer,vvilla@example.org,567.831.1297x66073,"4718 Michael Ramp Apt. 501, New Amy, CT 61454",Sanfordmouth,KY,95862,1998-05-01,49504.98,Suspended,2024-01-04,2025-12-18
+CUST000139,Daniel,Rogers,barnesjennifer@example.org,(692)645-8539x9620,"50995 Robinson Pass, Patelchester, CA 80714",Allisonstad,KY,94762,1957-12-27,45667.85,Inactive,2025-08-10,2025-12-18
+CUST000140,Veronica,Guerrero,alexa87@example.org,571-937-4037,"07164 Shannon Lake Apt. 998, Port Christopher, AL 72617",Lake Kristinaberg,GA,13941,1995-08-01,42719.91,Active,2025-01-17,2025-11-28
+CUST000141,Kimberly,Mitchell,karenreynolds@example.com,671.728.7471,"Unit 2368 Box 5796, DPO AE 16143",Elizabethhaven,IL,25253,1968-12-06,22490.72,Suspended,2024-01-10,2025-12-16
+CUST000142,Julia,Anderson,igardner@example.org,774-453-8656x17841,"843 Bowers Wells, North Zacharyhaven, MI 55997",Christineton,TN,60111,1970-12-31,36271.62,Suspended,2024-01-28,2025-12-13
+CUST000143,Dale,Lynch,callen@example.com,901.761.3658,"5794 Reese Locks, Colebury, OK 05659",Harrismouth,FL,44108,1964-04-08,41837.46,Inactive,2025-06-09,2025-12-10
+CUST000144,Aaron,Hardin,mariamitchell@example.net,761.374.6320,"02204 White Cliffs Suite 779, Jessicaport, CO 54265",New Denise,WI,83360,1980-09-02,31807.96,Inactive,2024-08-03,2025-12-03
+CUST000145,Ryan,Blankenship,jamessantos@example.org,391.635.1290x6806,"053 Kane Islands Apt. 909, North Julian, TN 41403",North Veronicachester,OH,02730,1950-01-06,25308.23,Suspended,2025-07-11,2025-11-28
+CUST000146,Edward,Logan,lbrown@example.org,311.793.5754,"1200 Curtis Radial Suite 917, North Lisabury, ND 01365",Lake Shawn,FL,44190,1990-07-30,40114.76,Active,2025-04-25,2025-12-12
+CUST000147,David,Thomas,ygriffin@example.com,+1-404-665-3090x39632,"5272 Thomas Haven Suite 717, Burnettfurt, VA 85324",North Heathershire,NV,50475,2006-08-03,6054.45,Suspended,2025-10-16,2025-11-27
+CUST000148,Marissa,Powell,hayden86@example.net,3522501678,"53810 Davis Fields, Fergusonbury, DE 47491",New Janice,AR,42898,1977-08-19,12574.33,Active,2025-05-28,2025-11-27
+CUST000149,Nancy,Nelson,tiffanysoto@example.net,601.855.6075x82745,"558 Santiago Neck, Johnsonchester, NC 77952",West Mallorychester,UT,67402,1948-05-26,13897.95,Active,2024-06-02,2025-12-02
+CUST000150,Stephanie,Gonzalez,tylersharp@example.com,603.758.0475x141,"309 Carrie Row, Williamsonbury, ND 54498",West Elizabeth,MH,85999,1951-11-24,9956.03,Suspended,2025-04-15,2025-11-27
+CUST000151,Kaylee,Henry,pgilmore@example.net,+1-589-975-4527x83731,"335 David Village, East Austin, WV 73493",Jacksonland,AL,03220,1981-07-20,26161.85,Active,2025-11-20,2025-12-12
+CUST000152,Thomas,Jenkins,alvaradoryan@example.com,+1-402-785-5950x482,"64442 Turner Shores Suite 191, Josephhaven, CA 19561",Lake Anthonyborough,RI,07717,1970-06-28,47709.7,Suspended,2024-05-28,2025-11-24
+CUST000153,Justin,Cunningham,jamesallen@example.org,(764)514-7905x1355,"3822 Roberts Glens Suite 228, Lorifort, WV 62561",Port Ann,VA,07011,1996-02-01,34873.97,Active,2024-06-08,2025-12-07
+CUST000154,Samuel,Hoffman,dmorales@example.net,(843)584-4769,"49894 Laurie Views, East Justinton, PR 81049",Harperberg,PA,34973,1999-05-18,8099.2,Active,2025-05-17,2025-12-07
+CUST000155,John,Lopez,robert15@example.net,(984)223-7205x18640,"839 Shawn Village Suite 694, Lake Marcus, OR 52613",Port Anastad,MA,51009,2000-08-26,47004.93,Suspended,2025-04-02,2025-11-27
+CUST000156,Richard,Higgins,danielsantana@example.org,+1-582-255-2736,"45109 Maxwell Station, Gibsonfort, UT 11050",Lake Janiceburgh,AS,81415,1992-02-22,3073.13,Suspended,2025-07-12,2025-12-17
+CUST000157,Michael,Cox,jonesmichael@example.org,(722)773-4899x99541,"88391 Nathan Fords Suite 812, Brianmouth, NH 72131",South Briana,MI,63368,1948-12-02,16225.6,Suspended,2025-03-03,2025-12-15
+CUST000158,Joshua,Wright,benjamin89@example.org,+1-719-444-3207,"3103 Brent Terrace, Martinmouth, UT 37551",Collinsland,HI,03379,2002-12-10,17388.22,Active,2025-09-30,2025-12-03
+CUST000159,Geoffrey,Smith,brandy13@example.org,(680)665-9663,"06373 Jeff Parkways Suite 040, South Lindsayview, PW 44175",New Tom,CT,08047,1983-05-30,26242.34,Suspended,2024-09-30,2025-12-09
+CUST000160,Ronnie,Brown,zacharymullins@example.org,244-250-7597x383,"37831 David Mountains, Colechester, OH 01480",Molinachester,WA,53858,1972-01-17,13660.25,Suspended,2024-09-06,2025-12-21
+CUST000161,Edgar,Stokes,zwhite@example.net,668.602.4699,"161 Theresa Highway, Lake John, MA 00758",Lake Rebecca,MT,55099,1983-06-24,36138.12,Inactive,2024-08-13,2025-12-21
+CUST000162,Ronald,Wilson,qcole@example.org,001-946-414-9610x162,"734 Danny Flats Apt. 856, Allenville, AR 96808",West Tammymouth,TN,28143,1948-11-04,12843.76,Suspended,2024-12-15,2025-12-02
+CUST000163,Lisa,Green,jordananne@example.net,901-564-8837x1101,"53708 Olson Rue Suite 879, Port Amy, TX 06460",Lopezmouth,VI,66442,1963-05-31,48790.26,Active,2025-05-05,2025-11-26
+CUST000164,Jennifer,Montoya,ojackson@example.org,+1-549-601-5111x56038,"80441 Melissa Corners, Reneemouth, MN 19418",Evanschester,MP,16019,1962-09-23,45226.36,Active,2024-10-20,2025-11-24
+CUST000165,Steven,Thomas,kimberly79@example.net,698.451.3136x07821,"Unit 3274 Box 0887, DPO AE 45544",Coopermouth,MS,23663,1976-12-08,23283.25,Active,2024-08-10,2025-11-30
+CUST000166,Nicholas,Harris,devonreyes@example.com,001-685-764-9483x651,"235 Wright Stravenue Apt. 691, East Beverlyburgh, CT 55520",North Mollyhaven,IA,94536,2003-05-12,30763.63,Suspended,2024-08-22,2025-12-22
+CUST000167,Kendra,Blake,brianwilliams@example.com,(331)429-5273x39033,"7797 Paul Isle Apt. 096, West Patrickmouth, MA 59838",West Davidview,WY,09819,1982-03-31,19624.67,Inactive,2025-04-12,2025-12-16
+CUST000168,Christine,Gonzalez,kellywhite@example.org,206-525-8246,"593 Kaitlyn Fork, Cynthiaside, LA 92103",Port Aaron,FM,59378,1958-06-03,41971.76,Suspended,2024-06-24,2025-12-07
+CUST000169,Cindy,Long,nwise@example.org,843.842.0822x9215,"659 Valencia Summit, South Brittanybury, CA 20753",Spearsmouth,WA,46024,1963-12-02,7298.0,Active,2024-09-18,2025-11-25
+CUST000170,Patrick,Perry,antoniosullivan@example.net,+1-402-342-8488x13342,"122 Smith Loop, West Nicole, UT 03708",Port Kennethton,NH,73084,1985-10-15,30151.52,Suspended,2025-01-14,2025-12-05
+CUST000171,Gary,Wilson,paul85@example.com,+1-669-405-1091x9372,"654 Christensen Fall, Warrenfurt, TX 61939",Stevensmouth,SC,10166,1985-09-06,1149.77,Inactive,2024-04-30,2025-12-20
+CUST000172,Rebekah,Perez,boothsuzanne@example.com,001-961-775-4431x1482,"0073 Brooks Pines, South Lisa, OR 77208",South Elaineton,AR,60650,1987-06-25,6029.7,Active,2024-01-25,2025-12-02
+CUST000173,Denise,Hall,richardjonathan@example.com,216.482.3633x42110,"924 Dawn Heights, East Collin, NH 56255",Fieldsland,AZ,56408,1960-07-09,34777.49,Active,2025-04-23,2025-11-25
+CUST000174,Timothy,Fuller,coreykelly@example.com,001-437-561-8594x7218,"7559 Jordan Lock Suite 035, South Kathy, MT 23376",Elliottfort,VI,19003,1967-07-27,16464.82,Inactive,2024-05-06,2025-12-11
+CUST000175,James,Owens,iedwards@example.net,978.537.9556x5621,"5659 Renee Court, Williamsland, AL 41039",Lauraton,OK,40567,2000-09-05,46091.59,Active,2024-09-06,2025-12-22
+CUST000176,Donald,Gardner,tcollins@example.net,6763975859,"499 Jason Forest Suite 581, Robersonburgh, AR 92031",Lake Andrewport,MO,22597,1987-11-17,27420.49,Inactive,2025-04-25,2025-12-02
+CUST000177,Andrew,Copeland,frankcarter@example.net,(701)201-7676,"3122 Ryan Islands Apt. 994, Wallaceburgh, MA 54319",North Emily,ID,33399,2002-01-18,11842.75,Suspended,2025-10-21,2025-11-25
+CUST000178,Christopher,Scott,pmartin@example.com,001-983-529-7937,"185 Meadows Isle, West Stephen, KY 36251",Lauraberg,GA,65988,1995-07-14,46637.67,Inactive,2025-06-28,2025-12-16
+CUST000179,Jorge,Thompson,kmaxwell@example.net,491-403-8862x906,"534 Allison Haven, Jamesshire, WA 26569",Wolfport,OH,51760,1947-08-27,32330.06,Active,2024-01-05,2025-11-29
+CUST000180,Michael,Adams,samanthamurphy@example.net,(925)539-3872x0620,"35951 Jeremy Key, Smithside, NE 52743",Laurenchester,WV,08802,1990-07-21,25782.7,Inactive,2025-02-21,2025-12-13
+CUST000181,Anthony,Lee,wgarcia@example.org,847-362-3901,"93265 Michael Lock, Port Annette, ND 85288",West Rachel,MI,44938,1946-12-07,47150.11,Active,2024-06-21,2025-12-22
+CUST000182,George,Smith,ucobb@example.org,+1-790-507-3171x503,"7106 Brandy Heights, East Jasmineside, CA 49220",Codyport,CT,45561,1978-04-24,39933.41,Active,2024-10-05,2025-11-28
+CUST000183,Brian,Edwards,aaron03@example.org,001-403-621-6050x03783,"23392 Hernandez Crest Suite 817, Bruceville, ME 45320",Briggsborough,AR,80413,2005-08-04,931.35,Inactive,2024-08-30,2025-11-25
+CUST000184,Amanda,Black,josephrichards@example.net,001-900-494-6469x0621,"8723 Palmer Via Suite 422, New Rodneyport, WI 73007",Lake Jill,MH,44913,1949-08-20,27191.43,Active,2024-06-03,2025-12-10
+CUST000185,Tom,Martinez,garciawendy@example.org,9246459306,"78990 Flores Causeway Apt. 719, New Annaborough, MD 72180",Knappmouth,AZ,24352,1960-02-22,27829.15,Suspended,2025-11-05,2025-12-04
+CUST000186,Jason,Jackson,williamsbruce@example.org,(299)592-7972x950,"71871 Campbell Parkways, Pearsonside, MS 93197",South Crystalborough,OK,43223,1983-04-12,12588.97,Active,2024-03-17,2025-11-27
+CUST000187,Darren,Arias,idonaldson@example.com,750-403-6388x77294,"49134 Diane Inlet Suite 051, Foxberg, MH 59984",West Joseshire,CT,29233,1996-04-15,6886.42,Suspended,2024-01-09,2025-12-03
+CUST000188,Richard,Johnson,onelson@example.net,+1-228-236-3400x57399,"5176 Garrett Road, Comptonburgh, AS 04192",Bergland,DC,82590,1991-05-30,15412.71,Suspended,2024-01-25,2025-11-26
+CUST000189,Mitchell,Davila,chris39@example.net,001-718-963-0315,"52331 Gordon Unions Suite 760, New Janet, GA 78758",East Joelstad,TN,96742,1963-08-13,8938.88,Inactive,2025-06-10,2025-11-26
+CUST000190,Jessica,Bradford,charles88@example.com,638-239-3927x926,"0245 David Gardens, South Donna, FL 24708",Glassstad,NJ,53457,1956-03-30,38518.45,Suspended,2025-10-24,2025-12-09
+CUST000191,Dustin,Walker,leonard25@example.net,001-278-610-1670x410,"5418 Shea Stream Suite 028, North John, CT 93947",South Tracy,CA,01617,1972-03-11,41961.64,Inactive,2024-12-13,2025-12-03
+CUST000192,Yolanda,Brown,christopherrodriguez@example.net,3265888758,"812 Paul Causeway, Elizabethfurt, NY 70187",West Robert,CO,32103,1979-05-28,49926.42,Inactive,2024-08-08,2025-11-23
+CUST000193,Natalie,Estrada,megan14@example.com,(609)938-7054x5780,"955 Jennifer Knoll Apt. 163, Amyfurt, MS 04960",Lake Joshuachester,AL,90911,1958-09-18,35721.46,Inactive,2024-01-10,2025-12-14
+CUST000194,Richard,Terry,fhernandez@example.com,001-542-297-2688,"838 Dixon Drive Suite 252, West Jeffreystad, HI 89522",Velazquezstad,NC,25362,1984-03-07,22755.37,Active,2025-05-23,2025-12-12
+CUST000195,Todd,Moore,mjenkins@example.org,7257039147,"Unit 1072 Box 6796, DPO AP 54207",Hansenhaven,FL,10340,1982-05-13,42310.95,Active,2025-03-11,2025-12-18
+CUST000196,Kelli,Bailey,regina30@example.com,915-372-3841,"2541 Martin Square Suite 149, Port Katelyn, WY 55568",Heatherside,KY,22306,1962-09-09,49543.41,Active,2025-06-03,2025-12-14
+CUST000197,John,Rogers,tony34@example.com,(819)579-5572,"473 Ball Tunnel, Walterborough, MI 42878",South Christian,WY,07384,1999-12-04,26649.53,Suspended,2025-08-11,2025-11-24
+CUST000198,Jason,Sanchez,bryan00@example.com,001-953-842-8677x5068,"1990 Adams Springs Apt. 775, Cannonton, RI 99792",Lake Anthony,WV,22254,1956-10-25,15297.61,Active,2024-03-11,2025-12-17
+CUST000199,Bruce,Molina,kelly11@example.org,001-668-312-6915,"91914 Tony Causeway, Mirandaton, LA 45299",New John,LA,32189,1999-09-29,1947.83,Active,2025-09-05,2025-12-21
+CUST000200,Cindy,Kaufman,melissa50@example.net,001-351-993-2455,"687 Martin Vista Suite 366, Lake Mark, WA 18155",South Katherine,MT,10449,2004-11-16,5194.24,Active,2025-11-06,2025-12-18
+CUST000201,Ronald,Gillespie,harrismelissa@example.net,(648)459-4285x72765,"294 Charles Knoll, Rhodesburgh, GU 82431",South Elizabeth,DE,59385,1981-10-18,2256.06,Suspended,2025-09-10,2025-12-01
+CUST000202,Ronald,Vance,debbie76@example.net,(830)436-6780x4575,"Unit 8997 Box 9019, DPO AE 17475",North Darinport,KS,93353,1985-04-28,27132.24,Active,2024-02-17,2025-12-16
+CUST000203,Ryan,Lee,ijenkins@example.com,621-242-5879x91623,"850 Murillo Trail, South Drewland, TX 15169",Adamshaven,NV,07283,1953-05-03,39012.17,Inactive,2024-08-03,2025-12-20
+CUST000204,Raymond,Vazquez,normandonald@example.com,953.611.2831x6634,"1032 Ware Corners, Pamelabury, MP 10716",Michaelville,TN,78286,2004-11-11,5948.02,Suspended,2025-01-24,2025-12-12
+CUST000205,Kelsey,Andersen,michael52@example.org,7428791034,"115 Webster Turnpike Suite 843, Lake Lisastad, WA 30603",Morrisonville,WV,15306,1955-02-24,18359.11,Suspended,2025-03-04,2025-11-24
+CUST000206,Henry,Smith,masseyelaine@example.org,252-684-4780x2128,"383 Mccormick Villages Apt. 488, Port Rodneymouth, CT 84009",Shepardburgh,WI,22106,1951-03-01,33682.38,Inactive,2025-10-16,2025-12-20
+CUST000207,Clifford,Dickson,donaldsonjessica@example.org,001-845-215-9285x9088,"210 Douglas Hills Apt. 440, Perezmouth, FM 45286",Byrdfort,GU,63920,1998-09-01,20163.63,Suspended,2025-03-22,2025-12-10
+CUST000208,Eileen,Doyle,kellyrogers@example.org,716.241.8213x06743,"Unit 8591 Box 3256, DPO AP 33048",Rossstad,IN,88035,1977-11-27,32591.08,Suspended,2024-08-07,2025-12-11
+CUST000209,Michelle,Liu,xgonzalez@example.net,+1-993-310-0903x3769,"72569 Jacqueline Orchard, Kathrynmouth, RI 48133",Cathyhaven,DE,07773,1960-12-02,23022.97,Active,2024-07-05,2025-12-18
+CUST000210,Brian,Benjamin,williamscraig@example.net,709-751-8062x57410,"29934 Cook Trail Suite 175, West Charles, AL 78930",Millerchester,OK,07042,1969-01-18,17076.26,Suspended,2024-06-20,2025-12-21
+CUST000211,Christopher,Flores,daniel03@example.org,001-873-292-7371x696,"6049 Tracey Squares, Williamsborough, NE 56749",Ingramport,MS,09391,1973-06-01,25919.59,Suspended,2025-07-17,2025-12-04
+CUST000212,Timothy,Merritt,meagan33@example.net,711-673-5403x64618,"3006 Tina Mountain, Lake Anthonymouth, NC 97993",Carrietown,VA,01332,1955-09-15,17182.83,Active,2024-03-29,2025-11-24
+CUST000213,Samantha,Nelson,amorris@example.com,727-445-3226x958,"38005 Melissa Station Apt. 266, New Tiffany, NH 61241",Nelsonfurt,IA,36526,1945-03-20,2412.87,Inactive,2025-04-02,2025-11-29
+CUST000214,Jason,Ferguson,allisongonzalez@example.com,8354400570,"822 Jessica Fall Suite 180, North Jacobberg, MH 02901",New Heathermouth,NM,12096,1964-10-13,33288.32,Active,2024-04-13,2025-12-07
+CUST000215,Donna,Perez,philip49@example.com,643-664-9528x976,"Unit 2701 Box 5114, DPO AE 89751",Justinmouth,NJ,27443,2001-07-14,11228.38,Inactive,2024-09-27,2025-12-10
+CUST000216,Joel,Solomon,aarongibson@example.com,001-551-976-8386x293,"76686 Armstrong Drive Apt. 247, Collinsside, AL 12830",West Danielhaven,PR,57363,1969-11-23,33699.08,Suspended,2025-04-22,2025-11-26
+CUST000217,Karen,Espinoza,aglenn@example.org,+1-944-653-6707x05307,"7025 Garcia Parkways Apt. 395, Hannahside, MO 18454",New Juanport,GA,31070,1946-01-02,15473.32,Active,2025-12-02,2025-12-19
+CUST000218,Danielle,Bailey,danielwilliams@example.net,+1-812-841-6057x6981,"4793 Baldwin Station Apt. 248, Rodriguezborough, NM 64084",Christophertown,MA,43758,1962-03-14,48746.63,Suspended,2025-11-22,2025-12-21
+CUST000219,Lisa,Adkins,darren85@example.net,(949)424-7517,"095 Nicholson Junctions Suite 959, Lake Heatherport, VT 83147",West Michaelville,IA,70370,1987-03-19,40706.9,Active,2025-05-31,2025-12-04
+CUST000220,Debbie,Perez,moorekimberly@example.com,+1-917-970-7015x3738,"30921 Tran Mountains, Kimberlyland, MI 38556",Lake Jessicabury,MS,65142,1979-09-10,26631.8,Suspended,2025-09-14,2025-12-02
+CUST000221,Joseph,Padilla,stantonjamie@example.net,001-508-390-5567x212,"52175 Joseph Mountains, South Megan, ME 92101",East Hannah,KS,01448,1967-02-13,28997.4,Suspended,2024-05-12,2025-12-22
+CUST000222,Jeremy,Robbins,moorealyssa@example.org,+1-506-587-3987x904,"Unit 7418 Box 6914, DPO AE 76136",Jesushaven,PW,46020,1986-02-11,9320.29,Suspended,2025-10-24,2025-12-21
+CUST000223,Kyle,Murray,william09@example.net,518-333-2344x68030,"83540 Karen Mountains, Lloydfort, ME 91532",East Eric,VI,77193,2003-02-28,26252.22,Inactive,2024-09-02,2025-11-26
+CUST000224,Johnny,Smith,tanya32@example.org,(877)225-4633x214,"USNV Brown, FPO AE 80069",Lake Aaronland,NC,09059,2003-10-08,25934.89,Inactive,2024-03-19,2025-11-30
+CUST000225,Gabriel,Vazquez,xbryant@example.com,(436)266-2857x76641,"000 Colin Rue Apt. 986, North Michael, HI 81268",Jessicaport,TN,98496,1956-05-19,36931.01,Suspended,2025-04-18,2025-12-06
+CUST000226,Kelly,Barnes,peggywoodard@example.org,(563)411-0511,"8506 Shelly Fort Apt. 202, Brendanshire, NV 07547",West Bradleyfort,TX,90344,2000-03-12,4772.22,Inactive,2025-06-10,2025-12-11
+CUST000227,Sharon,Hale,vmorris@example.org,565-747-0659x32497,"235 Dana Avenue Apt. 411, North Gregory, NJ 37766",Nelsontown,SD,50158,1962-01-01,27398.37,Inactive,2025-11-08,2025-12-12
+CUST000228,Tim,Williams,sandradavis@example.net,867.323.4603x36575,"958 Lisa Lake, Joshuaview, HI 75015",Smithtown,OR,26614,1965-08-06,40047.72,Inactive,2025-01-07,2025-12-14
+CUST000229,Amanda,Stevenson,alexisrussell@example.net,(232)782-5429x525,"PSC 4867, Box 8034, APO AA 85301",Kellystad,UT,28471,1952-12-30,5990.05,Active,2025-10-25,2025-11-29
+CUST000230,Justin,Rodgers,davidmiller@example.org,718-778-5214,"0630 Brittany Viaduct Suite 043, Port Timothystad, UT 84292",Port Tyler,TN,10452,1985-08-13,18530.98,Inactive,2025-12-15,2025-11-29
+CUST000231,Mark,English,david88@example.net,9274659030,"63088 Hurst Branch, Pattersonport, HI 17045",Davisfurt,NC,97300,1990-07-09,17699.24,Active,2025-08-18,2025-12-17
+CUST000232,William,Knight,mitchellpeggy@example.net,859-669-2715x69317,"53805 John Way Suite 307, Torresshire, MA 36809",Marcusfort,ID,14290,1962-12-10,25248.15,Inactive,2025-10-10,2025-12-02
+CUST000233,Robin,Anderson,wrightamy@example.org,(658)636-6456x3452,"89046 Barnes Drive, Stewartton, ND 51962",Lake Andreachester,MN,32435,1948-09-23,32186.6,Inactive,2025-01-31,2025-11-30
+CUST000234,Stephanie,Combs,nicole28@example.com,915.937.3780x0529,"3606 Michael Pass, South Austinfort, GU 37665",West Gina,NV,85349,1959-11-12,2693.63,Active,2024-11-10,2025-12-13
+CUST000235,Bryan,Rogers,michele19@example.com,531.389.7189,"440 Tracey Ferry, Lake Melissa, ND 39476",Nguyenfort,FM,03650,2001-02-05,12799.7,Active,2024-06-21,2025-11-30
+CUST000236,Cynthia,Mcmillan,lhartman@example.net,(900)521-2768x2861,"USNS Clark, FPO AP 13205",Josephmouth,KY,16384,1953-03-06,25755.78,Inactive,2024-09-05,2025-12-21
+CUST000237,Cassandra,Johnson,brennanstacey@example.net,942.257.3065,"78237 Olson Prairie, Catherinestad, OR 49167",East Danachester,WA,62721,2002-02-15,49086.35,Inactive,2025-07-03,2025-12-02
+CUST000238,Cathy,Best,stephensrebecca@example.com,(657)478-6543x453,"598 Isaac Valleys Suite 321, Stephenshire, NV 68300",West Ronald,FL,63590,1946-04-13,11808.14,Active,2025-08-07,2025-12-09
+CUST000239,Patricia,Carey,laurie70@example.net,(934)652-6769x3071,"74282 Amanda Vista, Michellebury, AZ 62139",Gregorystad,ID,93733,1975-11-25,161.7,Suspended,2025-06-01,2025-12-05
+CUST000240,Amy,Garcia,gedwards@example.net,(533)559-3276x48892,"743 Abigail Mill, Dianeberg, OH 92039",East Gregory,NC,47761,1945-03-10,44804.14,Suspended,2025-03-08,2025-12-01
+CUST000241,Katie,Schmidt,allison30@example.org,514.628.2391x9058,"03127 Thomas Pine, Port Marie, DC 86040",New Stacy,AR,15774,1999-11-28,47833.2,Suspended,2025-07-31,2025-11-24
+CUST000242,Jason,Campbell,ashley38@example.net,5564510525,"737 Torres Valleys, Port Karenton, FM 89520",South Ronald,CT,78471,1945-07-18,2652.39,Inactive,2025-08-10,2025-12-04
+CUST000243,Dakota,Alvarez,bradydenise@example.org,2692501082,"4669 Fernandez Divide, Lake Sarahland, WI 29422",Port Davidfurt,AS,50744,2005-02-13,44194.93,Suspended,2025-02-20,2025-12-04
+CUST000244,Nathan,Barnett,acurry@example.net,8586878222,"0165 Davis Summit, Antonioshire, SC 76076",Port Mary,TN,52914,1997-05-15,23982.6,Suspended,2024-08-14,2025-12-07
+CUST000245,Mike,Clarke,mbarr@example.com,973-855-5928,"99073 Snyder Lodge, Port Mary, NE 25605",Hermanport,GU,25946,1990-11-26,48797.23,Inactive,2024-03-06,2025-12-17
+CUST000246,Christopher,Holmes,thomas28@example.net,+1-992-579-5532x92568,"536 Allen Forges, Port Lynn, GA 98008",Briannaport,AK,10660,1955-03-10,48438.8,Suspended,2024-05-10,2025-11-25
+CUST000247,Hector,Mckenzie,ballcandice@example.com,555-792-6502x5733,"4593 Thomas Extension, East Ruth, DE 85939",East Dianafurt,IN,83121,1975-12-03,22457.64,Suspended,2025-10-21,2025-12-04
+CUST000248,Ann,Hall,stevensteele@example.net,(792)757-6571x6366,"992 Bauer Forks, North Kylestad, ID 94977",East Amyhaven,KY,36038,1946-09-04,2622.95,Inactive,2025-10-30,2025-12-08
+CUST000249,Zachary,Flores,andrewsjames@example.org,687.261.1415,"PSC 3823, Box 9600, APO AP 10514",South Josestad,MS,58235,1951-06-07,181.71,Suspended,2025-05-25,2025-12-16
+CUST000250,Ryan,Thomas,smithkaren@example.net,+1-237-231-9910,"Unit 1352 Box 7957, DPO AE 41474",South Marieview,IL,26650,1961-07-10,31416.42,Suspended,2024-01-03,2025-12-16
+CUST000251,Kent,Butler,jeffreyflowers@example.com,001-883-837-7501x7198,"3847 Richard Meadow, Jillton, DC 49729",Terrifort,MS,96523,1950-11-04,30690.07,Active,2024-10-15,2025-11-26
+CUST000252,Dennis,Nixon,thompsonmonica@example.com,3955314044,"684 Vargas Knoll Suite 809, Lake Charles, AR 93477",Karinamouth,NV,67042,1988-03-27,25507.42,Active,2024-10-23,2025-11-25
+CUST000253,James,Clay,dianaberry@example.com,001-713-436-0885x0074,"986 Beverly Fords, Rodriguezfurt, TX 46021",East Jasonbury,IN,06906,1964-08-29,18806.12,Active,2025-10-06,2025-12-07
+CUST000254,Timothy,Bryan,rcrawford@example.net,546.481.3226,"353 Rita Summit, Muellerburgh, NH 33227",Karenshire,OK,41244,1961-01-04,20691.79,Suspended,2025-05-31,2025-11-26
+CUST000255,Monica,Rice,xbeck@example.net,699.871.0264x2511,"198 Gillespie Causeway Suite 466, Nealmouth, DE 92192",Jenniferfurt,TX,91709,1955-09-01,17536.78,Inactive,2025-07-25,2025-11-25
+CUST000256,Carolyn,Gillespie,rebeccaowens@example.com,920.516.8196,"53849 Laura Landing, South James, WA 68380",North Stephenmouth,CT,09505,1964-02-18,23650.33,Active,2025-12-22,2025-12-15
+CUST000257,Jorge,Scott,cortezrichard@example.net,(694)784-7296x08642,"8891 Anthony Meadow Apt. 533, South Aaron, PW 34701",West Wendyton,NY,24764,1959-04-22,32909.0,Inactive,2025-12-22,2025-12-02
+CUST000258,Mathew,Guerrero,jamie63@example.com,001-676-713-2494x03638,"6137 Karen Locks, West Pamelabury, DC 12142",South Robert,RI,86366,1994-10-11,29677.38,Suspended,2024-11-26,2025-11-26
+CUST000259,Kathy,Valdez,bwood@example.net,350.582.8601,"63470 Jesse Motorway Apt. 724, East Diana, WI 26118",South Kimberlyhaven,CT,31821,1980-01-08,25887.24,Suspended,2024-05-23,2025-12-03
+CUST000260,Nicholas,Rodriguez,aarongreer@example.com,463-442-8496x62114,"722 Derrick Fort, South Amandafurt, VI 08156",East Heather,VI,75073,1979-08-17,31383.27,Active,2024-07-29,2025-12-22
+CUST000261,Ashley,Daniels,scottvazquez@example.com,(513)865-1172,"27404 Ashley Shores Suite 293, Ryanside, PR 52913",New Omarland,UT,07723,1976-12-25,15348.95,Inactive,2024-10-21,2025-11-26
+CUST000262,Jay,Jimenez,ronald22@example.net,001-484-950-0436,"14829 Becky Freeway Suite 581, West Joseph, ME 24389",Port Carlos,WV,51262,1968-09-19,46940.47,Suspended,2025-05-30,2025-11-24
+CUST000263,Melissa,Brown,daniel16@example.com,001-885-417-9394,"63001 Lin Shore, South Aprilborough, MD 83660",South Steven,VI,57617,1959-08-09,20662.9,Suspended,2025-07-16,2025-12-20
+CUST000264,Jacob,Young,cindy22@example.com,001-721-480-2696x03786,"86439 Roberts Bridge, West Sarahberg, DC 50564",Lake Danielleshire,KY,94296,1977-06-08,14290.62,Suspended,2025-09-03,2025-12-01
+CUST000265,Nancy,Harris,derek02@example.net,(928)654-0286x556,"640 Hannah Ridges Suite 825, South Thomas, PA 88747",Barkerbury,NH,86966,1953-04-01,29028.2,Inactive,2024-04-09,2025-11-23
+CUST000266,Travis,Clarke,zachary20@example.net,001-741-733-1947x59372,"144 Morrow Tunnel, Paulberg, WV 34435",Jenkinsfort,LA,76682,1989-05-17,1251.04,Inactive,2024-12-13,2025-12-03
+CUST000267,Laura,Anderson,ljohnson@example.org,648-486-5655,"711 White Mews, Williamston, CT 28037",New Lindsey,OH,48819,1969-01-30,29626.47,Suspended,2024-07-16,2025-12-18
+CUST000268,Derek,Williams,kevin03@example.net,+1-595-346-8886,"932 Karen Haven, Seanville, PA 38192",Cruzbury,FL,88014,1982-09-06,9009.8,Suspended,2025-12-01,2025-12-10
+CUST000269,Rebecca,Davidson,javiersmith@example.net,236.497.7527x9959,"0160 Trevino Fields Apt. 469, South Annmouth, MT 78412",Haileyborough,FL,15765,1991-03-02,26898.15,Active,2024-08-31,2025-12-22
+CUST000270,Robert,Simon,cmorris@example.net,001-350-427-4687x203,"7669 Joseph Walk Suite 194, West Michael, RI 74868",Lewisport,ME,95751,1994-04-03,26106.09,Active,2025-05-05,2025-12-01
+CUST000271,Lindsey,Martinez,ryancastro@example.net,(746)963-5386x478,"038 Miller Freeway, Douglasstad, NE 51553",New Christian,MO,13566,1969-04-19,36168.34,Active,2024-12-29,2025-12-05
+CUST000272,Samantha,Hernandez,john98@example.net,820.765.5941x7816,"110 Natalie Islands Suite 700, West Bethany, PR 14071",Alexhaven,RI,26191,1946-11-04,33707.66,Suspended,2025-03-01,2025-12-22
+CUST000273,George,Choi,scott46@example.net,(653)462-5192x166,"2368 April Brook Apt. 034, New Sonya, VT 51577",Lake Heatherfurt,WY,28238,1977-03-06,47380.95,Suspended,2025-07-08,2025-12-08
+CUST000274,Russell,Moore,vincentmeagan@example.org,684-676-4826x4217,"USNV Moore, FPO AA 98009",Cindyborough,FL,39051,1970-05-05,3264.28,Active,2025-11-14,2025-12-18
+CUST000275,Lisa,Hill,iwilliams@example.org,715-241-8654,"USNV Nichols, FPO AE 09527",Stephaniefort,MH,63621,1995-11-22,49381.45,Active,2024-01-20,2025-12-04
+CUST000276,Brian,Allen,whitekristina@example.com,280.832.4350x832,"685 Brittney Stravenue, North Anthonytown, TX 49164",New Carla,CA,80585,1962-07-13,36923.9,Active,2024-02-29,2025-12-08
+CUST000277,Jack,Gutierrez,jmassey@example.org,205.927.8238x4298,"9968 Marshall Lane, East Sophiamouth, AR 87472",New Andrewview,HI,34104,1963-07-16,34112.4,Active,2024-12-13,2025-11-24
+CUST000278,Zachary,Ramirez,ruthglover@example.com,(768)286-5225,"8638 Amanda Flats, Myerschester, CO 11235",Durhamhaven,DC,09320,1968-08-14,43431.09,Active,2025-01-08,2025-12-12
+CUST000279,Leah,Wyatt,crystalshepard@example.com,285-654-5166,"267 Costa Ridges, South Wyattport, MO 62202",New Michaelshire,VT,47559,1949-10-16,22508.5,Active,2025-06-11,2025-12-04
+CUST000280,Samuel,Mcguire,robinsonmercedes@example.org,(829)608-9152x889,"373 Alexander Common Suite 552, Lake Stevenchester, RI 53515",Malonefurt,ID,77862,1992-03-17,9172.52,Suspended,2024-05-30,2025-12-13
+CUST000281,William,King,patricia42@example.org,485-440-4329x59657,"4989 Thompson Trace Apt. 461, West Catherineport, AS 42223",Kevinbury,GA,93403,1959-04-01,26260.85,Inactive,2025-10-13,2025-12-07
+CUST000282,Eric,Burns,elliottlinda@example.org,+1-502-665-5898x0600,"36581 Alvarez Crossroad, Dorisside, VT 03804",Raymondside,GU,11483,1962-02-09,26523.66,Inactive,2025-01-19,2025-11-27
+CUST000283,Courtney,Lopez,ellisdonna@example.net,(728)634-4871,"54867 Ariana Inlet, Kristinestad, VT 88840",South Adam,VI,27845,2003-06-07,4717.25,Suspended,2024-05-22,2025-12-09
+CUST000284,Taylor,Gonzales,fanderson@example.org,(465)758-8678x03618,"64581 David Summit Suite 839, South Melissahaven, MO 75835",Lake Roberto,IA,85821,1949-02-06,47939.15,Inactive,2025-09-30,2025-12-10
+CUST000285,Corey,Murphy,sean56@example.net,+1-289-459-4742x137,"Unit 5851 Box 0665, DPO AA 74649",Lisaville,PW,14458,1963-06-02,14040.09,Active,2024-08-12,2025-12-04
+CUST000286,Devon,Sanchez,carolynmyers@example.com,425-569-5840x49263,"461 Paul Greens Apt. 614, Leefurt, NV 44685",Beverlymouth,HI,23113,1982-05-28,2841.29,Suspended,2024-05-04,2025-12-16
+CUST000287,Sean,Golden,kjones@example.net,794.695.1511,"0418 Merritt Mountain Suite 101, New Shawnfurt, FL 21356",Reeseborough,OR,49064,1956-06-05,43720.29,Suspended,2024-07-01,2025-11-28
+CUST000288,Donald,Gillespie,christinegardner@example.com,470.958.8068,"383 Lewis Manor Apt. 498, East Christopher, PR 51583",Maryport,WI,80499,1968-06-06,11938.32,Active,2025-05-17,2025-12-17
+CUST000289,Karen,Lopez,kennedybrenda@example.org,+1-370-996-6227x78396,"695 Jason Forge Apt. 848, West Nicholas, SC 32938",Mayshaven,NY,62317,1945-05-22,46014.31,Active,2024-07-15,2025-12-02
+CUST000290,Kimberly,Murphy,hartmanjames@example.org,4513660490,"659 Jeffrey Spurs, South Jennifer, NM 35665",South Randallville,NC,15409,2004-11-02,1080.43,Inactive,2025-05-13,2025-12-03
+CUST000291,Katrina,Harding,ereyes@example.com,+1-743-474-2226x08307,"2070 Mitchell Land Suite 994, New Hannah, KY 43690",Williamberg,ND,77060,1947-12-08,46295.52,Inactive,2025-03-07,2025-12-11
+CUST000292,Jasmine,Olsen,heidiferguson@example.com,313.469.1144x91450,"5822 Pitts Causeway, Port Joshua, ND 35356",Sandrafort,GA,53617,1997-08-24,19481.16,Suspended,2025-08-19,2025-12-09
+CUST000293,Gloria,Serrano,zgarcia@example.org,(706)443-3247,"PSC 5468, Box 2730, APO AE 33490",Lisastad,IN,37439,1974-09-02,40139.18,Active,2024-07-22,2025-12-13
+CUST000294,Daniel,Moon,chadpratt@example.com,782-440-2529x75477,"1558 Obrien Oval Apt. 127, North Gloriatown, VI 31650",Mariahbury,NM,76391,2001-06-23,48804.48,Suspended,2024-08-20,2025-12-15
+CUST000295,Katherine,David,icampbell@example.com,001-646-959-3572x7219,"9211 Estrada Mountains Suite 401, Taylorfort, GU 90757",North Mercedes,AR,71944,1960-10-01,20013.92,Active,2024-09-24,2025-12-03
+CUST000296,Danielle,Clayton,tduncan@example.com,001-652-389-0391,"73559 James Harbor Suite 497, Lutzshire, VT 66730",Lake Benjamin,IL,38420,1994-04-01,7019.51,Inactive,2024-07-13,2025-12-22
+CUST000297,Gregory,Vaughn,alexanderjames@example.net,268.903.0671,"USS Jones, FPO AA 22132",North Jeffreymouth,MT,51382,2000-07-11,46041.38,Active,2024-07-28,2025-11-30
+CUST000298,Tyler,Evans,cassandraschultz@example.com,(813)725-6715,"224 Walker Row, East Michaeltown, AR 09493",New Sharon,VI,79547,1973-06-04,22808.01,Active,2024-05-10,2025-12-21
+CUST000299,Jimmy,Reynolds,williamscott@example.net,380.273.3156,"98636 Burke Path Suite 186, North Tyrone, FL 67995",Jennifershire,GA,09429,2004-12-19,47427.33,Inactive,2025-04-18,2025-11-23
+CUST000300,Roger,Benson,peggy68@example.net,420.370.6085,"70886 Carr Trace Apt. 619, South Elizabeth, TN 46280",Port Juanfort,HI,38088,1980-08-20,20718.64,Inactive,2024-10-01,2025-11-23
+CUST000301,Natalie,Thomas,petersamy@example.com,583.369.4789x76635,"802 Glenn Ranch Suite 688, Michelleberg, VT 32961",West Rhondabury,DC,42611,2001-12-12,9429.96,Inactive,2024-05-02,2025-12-08
+CUST000302,Erica,Schultz,trevinosamuel@example.com,001-752-659-8503,"8142 Farrell Station, New Stephanie, FM 38239",New Alexa,ND,29173,1982-06-22,42441.6,Active,2025-06-25,2025-12-13
+CUST000303,Melissa,Strong,flemingwanda@example.org,397-822-6665x376,"4017 Barr Valley Apt. 938, Kristentown, FM 22618",South Christopher,ME,75522,1951-03-16,32432.68,Inactive,2025-01-04,2025-12-18
+CUST000304,Kristen,Stewart,savannaholson@example.com,(833)275-6239x4379,"78201 Anna Pass Suite 010, South Cory, VA 15496",North Marymouth,MS,59522,1996-08-04,38238.47,Suspended,2024-09-20,2025-12-05
+CUST000305,John,Contreras,kevinduran@example.org,(848)700-8163x244,"770 Patricia Crossroad Suite 031, Victorstad, KY 18534",Port Williamhaven,KS,93557,1982-04-08,33666.0,Active,2025-07-19,2025-12-20
+CUST000306,Billy,Powell,timothymann@example.org,001-443-637-3526x167,"522 Phillips Stream Suite 647, Sandersside, MT 31470",Lake Annettebury,NE,36454,1946-07-16,37956.99,Inactive,2025-04-27,2025-12-19
+CUST000307,Danielle,Jordan,marissa28@example.com,001-541-799-3208x10449,"811 Bird Ford, New Kevin, WA 61457",West Brianside,AS,18744,1962-05-31,7216.49,Inactive,2024-08-29,2025-11-29
+CUST000308,Eric,Rogers,ejenkins@example.net,(275)210-0323,"3712 Hill Fork, Charlesberg, NY 28471",South Justin,SC,50569,1946-09-04,41265.5,Active,2024-01-13,2025-12-18
+CUST000309,Anna,Horton,uliu@example.com,+1-450-333-3817x11172,"53669 Matthew Shores Suite 230, Lake Alexanderchester, SD 89199",East Veronicaborough,NM,96740,2005-09-20,1508.53,Inactive,2024-12-01,2025-12-09
+CUST000310,Heather,Nelson,hendersonjennifer@example.net,001-611-825-0681x235,"84920 Ana Light Apt. 522, Kirkview, VT 02729",West Kristina,MH,73502,1999-11-27,41376.95,Active,2024-12-26,2025-11-28
+CUST000311,Victor,Orr,rachelvalencia@example.net,7957717713,"3039 Renee Trail, Heatherville, DE 44594",Kennethberg,KY,00694,1947-04-26,33385.3,Suspended,2025-10-20,2025-12-01
+CUST000312,Brandon,James,jamie90@example.org,+1-428-657-8579x16864,"235 Linda Plaza Apt. 411, Christopherburgh, WI 67494",East Donald,SC,94134,1957-01-11,4924.67,Inactive,2024-12-12,2025-11-25
+CUST000313,Danielle,Gonzales,destinybarrett@example.net,+1-327-611-0679x947,"9402 Ashley Mount Suite 742, Jaredberg, AL 81988",North Douglas,ID,23565,1995-11-02,4440.73,Suspended,2024-01-26,2025-12-19
+CUST000314,Shawn,Harris,nicoledurham@example.net,+1-597-551-1072x883,"95712 Peter Mills Suite 699, Rhondaburgh, UT 63031",New Christineside,SD,65767,1993-10-30,35517.42,Inactive,2025-04-27,2025-12-20
+CUST000315,Logan,Sexton,vincent99@example.net,280-531-0490x537,"86197 Erika Well Suite 297, North Paul, SC 27552",Fuentesfurt,CT,73322,1951-06-18,19599.18,Inactive,2025-09-02,2025-12-14
+CUST000316,Brooke,Mays,michael23@example.org,001-862-512-6083x039,"58452 Alexandria Summit, West Daniel, PW 54211",Bryantmouth,NY,26212,1993-07-23,19655.35,Suspended,2024-12-07,2025-11-27
+CUST000317,Sarah,Vargas,oliverlori@example.org,+1-440-336-7788x1851,"3870 Freeman Corners, Lake Tammy, MT 60701",East Nicholas,MH,10454,1950-12-24,19393.03,Suspended,2024-09-21,2025-12-03
+CUST000318,Mark,Long,jmckay@example.com,2297009577,"394 Guzman Forge, New Kyle, MH 67209",Stricklandview,MH,46597,2002-03-27,49122.52,Inactive,2024-10-07,2025-12-21
+CUST000319,Cynthia,Carter,wjones@example.net,964-544-7724,"1108 Jimenez Ranch Suite 211, Jamesside, WA 81636",Lake Michaelmouth,KS,48074,1980-04-10,21542.48,Inactive,2025-09-13,2025-12-10
+CUST000320,Elizabeth,Johnston,weaverbrian@example.com,201-526-8140,"332 Williamson Ramp Apt. 785, New Kari, AZ 84280",Lake Donnaport,MD,77671,1971-08-22,8758.2,Active,2025-01-25,2025-12-06
+CUST000321,Susan,Brown,jodi33@example.net,+1-908-396-8885x71551,"Unit 3373 Box 4334, DPO AP 17218",Port Caleb,DC,37417,1993-03-10,45891.64,Inactive,2025-12-01,2025-11-29
+CUST000322,David,Church,vroth@example.com,3432572004,"17217 Carrie Trace, East Teresa, CT 74854",Clarkhaven,GA,57635,2000-08-23,21580.74,Active,2024-01-03,2025-12-19
+CUST000323,Preston,Serrano,amanda44@example.net,562-376-8624x4112,"PSC 9329, Box 2411, APO AA 41833",Phamstad,TX,47913,1989-06-19,9340.94,Inactive,2024-08-04,2025-12-18
+CUST000324,David,Cobb,ortegaheather@example.net,819.943.0757,"75641 Russell Branch Apt. 816, Port Benjamin, PW 82695",Kennedyview,PR,42215,1963-08-01,8147.59,Suspended,2025-08-17,2025-12-10
+CUST000325,Brandi,Johnson,caseyjoshua@example.org,001-915-642-4062x4252,"PSC 6215, Box 2757, APO AA 85735",New Gregory,FL,35816,1985-02-10,25905.7,Suspended,2024-01-14,2025-12-04
+CUST000326,Michael,Myers,zbutler@example.org,687-957-1041,"83974 Tyler Tunnel Suite 092, Port James, MS 03312",Williamfort,WY,78429,1969-07-15,18674.47,Active,2024-12-28,2025-12-04
+CUST000327,Kara,Sosa,tmccormick@example.net,7538203803,"86067 Darrell Cliff Suite 755, South Willie, MO 08407",Heatherfort,GA,73603,1976-02-04,29236.25,Suspended,2024-06-08,2025-11-25
+CUST000328,Randy,Williamson,utorres@example.net,742.957.5829x436,"USNV Schroeder, FPO AP 62948",Nancyton,PR,42429,1951-12-19,21297.79,Active,2024-07-12,2025-12-03
+CUST000329,Dustin,Brooks,haleymarshall@example.com,328.564.5843x7853,"4017 Erickson Ridges, New Carol, TN 46926",North William,NJ,30525,1992-11-10,223.69,Inactive,2024-09-21,2025-12-22
+CUST000330,Sarah,Rhodes,ccarter@example.org,312-643-4735x46077,"77485 Daniel Islands Apt. 672, Deborahview, GA 10492",Taylorville,MI,61496,1964-05-31,46477.21,Suspended,2024-11-19,2025-11-23
+CUST000331,Judith,Jones,burchhunter@example.com,+1-904-227-4795x04885,"USNV Blackburn, FPO AE 79437",Port Benjamin,NV,19776,1953-03-21,2574.09,Inactive,2025-05-24,2025-12-21
+CUST000332,Darius,Mcgrath,ewiggins@example.net,+1-531-538-0088,"87653 Lynn Terrace Suite 888, North Jeffreyberg, AK 84701",Lake Veronicaland,PR,09207,1954-04-25,11397.5,Suspended,2024-07-21,2025-11-26
+CUST000333,James,Watson,brent36@example.org,001-236-350-0668x2643,"912 Flowers Roads Apt. 155, North Danielburgh, ME 32939",New Danielle,MO,27549,1968-01-16,42396.2,Active,2025-04-17,2025-11-29
+CUST000334,Michael,Shepard,michaelroberts@example.net,874-376-0330x4826,"USS Williams, FPO AE 98043",Port Pamela,RI,07249,1946-12-14,40068.95,Inactive,2024-02-26,2025-12-10
+CUST000335,Sarah,Madden,danny96@example.net,(767)518-7778x542,"341 Johnathan Village Suite 853, Morganbury, NC 24703",Tammyland,AS,27467,2004-08-04,39193.96,Inactive,2025-02-02,2025-12-11
+CUST000336,Jennifer,Owens,everetteric@example.net,(610)793-7566x6204,"934 Sanchez Prairie Apt. 760, Cooperview, TX 80483",South Gregory,HI,67420,1947-08-02,29571.95,Active,2024-01-25,2025-12-19
+CUST000337,Thomas,Hunt,david15@example.com,464.911.0290x311,"011 Meagan Bypass Suite 512, New Anthonyfort, AS 57560",Mejiashire,NM,83379,1953-10-11,25043.46,Suspended,2025-03-28,2025-12-13
+CUST000338,Ryan,Rangel,gloria88@example.org,542-930-5667x37082,"5327 Hernandez Alley Apt. 409, Danielshire, AK 55817",West Williambury,GU,44680,1990-04-21,37680.44,Active,2024-03-13,2025-12-16
+CUST000339,Sarah,Bailey,uali@example.org,001-879-302-9338x640,"570 Rodriguez Islands, Lake Amyside, VT 49170",Brianport,GA,70254,1957-08-06,7409.85,Active,2025-01-02,2025-12-06
+CUST000340,Jamie,Wood,xwilliams@example.net,697-915-4387x42889,"7026 Chang Ville, Lake Kristymouth, RI 74658",Lake Michael,PR,15400,2003-11-06,32828.85,Active,2025-04-22,2025-11-29
+CUST000341,Melissa,Nguyen,james25@example.org,+1-740-906-4842x79469,"4225 Amanda Hills Suite 260, Gilbertborough, HI 98857",Kingburgh,WI,37283,1999-12-03,4933.14,Suspended,2025-05-29,2025-12-11
+CUST000342,Janice,Freeman,cunninghamgregory@example.net,001-691-334-0802,"2975 Beverly Divide Suite 624, Lake Cindyport, NH 63637",Tomshire,CT,61114,2001-08-25,22742.93,Suspended,2024-12-06,2025-12-06
+CUST000343,Tina,Perez,cooksandy@example.org,+1-512-997-7923x59014,"2505 Casey Forges Apt. 886, Singhfort, TN 86940",North Dianeview,NE,83120,1945-04-08,44338.67,Suspended,2025-01-27,2025-11-24
+CUST000344,Brandi,Soto,joy96@example.org,001-350-767-0547,"95654 Bridges Passage, Martinezview, OH 33334",Danielmouth,PA,94525,2001-04-24,17640.42,Active,2025-01-27,2025-12-17
+CUST000345,Jennifer,Hughes,stacy49@example.org,668-862-1900x43554,"7804 Galloway Fort Apt. 696, Lake Ariel, MO 70613",Lake Antoniohaven,MN,56815,1976-12-07,1360.96,Active,2024-12-04,2025-12-04
+CUST000346,Anne,Little,cherylbooth@example.net,(832)738-0548,"6484 Michael Parks Suite 199, West David, AK 67919",New Joshuaside,VI,88562,2004-08-09,9257.81,Suspended,2025-07-13,2025-11-26
+CUST000347,Eric,Blanchard,virginialowe@example.com,590-991-9044,"2420 Daniel Gardens, Lake Vincent, WY 40197",Robinfort,WV,01164,1980-08-16,46072.35,Suspended,2024-05-30,2025-12-13
+CUST000348,Laurie,Hudson,juliareynolds@example.net,5083229802,"24482 Rose Circles Apt. 647, East Robertview, HI 28708",Allisonshire,VA,48335,1951-06-14,3664.73,Inactive,2025-05-26,2025-11-23
+CUST000349,Scott,King,jesseperkins@example.com,346.600.7606x29498,"52947 Robin Freeway, New Michaelchester, NV 33044",Hutchinsonchester,FL,79479,1987-12-12,30485.04,Inactive,2024-03-16,2025-12-18
+CUST000350,Stephanie,Davis,richardsandoval@example.org,+1-947-711-3095x9655,"35689 Li Points, South Hannahville, MI 08979",Port Jameschester,OH,77609,1981-11-25,39624.98,Suspended,2024-10-10,2025-12-12
+CUST000351,Brian,Haley,harrispeggy@example.com,(411)910-2363x55532,"295 Bell Isle Apt. 033, Colefurt, IA 52207",Danielfort,VT,60098,2003-10-22,45654.43,Inactive,2024-05-12,2025-12-03
+CUST000352,Lucas,Johnson,wadebrandon@example.net,6496051721,"7631 Myers Forest, Potterbury, OH 19596",Jordanton,LA,10430,1980-02-06,42232.56,Active,2025-06-08,2025-11-26
+CUST000353,William,Villa,jacob64@example.com,220.676.8337x70899,"20785 Erika River Suite 575, Davidmouth, AS 40058",South Saraport,VI,97770,1987-12-31,17539.07,Active,2024-12-13,2025-12-22
+CUST000354,Michael,Price,ralph06@example.net,646.524.0871x702,"3941 Hernandez Walk Suite 923, Kleinside, GU 31288",Waynetown,PW,82274,1994-10-20,38461.62,Active,2024-02-09,2025-12-04
+CUST000355,Amanda,Perez,yjackson@example.org,609.537.5130x641,"454 Warren Roads Apt. 279, East Jamesfurt, MO 30715",Lake Matthew,AK,73249,1990-05-30,5664.45,Active,2025-10-04,2025-12-02
+CUST000356,Edward,Nguyen,brendaharris@example.org,001-502-747-7958x856,"77594 Stokes Manor, Mathisborough, WV 27098",West Aliciabury,MO,82982,1964-06-29,37751.29,Suspended,2025-09-23,2025-12-09
+CUST000357,Joshua,Buck,pthompson@example.com,+1-271-301-4060,"USS Ross, FPO AP 82416",Zacharyshire,CO,60184,1990-10-22,25688.15,Suspended,2025-01-01,2025-12-12
+CUST000358,Wayne,Klein,marcia42@example.net,+1-982-295-0875x95171,"53499 Riley Summit Apt. 726, New Lori, MA 49510",New Melaniebury,MN,45120,2004-06-25,3226.18,Inactive,2024-11-30,2025-12-15
+CUST000359,Desiree,Snyder,mclaughlinrobert@example.net,680-538-1868x78257,"2040 Eric Burgs Suite 606, New Lisa, IA 61453",East Markfort,MS,11405,1968-08-09,35604.0,Inactive,2025-01-13,2025-12-17
+CUST000360,Mark,Cooper,nancywade@example.org,(908)589-7632x47154,"23570 Steven Course Suite 604, Hardychester, OR 16372",North Feliciafurt,NJ,53644,1984-04-05,8848.84,Active,2025-05-19,2025-12-14
+CUST000361,Eric,Singleton,kdavis@example.net,(409)262-4757x4074,"272 Martinez Pines Apt. 803, East John, VT 63731",Rebeccaside,MN,96383,1966-01-18,7684.41,Inactive,2024-01-18,2025-11-27
+CUST000362,Blake,Zimmerman,jessica79@example.net,785-289-2392x53715,"775 Coleman Ramp Apt. 148, Greenview, AK 71798",Tannerhaven,WA,09848,1976-07-31,48901.65,Suspended,2024-06-08,2025-12-15
+CUST000363,Alyssa,Ortiz,powersmichelle@example.com,(978)842-7113x8331,"76764 Arthur Square, North Ashley, IA 94646",Danielburgh,FL,40805,1974-07-12,47908.33,Active,2024-11-29,2025-12-22
+CUST000364,Mary,Page,christopherpoole@example.com,(853)725-8451x6001,"66460 Byrd Stravenue, South Chrismouth, WA 05603",New Brianside,CA,23260,1999-01-22,41309.75,Suspended,2024-03-05,2025-12-11
+CUST000365,Gabriel,Beasley,pattersonjose@example.com,+1-383-330-7641x168,"6095 Aaron Mountains, North Richardfort, NC 84664",Branditown,NV,47851,1975-06-28,28900.28,Inactive,2024-10-07,2025-12-11
+CUST000366,David,Carr,williamsdanielle@example.net,+1-284-813-6213x355,"270 Paul Views Suite 599, Andradefort, WI 72502",North Alexanderborough,MH,09865,1983-02-09,41717.64,Inactive,2025-01-30,2025-12-13
+CUST000367,Andrea,Sanchez,alvarezmiranda@example.org,001-277-849-0834x47859,"4806 Morris Dam Apt. 080, Karenland, NC 82257",New Michaelmouth,MS,29443,1976-11-16,1250.75,Active,2024-10-28,2025-12-13
+CUST000368,Paula,Goodwin,jacobjohnson@example.net,(623)588-7420,"847 Sierra Walk Suite 495, West Nathanchester, WI 77066",West Richard,TN,55240,1970-03-29,36938.19,Inactive,2025-04-30,2025-12-12
+CUST000369,Richard,James,bbryant@example.net,(885)460-0529x9622,"30071 George Islands Suite 475, West Tinaland, WA 11713",Harringtonside,MI,34195,2001-11-27,128.68,Suspended,2024-12-09,2025-12-01
+CUST000370,Christian,Lawson,stucker@example.com,+1-891-639-8202x59673,"Unit 3738 Box 9881, DPO AP 12667",Stewartview,MO,70206,1959-11-14,43201.99,Active,2025-04-14,2025-11-24
+CUST000371,Sherry,Ward,johnjohnson@example.com,+1-564-575-8667x460,"49129 Francis Roads, Brownland, MT 82315",Fletcherchester,RI,64989,1971-11-23,14744.33,Inactive,2025-08-16,2025-12-18
+CUST000372,Micheal,Gardner,brianna29@example.com,909.381.4270x48431,"20993 Jenna Forks Apt. 637, Lake Brendatown, KS 15491",West James,NJ,65400,1989-07-15,49838.03,Inactive,2024-01-15,2025-11-30
+CUST000373,Timothy,Pearson,andrew29@example.net,(682)394-8714,"USCGC Clark, FPO AE 99636",Port Joshuatown,MH,72444,1984-08-03,13150.07,Suspended,2024-10-31,2025-11-24
+CUST000374,Allen,Thompson,kbenson@example.com,658-317-7234x5923,"07746 Joseph Station Apt. 221, Dennisburgh, AL 80581",Lake Anthonyton,SC,02665,1945-11-16,8756.41,Suspended,2024-05-20,2025-11-23
+CUST000375,Mary,Franklin,shelby67@example.org,545.623.2442,"88981 Amy Well Suite 650, Gomezfort, NV 16463",Lake Francis,MT,82504,1959-03-31,701.37,Suspended,2025-10-26,2025-11-23
+CUST000376,Amy,Rodriguez,roblesbrian@example.com,489.955.2839x93143,"471 White Creek, Duffytown, OR 91770",East Melissa,MO,65340,1953-07-15,17320.95,Inactive,2024-06-16,2025-12-07
+CUST000377,Alex,Rivera,james64@example.net,337.774.5593,"011 Ricardo Cove, Youngtown, CO 36606",Codytown,NY,10256,1951-03-07,48794.99,Active,2025-09-27,2025-12-01
+CUST000378,Justin,Ortega,michellebanks@example.net,(220)879-1444x339,"327 Campbell Trace Suite 589, New Michael, MD 98256",Troyview,CT,82530,1952-03-10,17380.99,Inactive,2024-03-04,2025-12-07
+CUST000379,Timothy,Matthews,bowenjoshua@example.org,386-644-3323,"PSC 8916, Box 4951, APO AP 80407",Brendatown,VA,13988,1964-07-30,13773.77,Active,2024-08-11,2025-11-26
+CUST000380,Richard,Lester,jacqueline71@example.org,+1-875-852-3134,"825 Wendy Lights Suite 039, Lake Edwardland, NM 31385",West Brandonfort,NC,89121,2003-07-24,34853.82,Inactive,2025-11-04,2025-12-17
+CUST000381,Jennifer,Davis,alexandriabailey@example.org,(644)829-4078,"1642 Ferrell Springs Suite 282, Haileyberg, VI 51223",Ianhaven,KS,70921,1979-02-03,14456.24,Inactive,2025-04-18,2025-11-24
+CUST000382,Corey,Garcia,tammybranch@example.org,(284)768-5840x15540,"36667 Allison Grove, Janetchester, AZ 11631",West Stacy,WA,51690,1954-07-17,11940.61,Active,2024-01-13,2025-12-06
+CUST000383,Jeanne,Watkins,wesley49@example.net,228-743-6099,"4463 Richards Creek Apt. 726, West Aliciaport, FM 58199",East Kimberly,MN,16614,1976-12-20,24435.92,Suspended,2024-03-14,2025-12-08
+CUST000384,Raymond,Joyce,kathryn80@example.org,001-914-555-9202x23213,"86322 Mack Groves Suite 085, Maryberg, FM 38709",West Elizabethmouth,MN,17597,1991-05-21,31898.6,Active,2025-08-15,2025-12-14
+CUST000385,Mackenzie,Brown,tlewis@example.com,+1-921-303-2392x141,"02527 Anthony Ways, Heatherview, AL 82146",New Eileenmouth,IA,49522,1945-10-23,45265.68,Inactive,2025-09-03,2025-12-13
+CUST000386,Jessica,Conley,hruiz@example.net,7822427885,"290 Jennifer Shoal Suite 518, Simmonsshire, WY 80797",West Jacobville,VT,53669,1983-04-22,45396.02,Active,2025-03-23,2025-12-20
+CUST000387,Diana,Garcia,clintonmorales@example.net,545-387-4048,"003 Riddle Plains Apt. 637, South Richard, SD 78422",Adamshire,WY,97479,1997-09-23,33063.91,Active,2024-12-13,2025-12-01
+CUST000388,Charles,Hall,ricebenjamin@example.org,001-258-449-7135,"262 Ryan Road, Lake Tiffanystad, MH 68002",Port Amber,DE,16722,1975-04-20,14069.13,Active,2025-08-05,2025-11-26
+CUST000389,Jason,David,kimberly98@example.com,485.870.6220x78018,"5146 Donna Pike Apt. 971, South Timothy, OR 51176",Benjaminport,CT,07387,1951-07-12,11740.62,Active,2024-08-04,2025-12-09
+CUST000390,Laura,Sandoval,schultzamber@example.net,(594)925-9127,"179 Lisa Haven Apt. 162, East Michaelside, SD 77384",Lake Paul,WY,20684,1999-12-28,19711.47,Suspended,2024-02-20,2025-12-14
+CUST000391,Phyllis,Rose,pughjohn@example.com,001-952-618-0224x50322,"50843 Zachary Vista Apt. 202, Port Darius, TX 07213",Markhaven,WV,24986,1959-02-04,37573.06,Inactive,2024-12-03,2025-12-21
+CUST000392,Mary,Moore,zthomas@example.net,(383)487-8477x030,"USNS Harper, FPO AA 84892",Markview,LA,60369,1982-10-21,38287.96,Suspended,2024-02-22,2025-12-07
+CUST000393,Erika,Harris,vporter@example.org,001-935-388-1633x422,"360 Cohen Orchard Suite 443, Lake Samanthaberg, MT 05880",South Michaelstad,SC,97844,1960-06-15,7806.84,Active,2024-12-21,2025-12-02
+CUST000394,Eric,Fitzgerald,taylorjoseph@example.org,(986)403-7053,"3965 Washington Prairie, North Kimberly, NV 01248",Benjaminburgh,OR,66482,1997-09-06,11625.9,Inactive,2025-05-18,2025-12-11
+CUST000395,Austin,Molina,haneyrichard@example.com,268-946-6079x197,"PSC 2797, Box 8374, APO AA 35415",Estesberg,CO,18082,1955-11-18,16410.84,Inactive,2024-02-06,2025-12-02
+CUST000396,Shannon,Nguyen,anthony76@example.com,879-311-3617,"143 Simmons Club Suite 572, Gutierrezberg, MS 61241",South Derek,OR,07976,1988-08-27,48345.75,Suspended,2025-04-19,2025-12-01
+CUST000397,Hayden,Hunt,christopher94@example.com,001-399-842-7050x3980,"3408 Keith Vista, Bryanborough, AS 53574",South Donaldshire,CO,63745,1990-11-04,41637.41,Inactive,2025-08-26,2025-12-18
+CUST000398,Brenda,Flynn,ryanhayley@example.com,341.697.0461x380,"31982 Kevin Lodge Suite 148, Lake Tamaratown, AR 47809",Muellermouth,WV,55013,1981-12-14,15898.87,Inactive,2024-07-01,2025-12-08
+CUST000399,John,Wells,dsullivan@example.org,001-238-358-3514x570,"885 Jessica Mountains Suite 506, Lake Angelaport, MP 91211",Lake Ericmouth,OK,65155,1952-03-05,4166.34,Active,2024-05-09,2025-12-17
+CUST000400,Barry,Fitzgerald,joseph23@example.org,499.804.6863x4546,"454 Levine Grove, Ramirezport, VA 97753",Martinezville,LA,08114,1969-10-08,41984.47,Inactive,2025-07-30,2025-12-04
+CUST000401,Shannon,Garcia,randypace@example.org,4059195068,"165 Moore Circle Apt. 702, Allisonside, MD 61771",Hooverside,WV,34400,1985-06-08,3180.18,Suspended,2025-11-05,2025-11-28
+CUST000402,Shane,Diaz,amygilbert@example.com,329.796.0583x544,"32501 Andrea Forge Suite 582, South John, OR 79537",Martinmouth,UT,55645,1986-09-13,22052.04,Active,2024-11-03,2025-11-25
+CUST000403,Steven,Bass,tammy72@example.net,403-719-9685x314,"PSC 7780, Box 3754, APO AP 72524",Port Jenna,WA,53064,1946-07-28,49044.02,Active,2025-09-07,2025-12-02
+CUST000404,Laura,Henderson,travis97@example.net,001-995-678-2120,"918 Michael Meadows, Hodgeshaven, RI 72202",East Ashley,TN,28485,1987-08-31,45287.31,Inactive,2025-08-23,2025-12-13
+CUST000405,Shannon,Weaver,russell79@example.com,9403742509,"49561 Goodman Junction Suite 183, Danielview, NY 58185",East Brandiport,OH,05476,1955-03-07,17008.76,Active,2024-01-07,2025-12-20
+CUST000406,Robert,Stafford,ashley79@example.net,987.367.6087x65071,"36190 Matthew Fort, Michelleland, KY 81400",South Christy,VI,84592,1991-08-26,11179.22,Suspended,2024-08-15,2025-12-06
+CUST000407,Joan,Contreras,davisjamie@example.com,001-323-710-6386x50092,"99493 Brenda Freeway, New Jeffreyshire, GA 80936",Lake Malik,UT,30594,1964-10-07,2943.89,Active,2025-02-02,2025-12-20
+CUST000408,Antonio,Reynolds,ybrady@example.net,276.664.1196,"603 Watson Springs, Morganberg, NJ 08198",Timothyview,ID,58246,1989-03-25,19231.93,Inactive,2025-03-20,2025-12-11
+CUST000409,Angela,Howard,julie24@example.com,(224)818-4515,"0179 Lopez Corners Suite 865, Stevenbury, AL 72426",Port Nicholas,WY,53407,1945-08-03,6796.14,Suspended,2024-01-10,2025-12-05
+CUST000410,Benjamin,Morris,kwise@example.net,472.989.5853x49722,"388 Kelly Manor, Grayview, FL 50312",Petersmouth,PA,51444,1982-01-12,27422.48,Inactive,2024-08-12,2025-12-03
+CUST000411,Lauren,Patterson,shanephillips@example.net,(351)772-4601,"79947 Watkins Rue Suite 068, Sancheztown, IL 07019",South Alanborough,PA,89241,1947-01-17,21510.62,Suspended,2024-11-06,2025-12-01
+CUST000412,Mark,Owens,michaelpadilla@example.com,(491)917-8063x59068,"USCGC Marsh, FPO AE 17531",New Alexandriabury,SC,43309,2007-10-17,12337.46,Suspended,2025-09-27,2025-12-06
+CUST000413,Shannon,Alvarez,vargasdenise@example.com,001-407-646-1524x24386,"51261 Willis Orchard, Parkerport, TX 58813",Allenport,VI,41856,1957-09-15,20983.05,Active,2025-07-26,2025-12-06
+CUST000414,Ashley,Morgan,dennis54@example.net,(628)424-1867x52969,"146 Jerry Curve, Brooksport, IA 51779",Deborahville,MH,18024,2007-08-13,31652.51,Inactive,2024-05-31,2025-12-10
+CUST000415,Beverly,Morris,kevin58@example.org,+1-980-385-7187,"USNS Parks, FPO AP 81218",South Stephanie,MD,16927,1946-07-21,35006.49,Inactive,2024-03-10,2025-12-20
+CUST000416,Kimberly,Singh,thomasterri@example.com,+1-331-875-9344x733,"73133 Bobby Common Suite 572, Chadview, RI 33196",Mitchellburgh,KY,39568,1973-10-27,1300.77,Active,2024-03-14,2025-11-30
+CUST000417,David,Aguilar,douglas07@example.com,237-851-6712x698,"072 Kaitlyn Bridge, New Danielleberg, VA 12215",East Jonathan,FL,90058,1978-11-07,11710.54,Active,2024-03-09,2025-12-16
+CUST000418,Stacy,Perez,aprilwhite@example.org,655.600.2383,"563 Deborah Lights Suite 605, Edwardside, GU 33552",Kellyfort,OR,37824,1994-07-26,21499.59,Inactive,2024-06-08,2025-11-24
+CUST000419,Joseph,Shelton,lucaslaura@example.net,241-730-9722,"27329 Cabrera Knoll, New Sarahburgh, LA 54684",Marychester,GA,26626,1979-07-15,7887.29,Active,2024-05-13,2025-11-30
+CUST000420,Lisa,Hall,talexander@example.net,+1-459-411-7678x4519,"1377 Leonard Shoal, Brownshire, ND 81414",Port Bretthaven,OR,21213,1995-01-08,27476.38,Active,2024-03-17,2025-12-20
+CUST000421,Stephanie,Turner,elizabeth18@example.net,585.945.7572,"5719 Nicholas Fork, Gomezmouth, GU 23598",Lake Nicolehaven,NY,42454,1984-05-14,47037.95,Active,2025-03-08,2025-12-02
+CUST000422,John,Wagner,cooperjoseph@example.com,311-417-2156x92358,"2631 Parker Flats, North Monicaburgh, WI 41471",Patrickbury,AR,61348,1976-03-17,34644.45,Inactive,2025-10-12,2025-12-04
+CUST000423,Jodi,Jackson,lori63@example.net,370.576.4009,"054 Cochran Court Suite 949, West Brianhaven, ND 52239",New Chelsea,MT,80111,1954-02-28,46760.05,Inactive,2025-07-15,2025-12-10
+CUST000424,Jeffery,Parker,rangeljoel@example.net,711.537.7657,"88879 Johnson Fords, Lynntown, FM 29633",New Aprilberg,WY,74349,1971-01-01,20475.86,Suspended,2025-04-30,2025-12-20
+CUST000425,Joshua,Benjamin,osimmons@example.com,968-951-1037,"62979 Bradley Fields, Boonefurt, ID 06308",Davisland,OK,40784,1978-04-23,32015.84,Inactive,2025-02-22,2025-12-20
+CUST000426,Sandra,Hill,randallward@example.net,(431)283-8045,"33740 Darren Plain, East Seth, NJ 44515",West Amberville,NY,22126,1949-01-13,37145.67,Inactive,2025-11-01,2025-12-06
+CUST000427,Christian,Thomas,fbradford@example.com,+1-676-448-0906x71890,"1133 Tucker Mission Apt. 906, Stewartshire, SC 14158",Lake Christopher,AR,61616,1956-02-06,20436.79,Active,2025-09-12,2025-12-13
+CUST000428,James,White,richardsonjohn@example.net,001-907-672-0189x789,"90166 Melissa Square Apt. 259, New Miamouth, WA 31500",Port Elizabethland,DE,18725,1963-06-07,24849.12,Active,2024-03-12,2025-12-13
+CUST000429,Rachel,Shelton,jordanbrandy@example.com,(937)973-7059,"838 Michael Spring, West Joshuaborough, DE 80190",Andersonfort,FM,89216,1968-07-01,20713.43,Inactive,2024-11-29,2025-12-16
+CUST000430,Jasmine,Hernandez,maria03@example.org,(529)667-8147,"730 Amy Pines Suite 369, Richardberg, AR 56825",Jenniferville,NY,07071,1960-08-07,15123.31,Inactive,2024-08-29,2025-11-27
+CUST000431,Destiny,Bird,jenniferespinoza@example.com,+1-643-554-0359x7193,"32755 Molly Ways, Reedland, FM 22753",North Kristie,LA,31054,1952-05-28,37002.59,Inactive,2025-05-10,2025-12-20
+CUST000432,Joann,Lynch,bryan04@example.org,982.614.6816,"0491 Cochran Square Apt. 314, Maldonadoport, MP 25122",East Katherineview,VI,07886,1962-06-25,8834.66,Inactive,2025-02-21,2025-12-02
+CUST000433,Albert,Hamilton,farmershaun@example.org,(825)571-2629x94025,"112 Holly Orchard, North Ericstad, KS 49370",South Catherinebury,AR,60799,1963-08-04,4429.03,Active,2024-02-01,2025-11-23
+CUST000434,Nathan,Williams,phayes@example.org,(939)290-6465x1379,"3004 Anna Mission, Clementston, PA 64694",East Lauren,OR,66909,1954-10-23,11846.34,Suspended,2024-07-19,2025-12-11
+CUST000435,Laura,Watkins,brittanyperkins@example.org,(399)309-9362,"57942 Steven Motorway, Harrisonview, NJ 87316",Stephenburgh,NJ,28590,1971-05-10,40039.14,Suspended,2024-09-28,2025-12-02
+CUST000436,Seth,Morales,tgriffith@example.org,788-416-3598,"8553 Tamara Bypass, West Raymondchester, VI 66688",North Ryanville,AS,73411,1960-12-02,822.43,Suspended,2025-02-24,2025-12-14
+CUST000437,Adam,Wade,abbottpam@example.com,001-308-830-0552x7945,"22938 Yesenia Ridge, South Antonio, AL 87838",Andersonborough,HI,71281,1971-10-08,144.86,Inactive,2025-05-19,2025-12-12
+CUST000438,Thomas,Ayers,iholder@example.org,001-313-247-1397,"5328 Wilson Stream Suite 152, Dawsonland, SC 16668",Kevinhaven,IA,62577,1956-08-25,47400.83,Active,2025-05-20,2025-12-17
+CUST000439,Brian,Foster,walkerdana@example.com,(501)886-5177,"1018 Lori Groves, Sanchezfort, OK 39831",New Pennytown,OH,27473,1946-03-27,15023.69,Suspended,2024-01-05,2025-12-06
+CUST000440,James,Bowman,howellkayla@example.net,(932)896-8566x20833,"9880 Mcdonald Vista, North Abigailtown, UT 56637",Smithton,ME,17576,1995-09-13,31234.11,Suspended,2025-10-13,2025-12-08
+CUST000441,Lauren,Boone,eduardo14@example.com,699-334-6966x2046,"57680 Cooper Plain Suite 303, Lake Patrick, VI 26158",Ricardoville,VA,97789,1976-08-06,22144.31,Suspended,2025-05-14,2025-12-02
+CUST000442,Juan,Castillo,theodoreanderson@example.org,(200)321-0966x42979,"4652 Anthony Station, West Jerrychester, CO 18932",Port Paigefurt,MS,04273,1974-10-15,44222.98,Inactive,2024-06-14,2025-12-17
+CUST000443,Aaron,Long,becky76@example.com,(442)623-8865,"4233 Shannon Springs, Lindsayfort, KS 08137",New Anna,VI,12456,1995-05-10,22575.41,Suspended,2024-03-13,2025-12-12
+CUST000444,Dustin,Foster,margaret13@example.org,800-758-7108x817,"394 Earl Summit Suite 907, Port Hollyview, MT 00605",Lake Robert,LA,31309,1951-09-17,16546.06,Inactive,2024-03-19,2025-11-25
+CUST000445,Ashlee,Brown,nathan66@example.com,488.468.4532x4216,"69611 Mccoy Crossing Apt. 522, Williamton, AS 94144",West Josephmouth,PR,18901,1981-02-03,16018.84,Suspended,2025-06-13,2025-12-20
+CUST000446,Michael,Jones,jason69@example.com,957-521-4514x3474,"5894 Weiss Island, Leeburgh, CO 19162",South Jeremiah,IL,20036,1948-04-30,13760.96,Suspended,2024-04-24,2025-12-07
+CUST000447,Luis,Brown,sandra53@example.com,9765085294,"4367 Williams Oval Suite 423, Coxburgh, TX 28822",Port Rebeccatown,MN,84609,1961-08-06,30641.67,Inactive,2024-02-08,2025-12-04
+CUST000448,Leah,Black,davidconway@example.org,5855100664,"58643 Humphrey Villages Apt. 895, Kellyview, GU 66929",Welchchester,KS,99926,1994-01-19,7620.77,Suspended,2025-04-07,2025-11-26
+CUST000449,Mark,Baker,donnaharris@example.org,306.720.2780,"51636 Tracy Track Suite 351, Brewerbury, OR 36281",Cynthiatown,DC,78700,2007-06-10,47396.53,Inactive,2025-08-23,2025-12-04
+CUST000450,Andre,Lee,fgrant@example.net,(994)227-2011x6396,"3045 Elizabeth Ridge Apt. 848, West Billyburgh, CO 45973",North John,NV,34174,2001-07-31,495.64,Active,2024-09-27,2025-12-13
+CUST000451,John,Knight,diane10@example.com,8774097186,"8225 Parsons Path, East Keith, LA 04242",Sabrinaside,CT,49862,1981-10-04,3503.12,Active,2024-03-27,2025-11-23
+CUST000452,Aaron,Williams,daviddavis@example.org,(523)640-0914,"PSC 3577, Box 1867, APO AE 77091",Wallaceberg,UT,88364,1959-04-12,15162.38,Active,2025-12-19,2025-12-05
+CUST000453,Stacy,Patrick,johnsonjessica@example.com,(869)430-2831,"42909 Hamilton Vista Suite 150, New Michael, IL 93177",Scotthaven,OR,97329,2002-04-14,8177.91,Suspended,2025-07-05,2025-12-10
+CUST000454,Patrick,Brown,deborahcross@example.net,402.656.9107x915,"0140 Stephanie Stream Suite 993, East Duanehaven, AL 44323",Jordanbury,DE,17316,1960-12-24,48169.15,Inactive,2024-06-07,2025-12-07
+CUST000455,Charles,Holland,martinezlindsay@example.net,001-331-534-6057x9925,"4727 John Stream, Mccarthyview, SC 11015",Mcintoshfort,AS,53441,1973-10-01,4535.67,Active,2024-06-17,2025-12-16
+CUST000456,Kelsey,Robbins,codymeyer@example.net,5956438822,"953 Taylor Camp Apt. 284, Penaland, DE 13778",Jordanfurt,CO,95560,1983-03-20,22004.55,Inactive,2025-07-23,2025-11-28
+CUST000457,Nathan,Harrison,thomaskimberly@example.org,396.944.8546x220,"868 Philip Crossroad Apt. 188, Nelsonfort, PR 58062",Codyburgh,ME,90999,1973-08-21,30218.36,Suspended,2025-08-20,2025-11-30
+CUST000458,Joseph,Galvan,richard44@example.net,374-374-8361,"92850 Roman Courts Suite 221, West Jenniferfort, AR 89273",New Steventon,CT,56053,1962-01-08,17296.71,Suspended,2024-06-23,2025-12-16
+CUST000459,Jason,Sheppard,marywhite@example.org,891-858-5120,"425 Jennifer Curve Apt. 875, Davisfurt, OK 41066",New Nicolasbury,VT,67645,1990-12-09,29974.92,Active,2024-09-14,2025-12-02
+CUST000460,Michelle,Bryant,kathrynrios@example.com,510.712.8829x426,"03007 Michael Union Apt. 729, Mooreview, AK 62971",West Anna,VT,89148,1955-05-24,44553.23,Inactive,2024-11-18,2025-12-12
+CUST000461,Wayne,Perez,rpatterson@example.net,+1-430-320-0692,"40938 Paul Pine, Lukemouth, MI 44408",Brownton,AZ,18137,1963-11-14,31553.56,Active,2023-12-25,2025-12-22
+CUST000462,Cheryl,Allen,corey03@example.net,5364135005,"262 Clayton Loop, North Katherine, CA 55758",East Jamesfort,UT,46441,1998-07-20,37843.4,Inactive,2025-02-25,2025-12-07
+CUST000463,Monica,Perez,glopez@example.com,001-408-637-7194x5986,"1791 Coleman Shore, Lauraland, CT 76805",Garciaberg,SC,48187,1983-07-17,9856.49,Active,2024-02-04,2025-11-28
+CUST000464,Heather,Williamson,tomrhodes@example.net,606-822-1977,"986 Sarah Circle Suite 787, Josephland, PW 29082",New Jennatown,ND,34058,1986-02-16,8204.39,Active,2025-03-07,2025-11-24
+CUST000465,Roy,Chang,carrie34@example.com,701-325-7894,"PSC 6017, Box 6427, APO AE 20437",North Andrea,AL,01058,1995-08-03,18363.49,Suspended,2025-04-13,2025-12-16
+CUST000466,Sonia,Russo,randallstanton@example.net,559-962-2113x4361,"301 Stanley Glens Apt. 581, Samanthafort, HI 54987",East Shellybury,MO,52395,1993-06-02,30230.07,Inactive,2025-04-29,2025-11-29
+CUST000467,Eric,Dalton,douglas84@example.com,001-549-612-1877x707,"030 Mark Drive, New Harrybury, ME 85946",Rodgersport,AL,78636,1975-08-13,4670.78,Suspended,2024-01-19,2025-12-01
+CUST000468,Corey,Davila,karennelson@example.org,457.483.1780,"22167 Savannah Junction, Port Tylerton, MO 98029",Leebury,DC,78064,1979-06-10,26025.28,Suspended,2024-08-15,2025-11-28
+CUST000469,Jessica,Gilmore,fosterjason@example.com,001-435-334-4441,"3366 Teresa Route, Marybury, MI 56829",Lake Christianhaven,AS,48155,1979-07-31,35814.71,Active,2024-07-24,2025-12-13
+CUST000470,Maureen,Fisher,lindsey92@example.net,792-693-7265x910,"7908 Bradley Bypass Suite 601, Madelinestad, MN 56485",Port Sydneyport,CT,04679,1949-05-22,147.84,Inactive,2025-08-31,2025-12-02
+CUST000471,John,Ware,greed@example.com,217.977.4186,"801 Michael Hollow Suite 543, Weberfort, AS 56059",New Travisfurt,NJ,55946,1954-05-13,31578.68,Inactive,2025-09-08,2025-11-29
+CUST000472,Andrew,Taylor,christophernixon@example.net,001-409-813-3576x695,"89923 Ronald Passage, East Brendashire, WY 56753",Hollyport,VI,82798,1970-06-24,22741.06,Active,2024-07-03,2025-12-06
+CUST000473,Andrew,Alvarez,moniquejackson@example.org,482.757.4246,"083 Mary Drive, Tonyachester, NJ 87586",East Brenda,AR,26712,1995-09-17,32661.89,Active,2025-01-21,2025-12-14
+CUST000474,Charles,Smith,jennifernavarro@example.net,(353)878-6746x63190,"7946 Hernandez Valleys Suite 215, North Stanleyport, NE 57287",Alexandriaborough,NJ,51886,1979-02-11,43900.64,Suspended,2025-11-28,2025-12-12
+CUST000475,Marie,Goodman,charles79@example.net,801.677.2901x145,"3233 Patrick Courts, Rodriguezview, MI 01393",Jameshaven,UT,10390,1990-06-15,34602.32,Suspended,2024-05-27,2025-12-08
+CUST000476,Manuel,Mercado,nsmith@example.net,(552)706-1760,"04690 Ethan River Apt. 551, Hernandezville, WA 23918",North Emily,VI,50856,1962-09-17,24562.44,Inactive,2024-06-05,2025-11-25
+CUST000477,Karen,Acosta,jessica02@example.com,776-400-8748x0839,"001 Cooper Ports Suite 244, Wrightport, AK 27385",Staceytown,DE,81641,1983-08-18,18986.95,Suspended,2025-07-12,2025-11-30
+CUST000478,Shannon,Brown,xsanchez@example.org,834-839-7750,"3551 Luis Point Suite 718, Jonathanmouth, IN 04799",Harrisville,PR,30344,1998-09-26,33862.51,Inactive,2025-02-16,2025-11-26
+CUST000479,Jeffrey,Rios,jeffreybrown@example.org,001-809-824-5042x73155,"3687 Ryan Green Apt. 886, Lake Mariah, MA 01991",Johnmouth,LA,18445,2007-02-27,29803.39,Inactive,2024-09-26,2025-12-18
+CUST000480,Paul,Newton,brennanbrenda@example.org,001-610-666-8493,"846 Merritt Run Apt. 169, West Dorothyville, VA 94930",East Cory,MH,98988,1961-07-28,44758.05,Inactive,2024-07-12,2025-12-08
+CUST000481,Karina,Howard,brownapril@example.net,890-620-4365,"4180 Rose Village Apt. 317, East Brandonmouth, PW 55329",East Elizabethview,PA,89550,1995-10-03,24180.06,Suspended,2024-10-14,2025-12-14
+CUST000482,Amy,Gutierrez,mackenzieevans@example.com,+1-514-320-4495,"412 Brian Drive, Benjaminmouth, UT 90943",South Melvinchester,IL,91335,1993-02-20,49820.12,Suspended,2025-11-05,2025-12-18
+CUST000483,Erica,Bell,jennifer00@example.net,001-926-956-5812x2167,"164 Taylor Forges Suite 998, Justinbury, AK 53625",Maynardshire,MH,06109,1959-12-23,33140.98,Suspended,2025-03-17,2025-12-15
+CUST000484,Amanda,Huffman,longjackie@example.net,(344)749-2148x67921,"852 James Creek Apt. 014, Karenfurt, NJ 05620",North Ricardo,IA,24496,1963-12-14,34572.06,Active,2025-05-18,2025-12-22
+CUST000485,Wendy,Santos,stevensmalik@example.org,964.585.4011x33008,"13068 Kevin Trace Suite 561, West Justintown, ND 49280",Sarahtown,MH,76076,1979-11-01,12977.39,Suspended,2024-08-07,2025-12-03
+CUST000486,Eugene,Jackson,omontgomery@example.com,001-403-375-6181x17294,"215 Billy Cliffs, Port Jesusview, NJ 08944",Port Matthew,OR,74467,1952-06-27,33476.59,Inactive,2024-05-17,2025-11-29
+CUST000487,Jason,Hernandez,emilyfarmer@example.org,8442647028,"828 Nathan Knolls, New Ebony, TN 12441",South Sarahmouth,MP,26403,1946-01-17,47024.33,Active,2024-08-29,2025-12-05
+CUST000488,David,Smith,richard80@example.com,(716)374-3731x2687,"826 Dennis Harbors, West Gregory, OH 46821",North Heather,LA,51702,1971-08-20,14637.77,Inactive,2024-11-18,2025-12-04
+CUST000489,Joseph,Reeves,taylormills@example.net,430-370-0649x48486,"376 Kenneth Ferry, New April, TX 67342",Lake Nicoleburgh,CA,46292,1999-02-19,12160.1,Suspended,2024-03-13,2025-11-23
+CUST000490,Bryan,Cross,mathewwilkerson@example.net,677-775-7547x42355,"16826 Miller Cape, Hernandezhaven, GA 80669",Port Andrewtown,CT,80903,1952-04-18,957.11,Suspended,2024-11-20,2025-12-09
+CUST000491,Kendra,Moreno,colleenramos@example.net,001-486-998-9998x1210,"813 Williams Canyon, South Kristen, NE 11675",Lake Michaelfort,OH,53505,2000-09-28,32635.23,Inactive,2025-07-05,2025-12-05
+CUST000492,Joseph,Best,greed@example.net,001-322-886-2983,"510 Tyler Ranch Apt. 673, South Johnny, KY 56885",East Elizabethbury,UT,93583,1967-08-08,37739.33,Suspended,2024-07-23,2025-12-10
+CUST000493,Cory,Hawkins,florestamara@example.com,610.427.3280x73328,"0511 Johnson Lake, Mayerport, VT 11869",Stevenston,MT,80648,1975-03-23,6828.85,Active,2025-04-10,2025-12-21
+CUST000494,Jason,Vasquez,vstafford@example.org,(747)223-0112,"35299 Williams Island Apt. 709, Andreafurt, CA 96740",Josephville,DC,71962,1968-09-12,15538.2,Suspended,2025-12-10,2025-12-15
+CUST000495,Shawn,Baxter,melaniejones@example.org,258.489.3574,"988 Ayala Port, South Jacobview, OK 05877",Gabrielberg,IL,62264,1973-04-11,14917.08,Active,2025-02-27,2025-12-05
+CUST000496,Mary,Shannon,ericarobinson@example.org,6176026395,"890 Wolfe Pike Suite 617, New Ashley, NH 59607",West Susan,AK,32511,2006-06-08,43421.64,Inactive,2024-07-30,2025-12-13
+CUST000497,Sally,Fields,cummingselizabeth@example.org,5023453349,"94747 Hurst Drive, West Cody, WV 16164",Port Jerry,NV,02095,1981-02-22,11526.35,Suspended,2025-11-24,2025-11-26
+CUST000498,Veronica,Webb,rodrigueztoni@example.com,205-275-8178x6965,"8062 Kimberly Route, Grayville, PW 31467",Watersfort,SD,80721,1973-02-04,26291.28,Inactive,2025-03-02,2025-12-04
+CUST000499,Christine,Walker,william32@example.com,+1-555-536-2752x306,"98722 Brown Tunnel, Williamberg, CO 52180",Randyville,MS,05355,2004-02-11,40659.31,Suspended,2025-02-14,2025-12-18
+CUST000500,Jennifer,Campbell,whall@example.net,(532)836-0106x5870,"6771 Billy Row, Brittneyville, ID 80248",Kevinberg,IN,38952,1962-06-16,5179.55,Inactive,2025-05-08,2025-11-24

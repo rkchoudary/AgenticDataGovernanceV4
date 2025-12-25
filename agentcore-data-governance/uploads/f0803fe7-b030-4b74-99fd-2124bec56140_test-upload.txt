@@ -1,0 +1,9 @@
+This is a test document for upload functionality.
+
+Key governance requirements:
+1. Data quality standards must be maintained
+2. Regulatory compliance is mandatory
+3. All data must be properly classified
+4. Access controls must be implemented
+
+This document contains sample governance content for testing the upload and analysis functionality.

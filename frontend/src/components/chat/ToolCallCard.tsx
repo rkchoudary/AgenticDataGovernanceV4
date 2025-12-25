@@ -10,6 +10,7 @@ import {
   Copy,
   Eye,
   EyeOff,
+  ExternalLink,
   LucideIcon
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
